@@ -1,10 +1,16 @@
 package main.java;
 
+import java.util.ArrayList;
+
+/**
+ * @brief User Class
+ */
 public class User {
     private String id;
     private String name;
     private String img_url;
     private String email;
+    private ArrayList<Trip> trips;
 
     User() {
         id = null;
@@ -12,6 +18,11 @@ public class User {
         img_url = null;
         email = null;
     }
+
+    /**
+     * @name Getters and Setters for basic profile information
+     * @{
+     */
 
     public String getId() {
         return id;
@@ -44,4 +55,25 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    /**
+     * @}
+     */
+
+    /**
+     * @name Trip stuff
+     * @{
+     */
+
+    public ArrayList<Trip> getTrips() {
+        return trips;
+    }
+
+    public void addTrip(Trip trip) {
+        trips.add(trip);
+    }
+
+    /**
+     * }@
+     */
 }
