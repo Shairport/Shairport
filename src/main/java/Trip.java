@@ -9,9 +9,14 @@ public class Trip {
     private LocalTime arriveBy;
     private LocalDateTime startTimeRange;
     private LocalDateTime endTimeRange;
-    
-    Trip() {
 
+    Trip() {
+        airport = null;
+        flightDate = null;
+        flightTime = null;
+        arriveBy = null;
+        startTimeRange = null;
+        endTimeRange = null;
     }
 
     public String getAirport() {
