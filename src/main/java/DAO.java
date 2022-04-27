@@ -42,24 +42,4 @@ public class DAO {
         closeConnection();
 		return result;
 	}
-
-    public static int addTicket(Ticket ticket) throws SQLException {
-        openConnection();
-		
-		String sqlString = "INSERT INTO tickets (departure, location) VALUES (?, ?)";
-		int result = 0;
-
-        try {
-			PreparedStatement statement = conn.prepareStatement(sqlString);
-			statement.setString(1,  "departure time");
-			statement.setString(2,  ticket.getLocation());
-			
-			result = statement.executeUpdate();
-		} catch (SQLException e) {
-            e.printStackTrace();
-		} 
-
-        closeConnection();
-        return result;
-    }
 }

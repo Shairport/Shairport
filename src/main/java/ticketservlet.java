@@ -20,8 +20,8 @@ import main.java.util.JDBCUtil;
  * Work in progress......
  */
 
-@WebServlet("/ticketservlet")
-public class ticketservlet extends HttpServlet {
+@WebServlet("/ticketServlet")
+public class ticketServlet extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
    
@@ -29,7 +29,7 @@ public class ticketservlet extends HttpServlet {
     
      /* Default constructor.*/
      
-    public ticketservlet() {
+    public ticketServlet() {
     }
 
     @Override
