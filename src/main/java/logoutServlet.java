@@ -26,7 +26,7 @@ public class logoutServlet extends HttpServlet {
     	Cookie ck[] = request.getCookies();
     	for(int i=0;i<ck.length;i++){  
     		if (ck[i].getName().contentEquals("Email") 
-    				||ck[i].getName().contentEquals("GEmail")
+    				||ck[i].getName().contentEquals("GEmail"))
     		{
     			ck[i].setValue("");
     			ck[i].setMaxAge(0);
