@@ -83,7 +83,7 @@ public class registerServlet extends HttpServlet {
     		error += " <div style=\"color:white; font-size:15px; background-color: #d833de; width:100%; height:30px; text-align: center;\"> Passwords are not equal</div>";
     	}
     	
-    	if(!email.contains("use.edu")) {
+    	if(!email.contains("usc.edu")) {
     		error += " <div style=\"color:white; font-size:15px; background-color: #d833de; width:100%; height:30px; text-align: center;\"> Email must be a USC Email</div>";
     	}
     	
