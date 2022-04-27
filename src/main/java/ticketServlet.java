@@ -39,6 +39,7 @@ public class ticketServlet extends HttpServlet {
     	
     	 Cookie ck[] = request.getCookies();
     	 String Email = "";
+    	 
     	 if (ck != null) {
     	 	for (int i = 0; i < ck.length; ++i) {
     	 		if (ck[i].getName().equals("GEmail") && !(ck[i].getValue().contentEquals(""))) {
@@ -48,6 +49,7 @@ public class ticketServlet extends HttpServlet {
     	 		}
     	 	}
     	 }
+    	
     	
     	String error = "";
     	
@@ -69,16 +71,21 @@ public class ticketServlet extends HttpServlet {
     	String number = request.getParameter("number");
     	if (number == null) number = "";
     	
+ 
     	
     	
     	// do Error Checking
+    	
+    	
+    	
     	
     	if (error.contentEquals("")) {
 
     		try {
 
     			Class.forName("com.mysql.cj.jdbc.Driver");
-    			Connection con= JDBCUtil.getConnection();
+    			
+				Connection con= JDBCUtil.getConnection();
 
     			PreparedStatement addTicket = con.prepareStatement("INSERT INTO SHAIRPORT.tickets(pickupdate, airport, pickuptime, location, phonenumber) VALUES (?, ?, ?, ?, ?)");
     			
@@ -88,6 +95,8 @@ public class ticketServlet extends HttpServlet {
     			addTicket.setString(4, location);
     			addTicket.setString(5, number);
     			addTicket.executeUpdate();
+    			
+    			
     			
     			
     			addTicket = con.prepareStatement("SELECT ticketID from SHAIRPORT.tickets where pickupdate = ? and airport = ? and pickuptime = ? and location = ? and phonenumber = ?");
@@ -104,6 +113,14 @@ public class ticketServlet extends HttpServlet {
     			addTicket.setString(1, Email);
     			addTicket.setString(2, ticketID);
     			addTicket.executeUpdate();
+    			
+    			Integer idasint = Integer.parseInt(ticketID);
+    			
+    			Ticket tic = new Ticket(idasint, date, airport, time, location, number);
+    			
+    			
+    			TicketParser.ticID_to_tic.put(idasint,tic); 
+    			
     		} catch(SQLException e) {
     			System.out.println(e);
     		}
