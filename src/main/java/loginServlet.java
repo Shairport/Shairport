@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.java.util.JDBCUtil;
+import util.JDBCUtil;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -88,7 +88,7 @@ public class loginServlet extends HttpServlet {
 	        RequestDispatcher dispatch = null;
 	    	try {
 		    		Class.forName("com.mysql.cj.jdbc.Driver");
-					Connection connect = new JDBCUtil().getConnection();
+					Connection connect = JDBCUtil.getConnection();
 					
 					PreparedStatement ps = connect.prepareStatement("select * from users where email = ? and password = ?");
 					ps.setString(1, email);

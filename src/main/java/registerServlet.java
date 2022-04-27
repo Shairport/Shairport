@@ -19,7 +19,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.tomcat.util.http.LegacyCookieProcessor;
 
-import main.java.util.JDBCUtil;
+import util.JDBCUtil;
 /**
  * Servlet implementation class RegisterDispatcher
  */
@@ -88,7 +88,7 @@ public class registerServlet extends HttpServlet {
     	try {
 	    	//Check if email already in use
 	    	Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection connect = new JDBCUtil().getConnection();
+			Connection connect =JDBCUtil.getConnection();
 	    	
 	    	PreparedStatement ps2 = connect.prepareStatement("select * from users where email = ?");
 			ps2.setString(1, email);

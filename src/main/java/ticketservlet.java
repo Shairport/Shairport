@@ -78,7 +78,7 @@ public class ticketServlet extends HttpServlet {
     		try {
 
     			Class.forName("com.mysql.cj.jdbc.Driver");
-    			Connection con= new JDBCUtil().getConnection();
+    			Connection con= JDBCUtil.getConnection();
 
     			PreparedStatement addTicket = con.prepareStatement("INSERT INTO SHAIRPORT.tickets(pickupdate, airport, pickuptime, location, phonenumber) VALUES (?, ?, ?, ?, ?)");
     			
