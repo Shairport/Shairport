@@ -25,21 +25,24 @@ public class Ticket {
     public String getPickupdate() {
         return pickupdate;
     }
+    public String getDisplayPickupTime() {
+    	String tobereturned = "";
+    	String hour = pickuptime.substring(0,2);
+    	int hr = Integer.parseInt(hour);
+    	if (hr > 12) {
+    		hr -= 12;
+    	}
+    	tobereturned += String.valueOf(hr);
+    	tobereturned += pickuptime.substring(2);
+    	return tobereturned;
+    }
+    
     public String getAirport() {
         return airport;
     }
     public Integer getPickuptime() {
-    	boolean isAM = true;
-    	String currpickuptime = pickuptime;
-    	if (pickuptime.contains("PM") || pickuptime.contains("pm")) {
-    		isAM = false;
-    		currpickuptime = pickuptime.substring(0, 5);
-    	} else if (pickuptime.contains("AM") || pickuptime.contains("am")) {
-    		currpickuptime = pickuptime.substring(0, 5);
-    	}
-    	String [] hourMin = currpickuptime.split(":");
+    	String [] hourMin = pickuptime.split(":");
     	int hour = Integer.parseInt(hourMin[0]);
-    	if (!isAM) { hour += 12;}
     	int minute = Integer.parseInt(hourMin[1]);
     	return (hour * 60 + minute);
         
