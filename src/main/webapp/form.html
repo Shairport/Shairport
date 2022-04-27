@@ -47,8 +47,9 @@
 	                    </div>
 	                    <div class="tab">
 	                        <h6>What is your Phone Number?</h6>
-	                        <p><input placeholder="(206)-456-7891" onkeydown= "phoneNumberFormatter()" id="phone-number" oninput="this.className = ''" name="number"></p>
-	                    </div>               
+							<p><input type="tel" id="phone" name="phone"
+							pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+							required>	   </p>               </div>               
 	                    <script>
 		                    function formatPhoneNumber(value) {
 		                        if (!value) return value;
