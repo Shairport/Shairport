@@ -3,12 +3,13 @@ CREATE DATABASE `Shairport`;
 USE Shairport;
 CREATE TABLE `tickets` (
   `ticketID` int NOT NULL AUTO_INCREMENT,
-  `date` varchar(45) NOT NULL,
+  `pickupdate` varchar(45) NOT NULL,
   `airport` varchar(45) NOT NULL,
   `pickuptime` varchar(45) NOT NULL,
   `location` varchar(45) NOT NULL,
+  `phonenumber` varchar(45) NOT NULL,
   PRIMARY KEY (`ticketID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 CREATE TABLE `users` (
   `userID` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
