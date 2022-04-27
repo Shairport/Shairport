@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class Ticket {
     private Set<User> users;
-    private LocalDateTime departure;
+    private LocalDateTime pickupTime;
     private String location;
 
     public Set<User> getUsers() {
@@ -16,8 +16,8 @@ public class Ticket {
         return location;
     }
 
-    public LocalDateTime getDeparture() {
-        return departure;
+    public LocalDateTime getPickupTime() {
+        return pickupTime;
     }
 
     public void setUsers(Set<User> users) {
@@ -28,8 +28,8 @@ public class Ticket {
         this.location = location;
     }
 
-    public void setDeparture(LocalDateTime departure) {
-        this.departure = departure;
+    public void setPickupTime(LocalDateTime pickupTime) {
+        this.pickupTime = pickupTime;
     }
 
     public void addUser(User user) {

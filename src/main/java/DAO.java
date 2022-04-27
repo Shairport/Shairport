@@ -51,7 +51,7 @@ public class DAO {
 
         try {
 			PreparedStatement statement = conn.prepareStatement(sqlString);
-			statement.setString(1,  "departure");
+			statement.setString(1,  "departure time");
 			statement.setString(2,  ticket.getLocation());
 			
 			result = statement.executeUpdate();

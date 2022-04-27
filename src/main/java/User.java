@@ -11,6 +11,7 @@ public class User {
     private String img_url;
     private String email;
     private ArrayList<Trip> trips;
+    private ArrayList<Ticket> tickets;
 
     User() {
         id = null;
@@ -71,6 +72,10 @@ public class User {
 
     public void addTrip(Trip trip) {
         trips.add(trip);
+    }
+
+    public void addTicket(Ticket ticket) {
+        tickets.add(ticket);
     }
 
     /**
