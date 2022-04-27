@@ -135,7 +135,7 @@
 	        var email = profile.getEmail();
 	        // The ID token you need to pass to your backend:
 	        var id_token = googleUser.getAuthResponse().id_token;
-	        window.location.href = "http://localhost:8080/Working_Shairport/login.jsp";
+	        window.location.href = "http://localhost:8080/Shairport/form.html";
 	  		addGoogleUser(name, email, id_token);
 	  		document.cookie = "name= ;";
 	      }
@@ -159,7 +159,7 @@
 						email: email
 					},
 					success: function(result) {
-						window.location.href = "http://localhost:8080/Working_Shairport/login.jsp";		        
+						window.location.href = "http://localhost:8080/Shairport/form.html";		        
 					}
 				});	
 			}
