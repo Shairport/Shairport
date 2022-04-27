@@ -46,8 +46,29 @@
                     </div>
                     <div class="tab">
                         <h6>What is your Phone Number?</h6>
-                        <p><input placeholder="(206)-456-7891" oninput="this.className = ''" name="number"></p>
-                    </div>
+                        <p><input placeholder="(206)-456-7891" onkeydown= "phoneNumberFormatter()" id="phone-number" oninput="this.className = ''" name="number"></p>
+                    </div>               
+                    <script>
+	                    function formatPhoneNumber(value) {
+	                        if (!value) return value;
+	                        const phoneNumber = value.replace(/[^\d]/g, '');
+	                        const phoneNumberLength = phoneNumber.length;
+	                        if (phoneNumberLength < 4) return phoneNumber;
+	                        if (phoneNumberLength < 7) {
+	                          return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+	                        }
+	                        return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
+	                          3,
+	                          6
+	                        )}-${phoneNumber.slice(6, 9)}`;
+	                    }
+	
+	                    function phoneNumberFormatter() {
+	                        const inputField = document.getElementById('phone-number');
+	                        const formattedInputValue = formatPhoneNumber(inputField.value);
+	                        inputField.value = formattedInputValue;
+	                    } 
+                    </script>
                     <div class="thanks-message text-center" id="text-message"> <img src="https://i.imgur.com/O18mJ1K.png" width="100" class="mb-4">
                         <button type="submit">Click here to view the results!</button>
                     </div>
