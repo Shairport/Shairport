@@ -4,81 +4,83 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href = "style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src ="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+	
     <script src="script.js"></script>
     <title>Document</title>
 </head>
-<body>
-    <div class="container mt-5">
-        <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-md-8">
-                <form action ="ticketServlet" method ="GET" >
-                    <h1 id="register">Ticket Form</h1>
-                    <div class="all-steps" id="all-steps"> <span class="step"><i class="fa fa-user"></i></span><span class="step"><i class="fa fa-calendar"></i></span> <span class="step"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
-                    </span> <span class="step"><i class="fa fa-plane"></i></span> <span class="step"><i class="fa fa-car"></i></span> <span class="step"><i class="fa fa-mobile-phone"></i></span> </div>
-                    <div class="tab">
-                        <h6>What's your name?</h6>
-                        <p> <input placeholder="Name..." oninput="this.className = ''" name="name"></p>
-                    </div>
-                    <div class="tab">
-                        <h6>What Date is your Flight?</h6>
-                        <p><input type="date" id="start" name="date"
-                            value="2022-07-22"
-                            min="2018-01-01" max="2030-12-31"></p>
-                    </div>
-                    <div class="tab">
-                        <h6>What Airport are you departing from?</h6>
-                        <p><input placeholder="" oninput="this.className = ''" name="airport"></p>
-                    </div>
-                    <div class="tab">
-                        <h6>When do you need to be at the Airport?</h6>
-                        <p><<input type="time" id="appt" name="time"
-                            min="0:00" max="24:00" required>
-                     </p>
-                    </div>
-                    <div class="tab">
-                        <h6>Where are you located at on Campus?</h6>
-                        <p><input placeholder="McCarthy" oninput="this.className = ''" name="location"></p>
-                    </div>
-                    <div class="tab">
-                        <h6>What is your Phone Number?</h6>
-                        <p><input placeholder="(206)-456-7891" onkeydown= "phoneNumberFormatter()" id="phone-number" oninput="this.className = ''" name="number"></p>
-                    </div>               
-                    <script>
-	                    function formatPhoneNumber(value) {
-	                        if (!value) return value;
-	                        const phoneNumber = value.replace(/[^\d]/g, '');
-	                        const phoneNumberLength = phoneNumber.length;
-	                        if (phoneNumberLength < 4) return phoneNumber;
-	                        if (phoneNumberLength < 7) {
-	                          return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
-	                        }
-	                        return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
-	                          3,
-	                          6
-	                        )}-${phoneNumber.slice(6, 9)}`;
-	                    }
-	
-	                    function phoneNumberFormatter() {
-	                        const inputField = document.getElementById('phone-number');
-	                        const formattedInputValue = formatPhoneNumber(inputField.value);
-	                        inputField.value = formattedInputValue;
-	                    } 
-                    </script>
-                    <div class="thanks-message text-center" id="text-message"> <img src="https://i.imgur.com/O18mJ1K.png" width="100" class="mb-4">
-                        <button type="submit">Click here to view the results!</button>
-                    </div>
-                    <div style="overflow:auto;" id="nextprevious">
-                        <div style="float:right;"> <button type="button" id="prevBtn" onclick="nextPrev(-1)"><i class="fa fa-angle-double-left"></i></button> <button type="button" id="nextBtn" onclick="nextPrev(1)"><i class="fa fa-angle-double-right"></i></button> </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+<body style="background-image: url('clouds.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+	    <div class="container mt-5">
+	        <div class="row d-flex justify-content-center align-items-center">
+	            <div class="col-md-8">
+	                <form action ="ticketServlet" method ="GET" >
+	                    <h1 style="color:white"id="register">Ticket Form</h1>
+	                    <div class="all-steps" id="all-steps"> <span class="step"><i class="fa fa-user"></i></span><span class="step"><i class="fa fa-calendar"></i></span> <span class="step"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+	                    <span class="step"><i class="fa fa-plane"></i></span> <span class="step"><i class="fa fa-car"></i></span> <span class="step"><i class="fa fa-mobile-phone"></i></span> </div>
+	                    <div class="tab">
+	                        <h6 style="color:white">What's your name?</h6>
+	                        <p> <input placeholder="Name..." oninput="this.className = ''" name="name" ></p>
+	                    </div>
+	                    <div class="tab">
+	                        <h6>What Date is your Flight?</h6>
+	                        <p><input type="date" id="start" name="date"
+	                            value="2022-07-22"
+	                            min="2018-01-01" max="2030-12-31"></p>
+	                    </div>
+	                    <div class="tab">
+	                        <h6>What Airport are you departing from?</h6>
+	                        <p><input placeholder="" oninput="this.className = ''" name="airport"></p>
+	                    </div>
+	                    <div class="tab">
+	                        <h6>When do you need to be at the Airport?</h6>
+	                        <p><input type="time" id="appt" name="time"
+	                            min="0:00" max="24:00" required>
+	                     </p>
+	                    </div>
+	                    <div class="tab">
+	                        <h6>Where are you located at on Campus?</h6>
+	                        <p><input placeholder="McCarthy" oninput="this.className = ''" name="location"></p>
+	                    </div>
+	                    <div class="tab">
+	                        <h6>What is your Phone Number?</h6>
+	                        <p><input placeholder="(206)-456-7891" onkeydown= "phoneNumberFormatter()" id="phone-number" oninput="this.className = ''" name="number"></p>
+	                    </div>               
+	                    <script>
+		                    function formatPhoneNumber(value) {
+		                        if (!value) return value;
+		                        const phoneNumber = value.replace(/[^\d]/g, '');
+		                        const phoneNumberLength = phoneNumber.length;
+		                        if (phoneNumberLength < 4) return phoneNumber;
+		                        if (phoneNumberLength < 7) {
+		                          return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+		                        }
+		                        return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
+		                          3,
+		                          6
+		                        )}-${phoneNumber.slice(6, 9)}`;
+		                    }
+		
+		                    function phoneNumberFormatter() {
+		                        const inputField = document.getElementById('phone-number');
+		                        const formattedInputValue = formatPhoneNumber(inputField.value);
+		                        inputField.value = formattedInputValue;
+		                    } 
+	                    </script>
+	                    <div class="thanks-message text-center" id="text-message"> <img src="https://i.imgur.com/O18mJ1K.png" width="100" class="mb-4">
+	                        <button type="submit">Click here to view the results!</button>
+	                    </div>
+	                    <div style="overflow:auto;" id="nextprevious">
+	                        <div style="float:right;"> <button type="button" id="prevBtn" onclick="nextPrev(-1)"><i class="fa fa-angle-double-left"></i></button> <button type="button" id="nextBtn" onclick="nextPrev(1)"><i class="fa fa-angle-double-right"></i></button> </div>
+	                    </div>
+	                </form>
+	            </div>
+	        </div>
+	    </div>
+
     
 </body>
 </html>
