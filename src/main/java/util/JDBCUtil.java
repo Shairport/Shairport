@@ -20,7 +20,7 @@ public class JDBCUtil {
         try {
         	String user = "root";
         	String password = "root";
-        	String url = "jdbc:mysql://localhost:3306/ShairportSchema";
+        	String url = "jdbc:mysql://localhost:3306/Shairport";
             
             connection = DriverManager.getConnection(url, user, password);
         } catch (Exception e) {
