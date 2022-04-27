@@ -31,10 +31,10 @@ public class Ticket {
     public Integer getPickuptime() {
     	boolean isAM = true;
     	String currpickuptime = pickuptime;
-    	if (pickuptime.contains("PM")) {
+    	if (pickuptime.contains("PM") || pickuptime.contains("pm")) {
     		isAM = false;
     		currpickuptime = pickuptime.substring(0, 5);
-    	} else if (pickuptime.contains("AM")) {
+    	} else if (pickuptime.contains("AM") || pickuptime.contains("am")) {
     		currpickuptime = pickuptime.substring(0, 5);
     	}
     	String [] hourMin = currpickuptime.split(":");
