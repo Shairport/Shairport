@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,6 +37,16 @@ public class ticketservlet extends HttpServlet {
             throws ServletException, IOException {
     	response.setContentType("text/html");
     	
+    	 Cookie ck[] = request.getCookies();
+    	 String GEmail = "";
+    	 if (ck != null) {
+    	 	for (int i = 0; i < ck.length; ++i) {
+    	 		if (ck[i].getName().equals("GEmail") && !(ck[i].getValue().contentEquals(""))) {
+    	 			GEmail = java.net.URLDecoder.decode(ck[i].getValue(), "UTF-8");
+    	 		}
+    	 	}
+    	 }
+    	
     	String error = "";
     	
     	String name = request.getParameter("name");
@@ -57,6 +68,7 @@ public class ticketservlet extends HttpServlet {
     	if (number == null) number = "";
     	
     	
+    	
     	// do Error Checking
     	
     	if (error.contentEquals("")) {
@@ -73,34 +85,23 @@ public class ticketservlet extends HttpServlet {
     			addTicket.setString(3, time);
     			addTicket.setString(4, location);
     			addTicket.setString(5, number);
-    			
-    			
     			addTicket.executeUpdate();
     			
-    			/*
-    			ruserEmail.next();
-    			if (ruserEmail.getInt("total") > 0) {
-    				error += "Email Already in Use. ";
-    		    	request.setAttribute("error", error);
-   
-    				request.getRequestDispatcher("auth.jsp").include(request, response);
-    			} else {
-    				userEmail = con.prepareStatement("INSERT INTO restaurantdata.accounts (email, password, name) VALUES (?, ?, ?)");
-    				userEmail.setString(1, email.trim());
-    				userEmail.setString(2, password);
-    				userEmail.setString(3,  name);
-    				userEmail.executeUpdate();		
-    				
-    				/* Encode so spaces are allowed
-    				Cookie UsersName = new Cookie("UsersName", URLEncoder.encode(name, "UTF-8"));
-					Cookie loggedin = new Cookie("loggedin", "true");
-					UsersName.setMaxAge(60*60*24);
-					loggedin.setMaxAge(60*60*24);
-					response.addCookie(UsersName);
-					response.addCookie(loggedin);
-					response.sendRedirect("index.jsp");
-    			}
-    		*/
+    			
+    			addTicket = con.prepareStatement("SELECT ticketID from SHAIRPORT.tickets where pickupdate = ? and airport = ? and pickuptime = ? and location = ? and phonenumber = ?");
+    			addTicket.setString(1, date);
+    			addTicket.setString(2, airport);
+    			addTicket.setString(3, time);
+    			addTicket.setString(4, location);
+    			addTicket.setString(5, number);
+    			ResultSet rs = addTicket.executeQuery();
+    			rs.next();
+    			String ticketID = rs.getString(1);
+    			
+    			addTicket = con.prepareStatement("INSERT INTO SHAIRPORT.userticketbridge(email, rideID) VALUES (?, ?)");
+    			addTicket.setString(1, GEmail);
+    			addTicket.setString(2, ticketID);
+    			addTicket.executeUpdate();
     		} catch(SQLException e) {
     			System.out.println(e);
     		}
