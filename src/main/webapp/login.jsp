@@ -61,7 +61,7 @@
 		            <div class="col-md-6 col-lg-7 d-flex align-items-center">
 		              <div class="card-body p-4 p-lg-5 text-black">
 		
-		                <form action="login" method="POST">
+		                <form action ="login" method ="POST">
 		
 		                  <!-- <div class="d-flex align-items-center mb-3 pb-1">
 		                    <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
@@ -71,7 +71,7 @@
 		                  <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
 		
 		                  <div class="form-outline mb-4">
-		                    <input type="email" id="email" name="email" class="form-control form-control-lg" />
+						  	<input type="email" id="email" name="email" class="form-control form-control-lg" />
 		                    <label class="form-label" for="email">Email address</label>
 		                  </div>
 		
@@ -90,8 +90,7 @@
 				            	<div class="g-signin2" data-onsuccess="onSignIn" data-width="auto" data-height="40" data-longtitle="true" data-theme="dark"> </div>
 				            	<!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
 				            </div>
-				            
-				          </form>
+				            </form>
 
 		                  <!-- <a class="small text-muted" href="#!">Forgot password?</a> -->
 		                  
@@ -105,7 +104,7 @@
 		                  </p>
 		                  <!-- <a href="#!" class="small text-muted">Terms of use.</a>
 		                  <a href="#!" class="small text-muted">Privacy policy</a> -->
-		                
+		               
 		
 		              </div>
 		            </div>
@@ -135,9 +134,8 @@
 	        var email = profile.getEmail();
 	        // The ID token you need to pass to your backend:
 	        var id_token = googleUser.getAuthResponse().id_token;
+	        document.cookie ="GEmail=" + email;
 	        window.location.href = "http://localhost:8080/Shairport/form.html";
-	  		addGoogleUser(name, email, id_token);
-	  		document.cookie = "name= ;";
 	      }
 		
 			function onSuccess(googleUser) {
@@ -150,28 +148,15 @@
 		    }
 		 
 		    
-		  function addGoogleUser(name, email, id) {
-				$.ajax({
-					url: "register",
-					data: {
-						username: name,
-						password: id,
-						email: email
-					},
-					success: function(result) {
-						window.location.href = "http://localhost:8080/Shairport/form.html";		        
-					}
-				});	
-			}
 		     
 		 
-		    	function signOut() {
-		    	    var auth2 = gapi.auth2.getAuthInstance();
-		    	    auth2.signOut().then(function () {
-		    	      console.log('User signed out.');
-		    	      
-		    	    });
-		    	  }
+	    	function signOut() {
+	    	    var auth2 = gapi.auth2.getAuthInstance();
+	    	    auth2.signOut().then(function () {
+	    	      console.log('User signed out.');
+	    	      
+	    	    });
+	    	  }
 		      
 		    
 		    
