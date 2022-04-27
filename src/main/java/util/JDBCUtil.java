@@ -14,7 +14,7 @@ public class JDBCUtil {
      * @return a Connection object
      * @throws SQLException
      */
-    public static Connection getConnection() throws SQLException {
+    public Connection getConnection() throws SQLException {
         Connection connection = null;
        
         try {
