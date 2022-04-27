@@ -56,7 +56,6 @@ public class ticketservlet extends HttpServlet {
     	String number = request.getParameter("number");
     	if (number == null) number = "";
     	
-    	System.out.println(airport);
     	
     	// do Error Checking
     	
