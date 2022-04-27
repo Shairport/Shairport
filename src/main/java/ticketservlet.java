@@ -1,4 +1,4 @@
-package main.java;
+
 import java.sql.*;
 import java.io.IOException;
 import java.io.Serial;
@@ -6,10 +6,18 @@ import java.net.URLEncoder;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import main.java.util.JDBCUtil;
+
 
 /**
  * Work in progress......
- 
+ */
 
 @WebServlet("/ticketservlet")
 public class ticketservlet extends HttpServlet {
@@ -17,8 +25,8 @@ public class ticketservlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
    
 
-    /**
-     * Default constructor.
+    
+     /* Default constructor.*/
      
     public ticketservlet() {
     }
@@ -30,18 +38,94 @@ public class ticketservlet extends HttpServlet {
     	
     	String error = "";
     	
-    	String email = request.getParameter("Email");
-    	if (email == null) email = "";
-    	
-    	String name = request.getParameter("Name");
+    	String name = request.getParameter("name");
     	if (name == null) name = "";
     	
-    	String password = request.getParameter("password");
-    	if (password == null) password = "";
+    	String date = request.getParameter("date");
+    	if (date == null) date = "";
     	
-    	String confirmpassword = request.getParameter("confirmpassword");
-    	if (confirmpassword == null) confirmpassword = "";
+    	String airport = request.getParameter("airport");
+    	if (airport == null) airport = "";
+
+    	String time = request.getParameter("time");
+    	if (time == null) time = "";
     	
+    	String location = request.getParameter("location");
+    	if (location == null) location = "";
+    	
+    	String number = request.getParameter("number");
+    	if (number == null) number = "";
+    	
+    	System.out.println(airport);
+    	
+    	// do Error Checking
+    	
+    	if (error.contentEquals("")) {
+
+    		try {
+
+    			Class.forName("com.mysql.cj.jdbc.Driver");
+    			Connection con= new JDBCUtil().getConnection();
+
+    			PreparedStatement addTicket = con.prepareStatement("INSERT INTO SHAIRPORT.tickets(pickupdate, airport, pickuptime, location, phonenumber) VALUES (?, ?, ?, ?, ?)");
+    			
+    			addTicket.setString(1, date);
+    			addTicket.setString(2, airport);
+    			addTicket.setString(3, time);
+    			addTicket.setString(4, location);
+    			addTicket.setString(5, number);
+    			
+    			
+    			addTicket.executeUpdate();
+    			
+    			/*
+    			ruserEmail.next();
+    			if (ruserEmail.getInt("total") > 0) {
+    				error += "Email Already in Use. ";
+    		    	request.setAttribute("error", error);
+   
+    				request.getRequestDispatcher("auth.jsp").include(request, response);
+    			} else {
+    				userEmail = con.prepareStatement("INSERT INTO restaurantdata.accounts (email, password, name) VALUES (?, ?, ?)");
+    				userEmail.setString(1, email.trim());
+    				userEmail.setString(2, password);
+    				userEmail.setString(3,  name);
+    				userEmail.executeUpdate();		
+    				
+    				/* Encode so spaces are allowed
+    				Cookie UsersName = new Cookie("UsersName", URLEncoder.encode(name, "UTF-8"));
+					Cookie loggedin = new Cookie("loggedin", "true");
+					UsersName.setMaxAge(60*60*24);
+					loggedin.setMaxAge(60*60*24);
+					response.addCookie(UsersName);
+					response.addCookie(loggedin);
+					response.sendRedirect("index.jsp");
+    			}
+    		*/
+    		} catch(SQLException e) {
+    			System.out.println(e);
+    		}
+    		catch(ClassNotFoundException e) {
+    			System.out.println(e);    			
+    		}
+	}
+	else {
+    	request.setAttribute("error", error);
+		request.getRequestDispatcher("form.html").include(request, response);
+		
+	}
+}
+	    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    
+    	/*
     	boolean termsandconditions;
     	if (request.getParameter("checkbox") == null) {
     		termsandconditions = false;
@@ -76,58 +160,14 @@ public class ticketservlet extends HttpServlet {
 	    		error += "Invalid Name. ";
 	    	}
     	}
-    	if (error.contentEquals("")) {
-
-	    		try {
-
-	    			Class.forName("com.mysql.cj.jdbc.Driver");
-	    			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurantdata", "root", "root");
-
-	    			PreparedStatement userEmail = con.prepareStatement("SELECT COUNT(*) AS total FROM restaurantdata.accounts WHERE email=?");
-	    			userEmail.setString(1, email);
-	    			ResultSet ruserEmail = userEmail.executeQuery();
-
-	    			ruserEmail.next();
-	    			if (ruserEmail.getInt("total") > 0) {
-	    				error += "Email Already in Use. ";
-	    		    	request.setAttribute("error", error);
-	   
-	    				request.getRequestDispatcher("auth.jsp").include(request, response);
-	    			} else {
-	    				userEmail = con.prepareStatement("INSERT INTO restaurantdata.accounts (email, password, name) VALUES (?, ?, ?)");
-	    				userEmail.setString(1, email.trim());
-	    				userEmail.setString(2, password);
-	    				userEmail.setString(3,  name);
-	    				userEmail.executeUpdate();		
-	    				
-	    				/* Encode so spaces are allowed
-	    				Cookie UsersName = new Cookie("UsersName", URLEncoder.encode(name, "UTF-8"));
-						Cookie loggedin = new Cookie("loggedin", "true");
-						UsersName.setMaxAge(60*60*24);
-						loggedin.setMaxAge(60*60*24);
-						response.addCookie(UsersName);
-						response.addCookie(loggedin);
-						response.sendRedirect("index.jsp");
-	    			}
-	    		
-	    		} catch(SQLException e) {
-	    			System.out.println(e);
-	    		}
-	    		catch(ClassNotFoundException e) {
-	    			System.out.println(e);    			
-	    		}
-    	}
-    	else {
-	    	request.setAttribute("error", error);
-			request.getRequestDispatcher("auth.jsp").include(request, response);
-			
-    	}
+    	
     
     }
 
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
      * response)
+     */
      
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -137,4 +177,3 @@ public class ticketservlet extends HttpServlet {
 
 
 }
-*/
