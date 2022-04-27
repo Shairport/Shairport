@@ -38,11 +38,13 @@ public class ticketServlet extends HttpServlet {
     	response.setContentType("text/html");
     	
     	 Cookie ck[] = request.getCookies();
-    	 String GEmail = "";
+    	 String Email = "";
     	 if (ck != null) {
     	 	for (int i = 0; i < ck.length; ++i) {
     	 		if (ck[i].getName().equals("GEmail") && !(ck[i].getValue().contentEquals(""))) {
-    	 			GEmail = java.net.URLDecoder.decode(ck[i].getValue(), "UTF-8");
+    	 			Email = java.net.URLDecoder.decode(ck[i].getValue(), "UTF-8");
+    	 		} else if (ck[i].getName().equals("Email") && !(ck[i].getValue().contentEquals(""))) {
+    	 			Email = ck[i].getValue().replace("&"," " );
     	 		}
     	 	}
     	 }
@@ -99,7 +101,7 @@ public class ticketServlet extends HttpServlet {
     			String ticketID = rs.getString(1);
     			
     			addTicket = con.prepareStatement("INSERT INTO SHAIRPORT.userticketbridge(email, rideID) VALUES (?, ?)");
-    			addTicket.setString(1, GEmail);
+    			addTicket.setString(1, Email);
     			addTicket.setString(2, ticketID);
     			addTicket.executeUpdate();
     		} catch(SQLException e) {

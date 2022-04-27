@@ -1,13 +1,15 @@
-package package1;
+
 
 import javax.servlet.RequestDispatcher;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import main.java.util.JDBCUtil;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serial;
@@ -15,23 +17,18 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.apache.tomcat.util.http.LegacyCookieProcessor;
+import java.util.regex.*;
+
 /**
  * Servlet implementation class RegisterDispatcher
  */
 
-@WebServlet("/register")
-public class registerServlet extends HttpServlet {
+@WebServlet("/login")
+public class loginServlet extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
-    private static final String url = "jdbc:mysql://localhost:3306/PA4Users";
     
-    
-    
-    
-    
+
     /**
      * Default constructor.
      */
@@ -61,89 +58,79 @@ public class registerServlet extends HttpServlet {
 //		  		response.addCookie(cookie);
 //		  	}
 //	  	}
-
-    	String email = request.getParameter("newEmail");
-    	String name = request.getParameter("newName");
-    	String password = request.getParameter("newPassword");
-    	String passwordConfirmed = request.getParameter("newPasswordConfirmed");
     	
+    	String email = request.getParameter("email");
+    	String password = request.getParameter("password");
     	
-    	String regex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@" 
+        
+        String regex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@" 
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
+
         Pattern p = Pattern.compile(regex);
+ 
+        // Find match between given string
+        // and regular expression
+        // uSing Pattern.matcher()
+ 
         Matcher m = p.matcher(email);
+ 
+        // Return if the string
+        // matched the ReGex
         if(!m.matches()) {
-        	error += " <div style=\"color:white; font-size:15px; background-color: #d833de; width:100%; height:30px; text-align: center;\"> Email is not formatted correctly</div>";
-//        	request.setAttribute("error", error);
-//        	request.getRequestDispatcher("auth.jsp").include(request, response);
+        	error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\"> Email is not formatted correctly</div>";
+        	request.setAttribute("error", error);
+        	request.getRequestDispatcher("login.jsp").include(request, response);
         } 
+        else
+        {
     	
     	
-    	if(!password.equals(passwordConfirmed)) {
-    		error += " <div style=\"color:white; font-size:15px; background-color: #d833de; width:100%; height:30px; text-align: center;\"> Passwords are not equal</div>";
-    	}
-    	
-    	if(!email.contains("usc.edu")) {
-    		error += " <div style=\"color:white; font-size:15px; background-color: #d833de; width:100%; height:30px; text-align: center;\"> Email must be a USC Email</div>";
-    	}
-    	
-    	try {
-	    	//Check if email already in use
-	    	Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/Shairport","root","root");
-	    	
-	    	PreparedStatement ps2 = connect.prepareStatement("select * from users where email = ?");
-			ps2.setString(1, email);
-			ResultSet rs2 = ps2.executeQuery();
-			if(rs2.next()) {
-				error += " <div style=\"color:white; font-size:15px; background-color: #d833de; width:100%; height:30px; text-align: center;\">Email already has an account</div>";
-			}
-			
-			//Check if username already in use
-	    	PreparedStatement ps3 = connect.prepareStatement("select * from users where name = ?");
-			ps3.setString(1, name);
-			ResultSet rs3 = ps3.executeQuery();
-			if(rs3.next()) {
-				error += " <div style=\"color:white; font-size:15px; background-color: #d833de; width:100%; height:30px; text-align: center;\">Username is already in use, please pick another one</div>";
-			}
-    	}
-    	catch(Exception e){
-        	e.printStackTrace();
-        }
-    	
-    	
-    	
-    	
-    	if (!error.equals("")) {
-    		request.setAttribute("error", error);
-			request.getRequestDispatcher("register.jsp").include(request, response);
-    	}
-		else
-		{
-//	        RequestDispatcher dispatch = null;
+	        RequestDispatcher dispatch = null;
 	    	try {
-	    		Class.forName("com.mysql.cj.jdbc.Driver");
-				Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/Shairport","root","root");
-	    			PreparedStatement ps = connect.prepareStatement("insert into users(name,email,password) values(?,?,?)");
-	        		ps.setString(1, name);
-	        		ps.setString(2, email);
-	        		ps.setString(3, passwordConfirmed);
-	        		int rowCount = ps.executeUpdate();
-//	        		dispatch.forward(request, response);
-	        		String cookieName = name.replace(" ", "&");
+		    		Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection connect = new JDBCUtil().getConnection();
+					
+					PreparedStatement ps = connect.prepareStatement("select * from users where email = ? and password = ?");
+					ps.setString(1, email);
+	        		ps.setString(2, password);
 	        		
-	        		Cookie cookie = new Cookie("name", cookieName);
-	        		cookie.setMaxAge(60*60);
-	        		response.addCookie(cookie);
+	        		ResultSet rs = ps.executeQuery();
+	        		if(rs.next()) {
+	        			String cookie_email = rs.getString("email");
+	        			String cookieName = cookie_email.replace(" ", "&");
+		        		
+		        		Cookie cookie = new Cookie("Email", cookieName);
+		        		cookie.setMaxAge(60*60*24);
+		        		response.addCookie(cookie);
+	
+	        		}
+	        		else {
+	        			PreparedStatement ps2 = connect.prepareStatement("select * from users where email = ?");
+						ps2.setString(1, email);
+						ResultSet rs2 = ps2.executeQuery();
+						if(rs2.next()) {
+							error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\">Incorrect Password</div>";
+						}
+						else {
+							error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\"> User does not exist</div>";
+						}
+	        		}
+					
 	        		
-	        		response.sendRedirect(request.getContextPath() + "/tickets.jsp");
-//	        		request.setAttribute("name", name);
-//	        		request.getRequestDispatcher("loggedIn.jsp").forward(request, response);
+	        		if (!error.equals("")) {
+	            		request.setAttribute("error", error);
+	        			request.getRequestDispatcher("auth.jsp").include(request, response);
+	            	}
+	        		else {
+		        		response.sendRedirect("form.html");
+	        		}
+	        		
 	        }
 	        catch(Exception e){
 	        	e.printStackTrace();
 	        }
-		}
+        }
+	}
         
 //    	PrintWriter pw = response.getWriter();
 //    	pw.println(email);
@@ -152,5 +139,3 @@ public class registerServlet extends HttpServlet {
 //    	pw.println(passwordConfirmed);
         
     }
-
-}

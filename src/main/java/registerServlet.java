@@ -1,4 +1,4 @@
-package package1;
+
 
 import javax.servlet.RequestDispatcher;
 
@@ -18,6 +18,8 @@ import java.sql.ResultSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.tomcat.util.http.LegacyCookieProcessor;
+
+import main.java.util.JDBCUtil;
 /**
  * Servlet implementation class RegisterDispatcher
  */
@@ -26,7 +28,7 @@ import org.apache.tomcat.util.http.LegacyCookieProcessor;
 public class registerServlet extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
-    private static final String url = "jdbc:mysql://localhost:3306/PA4Users";
+   
     
     
     
@@ -86,7 +88,7 @@ public class registerServlet extends HttpServlet {
     	try {
 	    	//Check if email already in use
 	    	Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/pa2_assignment","root","root");
+			Connection connect = new JDBCUtil().getConnection();
 	    	
 	    	PreparedStatement ps2 = connect.prepareStatement("select * from users where email = ?");
 			ps2.setString(1, email);
@@ -128,11 +130,11 @@ public class registerServlet extends HttpServlet {
 //	        		dispatch.forward(request, response);
 	        		String cookieName = name.replace(" ", "&");
 	        		
-	        		Cookie cookie = new Cookie("name", cookieName);
-	        		cookie.setMaxAge(60*60);
+	        		Cookie cookie = new Cookie("Email", cookieName);
+	        		cookie.setMaxAge(60*60*24);
 	        		response.addCookie(cookie);
 	        		
-	        		response.sendRedirect(request.getContextPath() + "/loggedIn.jsp");
+	        		response.sendRedirect("Shairport/form.html");
 //	        		request.setAttribute("name", name);
 //	        		request.getRequestDispatcher("loggedIn.jsp").forward(request, response);
 	        }
@@ -148,3 +150,4 @@ public class registerServlet extends HttpServlet {
 //    	pw.println(passwordConfirmed);
         
     }
+}

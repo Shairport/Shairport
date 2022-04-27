@@ -134,7 +134,7 @@
 	        var email = profile.getEmail();
 	        // The ID token you need to pass to your backend:
 	        var id_token = googleUser.getAuthResponse().id_token;
-	        document.cookie ="GEmail=" + email;
+	        document.cookie ="Email=" + email;
 	        window.location.href = "http://localhost:8080/Shairport/form.html";
 	      }
 		
