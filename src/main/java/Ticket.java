@@ -21,7 +21,6 @@ public class Ticket {
     	airport = a;
     	pickuptime = pt;
     	location = l;
-    	// phone
     	phonenumber = p;
 
     }
