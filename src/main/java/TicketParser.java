@@ -50,4 +50,48 @@ public class TicketParser {
 		}
 		return returnlist;
 	}
+	
+	
+	// removes from the database all tickets on this date with this email
+	public static void removeSameDayTickets(String email, String date) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con= JDBCUtil.getConnection();
+			PreparedStatement getticIDS = con.prepareStatement("SELECT * from Shairport.userticketbridge where email = ?");
+			getticIDS.setString(1, email);
+			ResultSet rs = getticIDS.executeQuery();
+			ArrayList<Integer> idstodelete = new ArrayList<Integer>();
+			while (rs.next()) {
+				idstodelete.add(rs.getInt("ticketID"));
+			}
+
+			for (Integer id: idstodelete) {
+				PreparedStatement ds = con.prepareStatement("Delete from Shairport.tickets where ticketID = ? ");
+				ds.setInt(1, id);	
+				ds.executeUpdate();
+				
+				ds = con.prepareStatement("SET SQL_SAFE_UPDATES = 0;");
+				ds.setInt(1, id);	
+				ds.executeUpdate();
+				
+				ds = con.prepareStatement("Delete from Shairport.userticketbridge where ticketID = ?");
+				ds.setInt(1, id);	
+				ds.executeUpdate();
+				
+				ds = con.prepareStatement("SET SQL_SAFE_UPDATES = 1;");
+				ds.setInt(1, id);	
+				ds.executeUpdate();
+				
+			}
+			
+
+		} catch (SQLException e) {
+			System.out.println(e);
+		} catch (ClassNotFoundException e) {
+			System.out.println(e);
+		}		
+		
+	}
+	
+	
 }
