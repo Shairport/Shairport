@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 
-import util.JDBCUtil;
 
 public class TicketParser {
 	public static HashMap<Integer, Ticket> ticID_to_tic = new HashMap<Integer, Ticket>();
