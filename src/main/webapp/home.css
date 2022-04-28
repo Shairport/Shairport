@@ -221,8 +221,8 @@ body {
 
 
 .btn:hover {
-  box-shadow: 0px 25px 18px -6px rgba(0, 0, 0, 0.2);
-  background-color: #63b2fc;
+  box-shadow: 0px 25px 18px -6px rgba(201, 201, 201, 0.2);
+  background-color: rgb(157, 116, 233);
   color: #fff;
 }
 
