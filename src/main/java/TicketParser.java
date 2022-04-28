@@ -27,7 +27,7 @@ public class TicketParser {
 						rs.getString("location"), rs.getString("phonenumber")));
 			}
 			
-			// don't show any tickets you posted yourself
+			
 			
 			for (Ticket t : returnlist) {
 				System.out.println("t EmailonTicket: " + t.getEmailonTicket());
