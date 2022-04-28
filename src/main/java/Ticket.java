@@ -105,6 +105,10 @@ public class Ticket {
     	return (hour * 60 + minute);
         
     }
+    public String getMilitaryPickuptime() {
+    	return pickuptime;
+    }
+    
     public String getLocation() {
         return location;
     }

@@ -5,17 +5,16 @@ public class Carpool {
 	private String user1_name;
 	private String user1_phonenumber;
 	private String user2_email;
-	private String user2_name;
-	private String user2_phonenumber;	
+	private String user2_name;	
 	
-	public Carpool(Ticket tic, String email1, String name1, String phone1, String email2, String name2, String phone2) {
+	public Carpool(Ticket tic, String email1, String name1, String phone1, String email2, String name2) {
 		originalTicket = tic;
 		user1_email = email1;
 		user1_name = name1;
 		user1_phonenumber = phone1;
 		user2_email = email2;
 		user2_name = name2;
-		user2_phonenumber = phone2;
+		
 	}
 	public String getUser1_email() {
 		return user1_email;
@@ -33,7 +32,7 @@ public class Carpool {
 		return user2_name;
 	}
 	public String getUser2_phonenumber() {
-		return user2_phonenumber;
+		return originalTicket.getPhonenumber();
 	}
 	public String getLocation() {
 		return originalTicket.getLocation();
