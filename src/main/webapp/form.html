@@ -47,9 +47,9 @@
 	                    </div>
 	                    <div class="tab">
 	                        <h6>What is your Phone Number?</h6>
-							<p><input type="tel" id="phone" name="phone"
-							pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-							required>	   </p>               </div>               
+							<p><input required onkeydown="phoneNumberFormatter()" id="phone" name="phone">	   
+							</p>               
+						</div>               
 	                    <script>
 		                    function formatPhoneNumber(value) {
 		                        if (!value) return value;
@@ -66,7 +66,7 @@
 		                    }
 		
 		                    function phoneNumberFormatter() {
-		                        const inputField = document.getElementById('phone-number');
+		                        const inputField = document.getElementById('phone');
 		                        const formattedInputValue = formatPhoneNumber(inputField.value);
 		                        inputField.value = formattedInputValue;
 		                    } 
