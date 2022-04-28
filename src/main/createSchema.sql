@@ -19,5 +19,5 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 CREATE TABLE `userticketbridge` (
   `email` varchar(45) DEFAULT NULL,
-  `rideID` int DEFAULT NULL
+  `ticketID` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

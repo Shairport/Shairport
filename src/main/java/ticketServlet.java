@@ -3,6 +3,7 @@ import java.sql.*;
 import java.io.IOException;
 import java.io.Serial;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,10 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import util.JDBCUtil;
 
-
-/**
- * Work in progress......
- */
 
 @WebServlet("/ticketServlet")
 public class ticketServlet extends HttpServlet {
@@ -51,6 +48,7 @@ public class ticketServlet extends HttpServlet {
     	 }
     	
     	
+    	
     	String error = "";
     	
     	String name = request.getParameter("name");
@@ -68,8 +66,8 @@ public class ticketServlet extends HttpServlet {
     	String location = request.getParameter("location");
     	if (location == null) location = "";
     	
-    	String number = request.getParameter("number");
-    	if (number == null) number = "";
+    	String phone = request.getParameter("phone");
+    	if (phone == null) phone = "";
     	
  
     	
@@ -93,7 +91,7 @@ public class ticketServlet extends HttpServlet {
     			addTicket.setString(2, airport);
     			addTicket.setString(3, time);
     			addTicket.setString(4, location);
-    			addTicket.setString(5, number);
+    			addTicket.setString(5, phone);
     			addTicket.executeUpdate();
     			
     			
@@ -104,22 +102,29 @@ public class ticketServlet extends HttpServlet {
     			addTicket.setString(2, airport);
     			addTicket.setString(3, time);
     			addTicket.setString(4, location);
-    			addTicket.setString(5, number);
+    			addTicket.setString(5, phone);
     			ResultSet rs = addTicket.executeQuery();
     			rs.next();
     			String ticketID = rs.getString(1);
     			
-    			addTicket = con.prepareStatement("INSERT INTO SHAIRPORT.userticketbridge(email, rideID) VALUES (?, ?)");
+    			addTicket = con.prepareStatement("INSERT INTO SHAIRPORT.userticketbridge(email, ticketID) VALUES (?, ?)");
     			addTicket.setString(1, Email);
     			addTicket.setString(2, ticketID);
     			addTicket.executeUpdate();
     			
     			Integer idasint = Integer.parseInt(ticketID);
     			
-    			Ticket tic = new Ticket(idasint, date, airport, time, location, number);
+    			Ticket tic = new Ticket(idasint, date, airport, time, location, phone);
     			
     			
-    			TicketParser.ticID_to_tic.put(idasint,tic); 
+    			ArrayList<Ticket> results = TicketParser.getTicketstoDisplay(tic);
+    			
+    			for (Ticket t : results) {
+    				System.out.println(t.getSortingtime() + "   " + t.getDisplayPickupTime() + "   " + t.getPickuptime());
+    			}
+    			request.setAttribute("startingdate", date);
+    			request.setAttribute("results", results);
+    			request.getRequestDispatcher("results.jsp").forward(request, response);
     			
     		} catch(SQLException e) {
     			System.out.println(e);
@@ -127,6 +132,10 @@ public class ticketServlet extends HttpServlet {
     		catch(ClassNotFoundException e) {
     			System.out.println(e);    			
     		}
+    		
+    		
+    		
+    		
 	}
 	else {
     	request.setAttribute("error", error);
@@ -135,53 +144,6 @@ public class ticketServlet extends HttpServlet {
 	}
 }
 	    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    
-    	/*
-    	boolean termsandconditions;
-    	if (request.getParameter("checkbox") == null) {
-    		termsandconditions = false;
-    	} else { termsandconditions = true;}
-    	
-    	
-    	if (!termsandconditions) {
-    		error += "You Must Agree to the Terms and Conditions to Register. ";
-    	}
-    	
-    	else if (email.contentEquals("") || name.contentEquals("") 
-    			|| password.contentEquals("") || confirmpassword.contentEquals("")) {
-    		
-    		error += "You Must Fill out all Forms to Register. ";
-    		
-    	} else {
-    	
-	    	if (!password.contentEquals(confirmpassword)){
-	    		error += "Passwords Must Match During Registration. ";
-	    	}
-	    	
-			Pattern p = Constant.emailPattern;
-			Matcher m = p.matcher(email);
-	    	if (!m.matches()) {
-	    		error += "Invalid Email. ";    		
-	    	}
-	    	
-	    	
-	    	Pattern pname = Constant.namePattern;
-	    	Matcher mname = pname.matcher(name);
-	    	if (!mname.matches()) {
-	    		error += "Invalid Name. ";
-	    	}
-    	}
-    	
-    
-    }
 
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

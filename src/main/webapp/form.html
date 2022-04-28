@@ -48,16 +48,16 @@ background-size: cover;">
 	                    </div>
 	                    <div class="tab">
 	                        <h6>What is your Phone Number?</h6>
-							<p><input type="tel" id="phone" name="phone"
-							pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-							required>	   </p>               </div>               
+							<p><input required onkeydown="phoneNumberFormatter()" id="phone" name="phone">	   
+							</p>               
+						</div>               
 	                    <script>
 		                    function formatPhoneNumber(value) {
 		                        if (!value) return value;
 		                        const phoneNumber = value.replace(/[^\d]/g, '');
 		                        const phoneNumberLength = phoneNumber.length;
-		                        if (phoneNumberLength < 4) return phoneNumber;
-		                        if (phoneNumberLength < 7) {
+		                        if (phoneNumberLength < 3) return phoneNumber;
+		                        if (phoneNumberLength < 6) {
 		                          return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
 		                        }
 		                        return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
@@ -67,7 +67,7 @@ background-size: cover;">
 		                    }
 		
 		                    function phoneNumberFormatter() {
-		                        const inputField = document.getElementById('phone-number');
+		                        const inputField = document.getElementById('phone');
 		                        const formattedInputValue = formatPhoneNumber(inputField.value);
 		                        inputField.value = formattedInputValue;
 		                    } 
