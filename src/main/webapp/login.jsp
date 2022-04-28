@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta content="301645777112-2rlc9gth0f5d4reimjcm9bf0kj7ahec0.apps.googleusercontent.com"
+    <meta content="414693959520-a8em47p4o4h9cjk9ca4vl383immov8i8.apps.googleusercontent.com"
           name="google-signin-client_id">
     <title>Login / Register</title>
     <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -18,7 +18,7 @@
           rel="stylesheet" type="text/css"> 
     <script src="https://apis.google.com/js/api:client.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id" content="414693959520-vaogaupc5phofnvp712flmqqr96ue9ai.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="414693959520-a8em47p4o4h9cjk9ca4vl383immov8i8.apps.googleusercontent.com">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
@@ -134,7 +134,7 @@
 	        var email = profile.getEmail();
 	        // The ID token you need to pass to your backend:
 	        var id_token = googleUser.getAuthResponse().id_token;
-	        document.cookie ="GEmail=" + email;
+	        document.cookie ="Email=" + email;
 	        window.location.href = "http://localhost:8080/Shairport/form.html";
 	      }
 		
@@ -160,7 +160,7 @@
 		      
 		    
 		    
-		      var CLIENT_ID = '414693959520-vaogaupc5phofnvp712flmqqr96ue9ai.apps.googleusercontent.com';
+		      var CLIENT_ID = '414693959520-a8em47p4o4h9cjk9ca4vl383immov8i8.apps.googleusercontent.com';
 		      var API_KEY = config.API_KEY;
 		      
 		   

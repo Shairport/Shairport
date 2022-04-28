@@ -1,5 +1,3 @@
-
-
 import javax.servlet.RequestDispatcher;
 
 import javax.servlet.ServletException;
@@ -63,7 +61,8 @@ public class registerServlet extends HttpServlet {
 //		  		response.addCookie(cookie);
 //		  	}
 //	  	}
-
+    	
+    	boolean alreadySent = false;
     	String email = request.getParameter("newEmail");
     	String name = request.getParameter("newName");
     	String password = request.getParameter("newPassword");
@@ -74,17 +73,35 @@ public class registerServlet extends HttpServlet {
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(email);
-        if(!m.matches()) {
+        
+        if(email.equals("")) {
+        	error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\"> Please enter an email</div>";
+        }
+        else if(!m.matches()) {
         	error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\"> Email is not formatted correctly</div>";
-//        	request.setAttribute("error", error);
-//        	request.getRequestDispatcher("auth.jsp").include(request, response);
         } 
-    	
-    	
+        
+        if(name.equals("")) {
+        	error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\"> Please enter an name</div>";
+        }
+        
+        if(password.equals("")) {
+        	error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\"> Please enter a password</div>";
+        }
+        
+        if(passwordConfirmed.equals("")) {
+        	error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\"> Please confirm your password</div>";
+        }
+        if(!error.equals("")) {
+        	alreadySent=true;
+        	request.setAttribute("error", error);
+        	request.getRequestDispatcher("register.jsp").include(request, response);
+        }
+        
+
     	if(!password.equals(passwordConfirmed)) {
     		error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\"> Passwords are not equal</div>";
     	}
-    	
     	try {
 	    	//Check if email already in use
 	    	Class.forName("com.mysql.cj.jdbc.Driver");
@@ -111,37 +128,40 @@ public class registerServlet extends HttpServlet {
     	
     	
     	
-    	
-    	if (!error.equals("")) {
-    		request.setAttribute("error", error);
-			request.getRequestDispatcher("register.jsp").include(request, response);
+    	if(!alreadySent) {
+	    	if (!error.equals("")) {
+	    		request.setAttribute("error", error);
+				request.getRequestDispatcher("register.jsp").include(request, response);
+	    	}
+			else
+			{
+	//	        RequestDispatcher dispatch = null;
+		    	try {
+		    		Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/pa2_assignment","root","root");
+		    			PreparedStatement ps = connect.prepareStatement("insert into users(username,email,password) values(?,?,?)");
+		        		ps.setString(1, name);
+		        		ps.setString(2, email);
+		        		ps.setString(3, passwordConfirmed);
+		        		int rowCount = ps.executeUpdate();
+	//	        		dispatch.forward(request, response);
+		        		String cookieName = name.replace(" ", "&");
+		        		
+		        		Cookie cookie = new Cookie("Email", cookieName);
+		        		cookie.setMaxAge(60*60*24);
+		        		response.addCookie(cookie);
+		        		
+		        		response.sendRedirect("form.html");
+	//	        		response.sendRedirect("Shairport/form.html");
+	//	        		request.setAttribute("name", name);
+	//	        		request.getRequestDispatcher("loggedIn.jsp").forward(request, response);
+		        }
+		        catch(Exception e){
+		        	e.printStackTrace();
+		        }
+			}
     	}
-		else
-		{
-//	        RequestDispatcher dispatch = null;
-	    	try {
-	    		Class.forName("com.mysql.cj.jdbc.Driver");
-				Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/pa2_assignment","root","root");
-	    			PreparedStatement ps = connect.prepareStatement("insert into users(username,email,password) values(?,?,?)");
-	        		ps.setString(1, name);
-	        		ps.setString(2, email);
-	        		ps.setString(3, passwordConfirmed);
-	        		int rowCount = ps.executeUpdate();
-//	        		dispatch.forward(request, response);
-	        		String cookieName = name.replace(" ", "&");
-	        		
-	        		Cookie cookie = new Cookie("Email", cookieName);
-	        		cookie.setMaxAge(60*60*24);
-	        		response.addCookie(cookie);
-	        		
-	        		response.sendRedirect("Shairport/form.html");
-//	        		request.setAttribute("name", name);
-//	        		request.getRequestDispatcher("loggedIn.jsp").forward(request, response);
-	        }
-	        catch(Exception e){
-	        	e.printStackTrace();
-	        }
-		}
+    	
         
 //    	PrintWriter pw = response.getWriter();
 //    	pw.println(email);

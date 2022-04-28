@@ -1,5 +1,3 @@
-
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -62,6 +60,9 @@ public class loginServlet extends HttpServlet {
     	String email = request.getParameter("email");
     	String password = request.getParameter("password");
     	
+    	
+    	
+    	
         
         String regex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@" 
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
@@ -76,19 +77,31 @@ public class loginServlet extends HttpServlet {
  
         // Return if the string
         // matched the ReGex
-        if(!m.matches()) {
+        
+       
+        if(email.equals("")) {
+        	error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\"> Please enter an email</div>";
+        	request.setAttribute("error", error);
+        	request.getRequestDispatcher("login.jsp").include(request, response);
+        }
+        
+        else if(!m.matches()) {
         	error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\"> Email is not formatted correctly</div>";
         	request.setAttribute("error", error);
         	request.getRequestDispatcher("login.jsp").include(request, response);
         } 
         else
         {
-    	
+        	 if(password.equals("")) {
+             	error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\"> Please enter a password</div>";
+             	request.setAttribute("error", error);
+             	request.getRequestDispatcher("login.jsp").include(request, response);
+             }
     	
 	        RequestDispatcher dispatch = null;
 	    	try {
 		    		Class.forName("com.mysql.cj.jdbc.Driver");
-					Connection connect = JDBCUtil.getConnection();
+					Connection connect = new JDBCUtil().getConnection();
 					
 					PreparedStatement ps = connect.prepareStatement("select * from users where email = ? and password = ?");
 					ps.setString(1, email);
@@ -119,7 +132,7 @@ public class loginServlet extends HttpServlet {
 	        		
 	        		if (!error.equals("")) {
 	            		request.setAttribute("error", error);
-	        			request.getRequestDispatcher("auth.jsp").include(request, response);
+	        			request.getRequestDispatcher("login.jsp").include(request, response);
 	            	}
 	        		else {
 		        		response.sendRedirect("form.html");
@@ -131,11 +144,4 @@ public class loginServlet extends HttpServlet {
 	        }
         }
 	}
-        
-//    	PrintWriter pw = response.getWriter();
-//    	pw.println(email);
-//    	pw.println(name);
-//    	pw.println(password);
-//    	pw.println(passwordConfirmed);
-        
-    }
+}
