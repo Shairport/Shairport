@@ -46,10 +46,12 @@ public class carpoolServlet extends HttpServlet {
     	String name2 = request.getParameter("name2");
     	String phone1 = request.getParameter("phone1");
     	
-    	
+	    	
     	Ticket carpoolTicket = new Ticket(0, pickupdate, airport, pickuptime, location, phone2);
     	
     	Carpool carpool = new Carpool(carpoolTicket,email1,name1,phone1,email2,name2);
+		TicketParser.removeSameDayTickets(email1, pickupdate);
+		TicketParser.removeSameDayTickets(email2, pickupdate);
 		try {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
