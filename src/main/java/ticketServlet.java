@@ -135,7 +135,7 @@ public class ticketServlet extends HttpServlet {
     		
     		
     		
-    		
+    		response.sendRedirect("Shairport/results.html");
 	}
 	else {
     	request.setAttribute("error", error);

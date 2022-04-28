@@ -7,27 +7,29 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 
+import util.JDBCUtil;
 
 public class TicketParser {
 	public static HashMap<Integer, Ticket> ticID_to_tic = new HashMap<Integer, Ticket>();
 	
 	
-	public ArrayList<Ticket> getTicketstoDisplay(Ticket tic) {
+	public static ArrayList<Ticket> getTicketstoDisplay(Ticket tic) {
 		ArrayList<Ticket> returnlist = new ArrayList<Ticket>();
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con= JDBCUtil.getConnection();
 			PreparedStatement getSameDay = con.prepareStatement("SELECT ticketID from SHAIRPORT.tickets where pickupdate = ?");
+			getSameDay.setString(1, tic.getPickupdate());
 			ResultSet rs = getSameDay.executeQuery();
 			while (rs.next()) {
 				returnlist.add(ticID_to_tic.get(rs.getInt("ticketID")));
 			}
+			returnlist.remove(tic);
+			
 			
 			for (Ticket t : returnlist) {
-				if (t == tic) {
-					continue;
-				}
-				t.setSortingtime(Math.abs(tic.getPickuptime() - t.getPickuptime()));	
+				t.setSortingtime(Math.abs(tic.getPickuptime() - t.getPickuptime()));
+				
 			}
 			Collections.sort(returnlist, new Comparator<Ticket>() {
 				  @Override

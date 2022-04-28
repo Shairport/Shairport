@@ -1,4 +1,10 @@
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.*;
+
+import util.JDBCUtil;
 
 public class Ticket {
 	private int ticketID;
@@ -22,6 +28,30 @@ public class Ticket {
     public int getTicketID() {
         return ticketID;
     }
+    
+    public String getNameonTicket() {
+    	String name = "";
+    	try {
+    		Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			Connection con= JDBCUtil.getConnection();
+
+			PreparedStatement getname = con.prepareStatement("SELECT ticketID, name from Shairport.userticketbridge where ticketID = ?");
+			getname.setInt(1, ticketID);
+			ResultSet rs = getname.executeQuery();
+			rs.next();
+			name = rs.getNString("name");
+    		
+    	} catch(SQLException e) {
+			System.out.println(e);
+		}
+		catch(ClassNotFoundException e) {
+			System.out.println(e);    			
+		}
+    	return name;
+    }
+    
+    
     public String getPickupdate() {
         return pickupdate;
     }
