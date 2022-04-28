@@ -52,6 +52,7 @@ public class ticketServlet extends HttpServlet {
     	 }
     	
     	
+    	
     	String error = "";
     	
     	String name = request.getParameter("name");
@@ -117,14 +118,14 @@ public class ticketServlet extends HttpServlet {
     			
     			Integer idasint = Integer.parseInt(ticketID);
     			
-    			Ticket tic = new Ticket(idasint, date, airport, time, location, number);
+    			Ticket tic = new Ticket(idasint, date, airport, time, location, phone);
     			
     			
     			TicketParser.ticID_to_tic.put(idasint,tic);
     			
     			ArrayList<Ticket> results = TicketParser.getTicketstoDisplay(tic);
     			request.setAttribute("results", results);
-    			request.getRequestDispatcher("Shairport/results.html").forward(request, response);
+    			request.getRequestDispatcher("results.html").forward(request, response);
     			
     		} catch(SQLException e) {
     			System.out.println(e);
@@ -135,7 +136,7 @@ public class ticketServlet extends HttpServlet {
     		
     		
     		
-    		response.sendRedirect("Shairport/results.html");
+    		
 	}
 	else {
     	request.setAttribute("error", error);
