@@ -3,6 +3,7 @@ import java.sql.*;
 import java.io.IOException;
 import java.io.Serial;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -119,7 +120,11 @@ public class ticketServlet extends HttpServlet {
     			Ticket tic = new Ticket(idasint, date, airport, time, location, number);
     			
     			
-    			TicketParser.ticID_to_tic.put(idasint,tic); 
+    			TicketParser.ticID_to_tic.put(idasint,tic);
+    			
+    			ArrayList<Ticket> results = TicketParser.getTicketstoDisplay(tic);
+    			request.setAttribute("results", results);
+    			request.getRequestDispatcher("Shairport/results.html").forward(request, response);
     			
     		} catch(SQLException e) {
     			System.out.println(e);
@@ -127,6 +132,10 @@ public class ticketServlet extends HttpServlet {
     		catch(ClassNotFoundException e) {
     			System.out.println(e);    			
     		}
+    		
+    		
+    		
+    		
 	}
 	else {
     	request.setAttribute("error", error);
