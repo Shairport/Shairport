@@ -69,8 +69,8 @@ public class ticketServlet extends HttpServlet {
     	String location = request.getParameter("location");
     	if (location == null) location = "";
     	
-    	String number = request.getParameter("number");
-    	if (number == null) number = "";
+    	String phone = request.getParameter("phone");
+    	if (phone == null) phone = "";
     	
  
     	
@@ -94,7 +94,7 @@ public class ticketServlet extends HttpServlet {
     			addTicket.setString(2, airport);
     			addTicket.setString(3, time);
     			addTicket.setString(4, location);
-    			addTicket.setString(5, number);
+    			addTicket.setString(5, phone);
     			addTicket.executeUpdate();
     			
     			
@@ -105,7 +105,7 @@ public class ticketServlet extends HttpServlet {
     			addTicket.setString(2, airport);
     			addTicket.setString(3, time);
     			addTicket.setString(4, location);
-    			addTicket.setString(5, number);
+    			addTicket.setString(5, phone);
     			ResultSet rs = addTicket.executeQuery();
     			rs.next();
     			String ticketID = rs.getString(1);
