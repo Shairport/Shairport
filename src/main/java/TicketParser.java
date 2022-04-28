@@ -10,7 +10,7 @@ import java.util.HashMap;
 import util.JDBCUtil;
 
 public class TicketParser {
-	public static HashMap<Integer, Ticket> ticID_to_tic = new HashMap<Integer, Ticket>();
+	
 	
 	
 	public static ArrayList<Ticket> getTicketstoDisplay(Ticket tic) {
@@ -18,25 +18,31 @@ public class TicketParser {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con= JDBCUtil.getConnection();
-			PreparedStatement getSameDay = con.prepareStatement("SELECT ticketID from SHAIRPORT.tickets where pickupdate = ?");
+			PreparedStatement getSameDay = con.prepareStatement("SELECT * from SHAIRPORT.tickets where pickupdate = ?");
 			getSameDay.setString(1, tic.getPickupdate());
 			ResultSet rs = getSameDay.executeQuery();
 			while (rs.next()) {
-				returnlist.add(ticID_to_tic.get(rs.getInt("ticketID")));
+				returnlist.add(new Ticket(rs.getInt("ticketID"),rs.getString("pickupdate"),
+						rs.getString("airport"), rs.getString("pickuptime"),
+						rs.getString("location"), rs.getString("phonenumber")));
 			}
-			returnlist.remove(tic);
 			
+			// don't show any tickets you posted yourself
 			
 			for (Ticket t : returnlist) {
+				System.out.println("t EmailonTicket: " + t.getEmailonTicket());
 				t.setSortingtime(Math.abs(tic.getPickuptime() - t.getPickuptime()));
 				
 			}
+
 			Collections.sort(returnlist, new Comparator<Ticket>() {
 				  @Override
 				  public int compare(Ticket t1, Ticket t2) {
 				    return t1.getSortingtime().compareTo(t2.getSortingtime());
 				  }
 			});
+			
+
 		} catch (SQLException e) {
 			System.out.println(e);
 		} catch (ClassNotFoundException e) {

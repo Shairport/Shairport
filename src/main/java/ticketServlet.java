@@ -17,10 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import util.JDBCUtil;
 
 
-/**
- * Work in progress......
- */
-
 @WebServlet("/ticketServlet")
 public class ticketServlet extends HttpServlet {
     @Serial
@@ -121,11 +117,14 @@ public class ticketServlet extends HttpServlet {
     			Ticket tic = new Ticket(idasint, date, airport, time, location, phone);
     			
     			
-    			TicketParser.ticID_to_tic.put(idasint,tic);
-    			
     			ArrayList<Ticket> results = TicketParser.getTicketstoDisplay(tic);
+    			
+    			for (Ticket t : results) {
+    				System.out.println(t.getSortingtime() + "   " + t.getDisplayPickupTime() + "   " + t.getPickuptime());
+    			}
+    			request.setAttribute("startingdate", date);
     			request.setAttribute("results", results);
-    			request.getRequestDispatcher("results.html").forward(request, response);
+    			request.getRequestDispatcher("results.jsp").forward(request, response);
     			
     		} catch(SQLException e) {
     			System.out.println(e);
@@ -145,53 +144,6 @@ public class ticketServlet extends HttpServlet {
 	}
 }
 	    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    
-    	/*
-    	boolean termsandconditions;
-    	if (request.getParameter("checkbox") == null) {
-    		termsandconditions = false;
-    	} else { termsandconditions = true;}
-    	
-    	
-    	if (!termsandconditions) {
-    		error += "You Must Agree to the Terms and Conditions to Register. ";
-    	}
-    	
-    	else if (email.contentEquals("") || name.contentEquals("") 
-    			|| password.contentEquals("") || confirmpassword.contentEquals("")) {
-    		
-    		error += "You Must Fill out all Forms to Register. ";
-    		
-    	} else {
-    	
-	    	if (!password.contentEquals(confirmpassword)){
-	    		error += "Passwords Must Match During Registration. ";
-	    	}
-	    	
-			Pattern p = Constant.emailPattern;
-			Matcher m = p.matcher(email);
-	    	if (!m.matches()) {
-	    		error += "Invalid Email. ";    		
-	    	}
-	    	
-	    	
-	    	Pattern pname = Constant.namePattern;
-	    	Matcher mname = pname.matcher(name);
-	    	if (!mname.matches()) {
-	    		error += "Invalid Name. ";
-	    	}
-    	}
-    	
-    
-    }
 
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
