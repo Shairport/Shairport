@@ -110,7 +110,7 @@ public class ticketServlet extends HttpServlet {
     			rs.next();
     			String ticketID = rs.getString(1);
     			
-    			addTicket = con.prepareStatement("INSERT INTO SHAIRPORT.userticketbridge(email, rideID) VALUES (?, ?)");
+    			addTicket = con.prepareStatement("INSERT INTO SHAIRPORT.userticketbridge(email, ticketID) VALUES (?, ?)");
     			addTicket.setString(1, Email);
     			addTicket.setString(2, ticketID);
     			addTicket.executeUpdate();
