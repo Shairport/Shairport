@@ -46,19 +46,17 @@ public class carpoolServlet extends HttpServlet {
     	String name2 = request.getParameter("name2");
     	String phone1 = request.getParameter("phone1");
     	
-	    	
-    	Ticket carpoolTicket = new Ticket(0, pickupdate, airport, pickuptime, location, phone2);
     	
-    	Carpool carpool = new Carpool(carpoolTicket,email1,name1,phone1,email2,name2);
-		TicketParser.removeSameDayTickets(email1, pickupdate);
-		TicketParser.removeSameDayTickets(email2, pickupdate);
+    	
 		try {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
 			Connection con= JDBCUtil.getConnection();
 
-			PreparedStatement addCarpool = con.prepareStatement("INSERT INTO SHAIRPORT.carpools(user1_email, user1_name, user1_phonenumber, user2_email, user2_name, user2_phonenumber, pickupdate, airport, pickuptime, location) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+			PreparedStatement addCarpool = con.prepareStatement("INSERT INTO SHAIRPORT.carpools(user1_email, user1_name,"
+					+ " user1_phonenumber, user2_email, user2_name, user2_phonenumber, pickupdate, airport, pickuptime, location)"
+					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			addCarpool.setString(1, email1);
 			addCarpool.setString(2, name1);
 			addCarpool.setString(3, phone1);
@@ -71,10 +69,18 @@ public class carpoolServlet extends HttpServlet {
 			addCarpool.setString(10, location);
 			addCarpool.executeUpdate();
 			
+			ArrayList<Carpool> myCarpools = carpoolParser.getMyTickets(email1);
+			carpoolParser.removeSameDayTickets(email1, pickupdate);
+			carpoolParser.removeSameDayTickets(email2, pickupdate);
+			request.setAttribute("myCarpools", myCarpools);
+			request.getRequestDispatcher("myCarpools.jsp").forward(request, response);
+			
 		} catch(SQLException e) {
+			System.out.println("YOOOO");
 			System.out.println(e);
 		}
 		catch(ClassNotFoundException e) {
+			System.out.println("nO");
 			System.out.println(e);    			
 		}
 
