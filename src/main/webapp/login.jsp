@@ -24,97 +24,59 @@
 </head>
 <body>
 		
-		
-		<% String er = (String) request.getAttribute("error");
-			if (er != null) out.println(er);
-		%>
-		
-		
-	   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-		  <a class="navbar-brand" href="homepage.jsp" style="color:#bd3dd1; font-family: 'Georgia', serif; font-weight: bold; font-size: 30px; width: 10%; text-align:center;">Shairport</a>
-		  
-		  <div style="width:65%;"></div>
-		  
-		  
-		  <div style="width: 25%;">
-		    <ul class="navbar-nav">
-		      <li class="nav-item active">
-		        <a class="nav-link" href="aboutus.jsp" style="color: #bd3dd1; font-weight:bold;"> About Us <span class="sr-only">(current)</span></a>
-		      </li>
-		      <li class="nav-item active">
-		      	<a class='nav-link' href='login.jsp' onclick='signOut();' style='color: #bd3dd1; font-weight:bold;'>Login/Sign Up</a>
-		      </li>
-		    </ul>
-		  </div>
-		</nav>
+	<% String er = (String) request.getAttribute("error");
+	if (er != null) out.println(er);
+%>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/x-icon" href="https://image.ibb.co/fOur3b/favicon.png"/>
+<meta name="theme-color" content="#1885ed">
+<title>Shairport - Homepage</title>
+</head>
 
-		<section class="vh-100" style="background-color: #da6ceb;">
-		  <div class="container py-5 h-100">
-		    <div class="row d-flex justify-content-center align-items-center h-100">
-		      <div class="col col-xl-10">
-		        <div class="card" style="border-radius: 1rem;">
-		          <div class="row g-0">
-		            <div class="col-md-6 col-lg-5 d-none d-md-block">
-		              <img src="lyft1.jpg"
-		                alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
-		            </div>
-		            <div class="col-md-6 col-lg-7 d-flex align-items-center">
-		              <div class="card-body p-4 p-lg-5 text-black">
-		
-		                <form action ="login" method ="POST">
-		
-		                  <!-- <div class="d-flex align-items-center mb-3 pb-1">
-		                    <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-		                    <span class="h1 fw-bold mb-0">Logo</span>
-		                  </div> -->
-		
-		                  <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
-		
-		                  <div class="form-outline mb-4">
-						  	<input type="email" id="email" name="email" class="form-control form-control-lg" />
-		                    <label class="form-label" for="email">Email address</label>
-		                  </div>
-		
-		                  <div class="form-outline mb-4">
-		                    <input type="password" id="password" name="password" class="form-control form-control-lg" />
-		                    <label class="form-label" for="password">Password</label>
-		                  </div>
-		
-		                  <div class="pt-1 mb-4">
-		                    <button class="btn btn-dark btn-lg btn-block" type="submit" style="background-color: #bd3dd1">Login</button>
-		                  </div>
-		                  
+<body>
+<header class="header">
+<div class="container header__container">
+  <div class="header__logo"><img class="header__img" src="https://image.ibb.co/kcVou6/path3000.png"> <h1 class="header__title">Shairport<span class="header__light"></span></h1></div> 
 
-		                  <hr class="mx-5">
-				            <div>
-				            	<div class="g-signin2" data-onsuccess="onSignIn" data-width="auto" data-height="40" data-longtitle="true" data-theme="dark"> </div>
-				            	<!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
-				            </div>
-				            </form>
 
-		                  <!-- <a class="small text-muted" href="#!">Forgot password?</a> -->
-		                  
-		                  <br>
-		                  <br>
-		                  
-		                  <p class="mb-5 pb-lg-2" style="color: grey; font-size: 20px;">
-		                  	  <i class="fas fa-cubes fa-2x me-3" style="color: #bd3dd1;"></i>
-							  Don't have an account? 
-		                  	  <a href="register.jsp" style="color: #bd3dd1;">Register here</a>
-		                  </p>
-		                  <!-- <a href="#!" class="small text-muted">Terms of use.</a>
-		                  <a href="#!" class="small text-muted">Privacy policy</a> -->
-		               
-		
-		              </div>
-		            </div>
-		          </div>
-		        </div>
-		      </div>
-		    </div>
-		  </div>
-		</section>
+<div class="header__menu">
+  <nav id="navbar" >
+	<ul class="header__elenco">
+	  <li class="header__el"><a href="#" class="header__link">Home</a></li>
+	  <li class="header__el"><a href="#" class="header__link">About Us</a></li>
+	  <li class="header__el header__el--blue"><a href="" class="btn btn--white">Sign In →</a></li>
+	</ul>
+  </nav>
+</div>
+  </div>
 
+  <div >
+	<h1 class="text">
+	  Welcome to Shairport ! <br>
+	  USC's first ride-matching service <br><br><br>
+	  <span class="tuff">
+	  The most convenient way to find other Trojans to share a lyft <br> or Uber with to 
+	  the airport. Input your flight info into a <br>
+	  Shairport ticket and search for others with
+	  similar tickets!&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	  <br>
+	  <br>
+
+	  <span>
+		<div class="button-container">
+		  <a href="#" style = "  font-size: 20px;"class="btn"><span>Click here to find a Ride!</span></a>
+		</div>
+	  </span>
+	</span >
+  
+	</h1>
+  </div>
+</header>
+
+<div>
+
+</div>
 
 
 
