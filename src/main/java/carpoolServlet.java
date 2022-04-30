@@ -73,7 +73,7 @@ public class carpoolServlet extends HttpServlet {
 			TicketParser.removeSameDayTickets(email1, pickupdate);
 			TicketParser.removeSameDayTickets(email2, pickupdate);
 			request.setAttribute("myCarpools", myCarpools);
-			request.getRequestDispatcher("myCarpools.jsp").forward(request, response);
+			request.getRequestDispatcher("myticket.jsp").forward(request, response);
 			
 		} catch(SQLException e) {
 			System.out.println("YOOOO");
