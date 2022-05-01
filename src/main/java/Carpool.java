@@ -52,5 +52,8 @@ public class Carpool {
 	public String getPickupdate() {
 		return originalTicket.getPickupdate();
 	}
+	public String getticketID(){
+		return Integer.toString(originalTicket.getTicketID());
+	}
 
 }
