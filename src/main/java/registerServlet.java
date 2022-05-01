@@ -138,10 +138,10 @@ public class registerServlet extends HttpServlet {
 	//	        RequestDispatcher dispatch = null;
 		    	try {
 		    		Class.forName("com.mysql.cj.jdbc.Driver");
-					Connection connect =JDBCUtil.getConnection();
-		    			PreparedStatement ps = connect.prepareStatement("insert into users(username,email,password) values(?,?,?)");
-		        		ps.setString(1, name);
-		        		ps.setString(2, email);
+		    		Connection connect =JDBCUtil.getConnection();
+		    			PreparedStatement ps = connect.prepareStatement("insert into users(email,name,password) values(?,?,?)");
+		        		ps.setString(1, email);
+		        		ps.setString(2, name);
 		        		ps.setString(3, passwordConfirmed);
 		        		int rowCount = ps.executeUpdate();
 	//	        		dispatch.forward(request, response);
@@ -151,7 +151,7 @@ public class registerServlet extends HttpServlet {
 		        		cookie.setMaxAge(60*60*24);
 		        		response.addCookie(cookie);
 		        		
-		        		response.sendRedirect("form.html");
+		        		response.sendRedirect("home.html");
 	//	        		response.sendRedirect("Shairport/form.html");
 	//	        		request.setAttribute("name", name);
 	//	        		request.getRequestDispatcher("loggedIn.jsp").forward(request, response);
@@ -170,4 +170,3 @@ public class registerServlet extends HttpServlet {
 //    	pw.println(passwordConfirmed);
         
     }
-}
