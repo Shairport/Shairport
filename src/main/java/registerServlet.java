@@ -138,7 +138,7 @@ public class registerServlet extends HttpServlet {
 	//	        RequestDispatcher dispatch = null;
 		    	try {
 		    		Class.forName("com.mysql.cj.jdbc.Driver");
-					Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/pa2_assignment","root","root");
+					Connection connect =JDBCUtil.getConnection();
 		    			PreparedStatement ps = connect.prepareStatement("insert into users(username,email,password) values(?,?,?)");
 		        		ps.setString(1, name);
 		        		ps.setString(2, email);
