@@ -122,7 +122,10 @@ public class ticketServlet extends HttpServlet {
     			for (Ticket t : results) {
     				System.out.println(t.getSortingtime() + "   " + t.getDisplayPickupTime() + "   " + t.getPickuptime());
     			}
-    			request.setAttribute("startingdate", Email);
+    			request.setAttribute("startingdate",date);
+    			request.setAttribute("user1email", Email);
+    			request.setAttribute("user1name", name);
+    			request.setAttribute("user1phone", phone);
     			request.setAttribute("results", results);
     			request.getRequestDispatcher("results.jsp").forward(request, response);
     			
