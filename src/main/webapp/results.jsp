@@ -44,7 +44,7 @@
 		box-shadow: 0px 18px 13px -6px rgb(0 0 0 / 20%);
 		text-decoration: none;
 
-	">Sign In →</a></li>
+	">Sign In â</a></li>
 		  </ul>
 		</nav>
 	  </div>
@@ -54,8 +54,20 @@
 <container>
     <h2>Ticket Results <span class="block"> ${startingdate}</span> </h2>
     <c:forEach var="tic" items="${results}">
+    	    <form action="carpoolServlet" method="GET">
+		    <input type = "hidden" name = "email1" value = "${user1email}" />
+		    <input type = "hidden" name = "name1" value = "${user1name}" />
+		    <input type = "hidden" name = "phone1" value = "${user1phone}"/>
+		    <input type = "hidden" name = "email2" value = "${tic.getEmailonTicket()}" />
+		    <input type = "hidden" name = "name2" value = "${tic.getNameonTicket()}" />
+		    <input type = "hidden" name = "phone2" value = "${tic.getPhonenumber()}"/>
+		    
+		    <input type = "hidden" name = "pickupdate" value = "${tic.getPickupdate()}" />
+		    <input type = "hidden" name = "airport" value = "${tic.getAirport()}" />
+		    <input type = "hidden" name = "pickuptime" value = "${tic.getMilitaryPickuptime()}"/>
+		    <input type = "hidden" name = "location" value = "${tic.getLocation()}" />
     <details>
-	      <summary class="success">${tic.getPickupdate()} ${tic.getDisplayPickupTime()}  &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;<span> <button class="button" style=" font-family: 'Ubuntu', sans-serif;
+	      <summary class="success">${tic.getPickupdate()} ${tic.getDisplayPickupTime()}  &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;<span> <button class="button" type="submit" style=" font-family: 'Ubuntu', sans-serif;
 			position: absolute;
 			transform: translate(-50%, -50%);
 			margin-top: 9px;
@@ -87,6 +99,7 @@
 	          </li>
 	      </ul>
 	    </details>
+	    </form>
     </c:forEach>
   </container>
 </body>

@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +42,7 @@
                 border-radius: 4px;
                 box-sizing: border-box;
                 box-shadow: 0px 18px 13px -6px rgb(0 0 0 / 20%);
-            ">Sign In →</a></li>
+            ">Sign In â</a></li>
                   </ul>
                 </nav>
               </div>
@@ -123,33 +124,35 @@
                   </div>
     
                   <div  style ="margin-left: -7px;"class="row gutters-sm">
+                  <c:forEach var="tic" items="${myCarpools}">
                     <div class="col-sm-6 mb-3">
                       <div class="card h-100">
                         <div class="card-body">
                           <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Ticket#</i>49213</h6>
-                          <small>Departure Time: </small> <span class="text"> 12:30am</span>
-
+                          <small>Airport Arrival Time: </small> <span class="text"> ${tic.getDisplayPickupTime() }</span>
                           <hr > 
-                          <small> Airport: </small> <span class="text"> LAX</span>
+                          <small>Airport: </small> <span class="text">${tic.getAirport()}</span>
                           <hr>
-                          <small>Matched With: </small> <span class="text"> jdw</span>
+                          <small>Pickup Date: </small> <span class="text">${tic.getPickupdate()}</span>
                           <hr>
-                          <small>Phone Number: </small> <span class="text"> 206-954-8882</span>
+                          <small>Pickup Location: </small> <span class="text">${tic.getLocation()}</span>
                           <hr>
-                          <small>Email: </small> <span class="text"> toanh@usc.edu</span>
+                          <small>Rider 1 Name: </small> <span class="text">${tic.getUser1_name()}</span>
                           <hr>
-                        
-                          
+                          <small>Rider 1 Email: </small> <span class="text"> ${tic.getUser1_email()}</span>
+                          <hr>
+                          <small>Rider 1 Phone Number: </small> <span class="text">${tic.getUser1_phonenumber()}</span>
+                          <hr>
+                          <small>Rider 2 Name: </small> <span class="text"> ${tic.getUser1_name()}</span>
+                          <hr>
+                          <small>Rider 2 Email: </small> <span class="text">${tic.getUser1_email()}</span>
+                          <hr>
+                          <small>Rider 2 Phone Number: </small> <span class="text"> ${tic.getUser1_phonenumber()}</span>
                           </div>
-                          
-                         
                         </div>
                       </div>
+                      </c:forEach>
                     </div>
-                    
-    
-    
-    
                 </div>
               </div>
     
