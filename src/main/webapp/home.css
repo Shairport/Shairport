@@ -585,6 +585,13 @@ body {
   padding: 25px 25px 0 25px;
 }
 
+.vid{
+  border-radius: 2%;
+  display: inline-block; 
+  margin-left: 50%;
+  margin-bottom: 25%;
+  margin-top: -26%;
+}
 .article-pre__date {
   float: right;
 }
