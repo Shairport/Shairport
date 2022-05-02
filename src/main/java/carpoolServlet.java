@@ -72,6 +72,7 @@ public class carpoolServlet extends HttpServlet {
 			ArrayList<Carpool> myCarpools = carpoolParser.getMyTickets(email1);
 			TicketParser.removeSameDayTickets(email1, pickupdate);
 			TicketParser.removeSameDayTickets(email2, pickupdate);
+			request.setAttribute("name",TicketParser.getNamefromemail(email1));
 			request.setAttribute("myCarpools", myCarpools);
 			request.getRequestDispatcher("myticket.jsp").forward(request, response);
 			

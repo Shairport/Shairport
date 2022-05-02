@@ -13,6 +13,7 @@
     <title>My Account</title>
 </head>
 <body>
+
     <div class="container">
         <div class="main-body">
         
@@ -42,7 +43,7 @@
                 border-radius: 4px;
                 box-sizing: border-box;
                 box-shadow: 0px 18px 13px -6px rgb(0 0 0 / 20%);
-            ">Sign In â</a></li>
+            ">Sign In</a></li>
                   </ul>
                 </nav>
               </div>
@@ -62,9 +63,13 @@
                       <div class="d-flex flex-column align-items-center text-center">
                         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                         <div class="mt-3">
-                          <h4>Toan Huynh</h4>
-                          <p class="text-secondary mb-1">Sophmore</p>
-                          <p class="text-muted font-size-sm">Computer Science</p>
+                          <h4>${name}</h4>
+                          <p class="text-secondary mb-1">Year: ${gradyear}</p>
+                          <p class="text-muted font-size-sm">Major: ${major}</p>
+                        
+                        </div>
+                       <div class="col-sm-12">
+                          <a class="btn btn-info " target="__blank" href="profile.jsp">Edit</a>
                         </div>
                       </div>
                     </div>
@@ -116,9 +121,7 @@
                       </div>
                       <hr>
                       <div class="row">
-                        <div class="col-sm-12">
-                          <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
-                        </div>
+
                       </div>
                     </div>
                   </div>

@@ -1,5 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -61,12 +62,22 @@
                     <div class="card-body">
                       <div class="d-flex flex-column align-items-center text-center">
                         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-                        <form>
+                        <form action="updateprofileServlet" method = "GET">
                         <div class="mt-3">
                           <h4>Toan Huynh</h4>
-                          <p class="text-secondary mb-1"><input type="text" placeholder="Major"></p>
-                          <p class="text-muted font-size-sm"><input type="text" placeholder="Year"></p>
+                          <p class="text-secondary mb-1"><input type="text" name=major placeholder="Major"></p>
+                          <p class="text-muted font-size-sm"><input type="text" name="gradyear" placeholder="Year"></p>
+                          <div class="col-sm-12">
+                          <a class="btn btn-info " target="__blank"><button type = "submit" style="  background: none!important;
+                            border: none;
+                            padding: 0!important;
+                          
+                            color: rgb(255, 255, 255);
+                            cursor: pointer;">Confirm changes</button></a>
                         </div>
+                        </div>
+                        </form>
+                        
                       </div>
                     </div>
                   </div>
@@ -116,16 +127,10 @@
                         </div>
                       </div>
                       <hr>
-                    </form>
+                   
                       <div class="row">
-                        <div class="col-sm-12">
-                          <a class="btn btn-info " target="__blank"><button style="  background: none!important;
-                            border: none;
-                            padding: 0!important;
-                          
-                            color: rgb(255, 255, 255);
-                            cursor: pointer;">Confirm changes</button></a>
-                        </div>
+
+                      
                       </div>
                     </div>
                   </div>
@@ -135,7 +140,7 @@
                     <div class="col-sm-6 mb-3">
                       <div class="card h-100">
                         <div class="card-body">
-                          <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Ticket#</i>${tic.getticketID()</h6>
+                          <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Ticket#</i>${tic.getticketID()}</h6>
                           <small>Airport Arrival Time: </small> <span class="text"> ${tic.getDisplayPickupTime() }</span>
                           <hr > 
                           <small>Airport: </small> <span class="text">${tic.getAirport()}</span>
