@@ -35,3 +35,9 @@ CREATE TABLE `carpools` (
   `location` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`carpoolID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `additionalinfo` (
+  `email` varchar(45) NOT NULL,
+  `gradyear` varchar(45) DEFAULT NULL,
+  `major` varchar(45) DEFAULT NULL,
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
