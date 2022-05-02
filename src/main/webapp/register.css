@@ -6,13 +6,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Lato", sans-serif;
-  color: #a5b1bd;
-  background-image: linear-gradient(80deg, #7f53ac 26%, #647dee 74%);
+  color: #9a43ba;
+  background-image: linear-gradient(80deg, #9a43ba 26%, #102f8e 74%);
 
 }
 
 body {
-  background-image: linear-gradient(100deg, #7f53ac 26%, #647dee 74%);
+  background-image: linear-gradient(100deg, #9a43ba 26%, #102f8e 74%);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
