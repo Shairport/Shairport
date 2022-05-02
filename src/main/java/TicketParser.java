@@ -11,6 +11,24 @@ import util.JDBCUtil;
 
 public class TicketParser {
 	
+	public static String getNamefromemail(String email) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con= JDBCUtil.getConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT * from SHAIRPORT.users where email = ?");
+			ps.setString(1, email);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			return rs.getString("name");
+			
+
+		} catch (SQLException e) {
+			System.out.println(e);
+		} catch (ClassNotFoundException e) {
+			System.out.println(e);
+		}
+		return "";		
+	}
 	
 	
 	public static ArrayList<Ticket> getTicketstoDisplay(Ticket tic) {
