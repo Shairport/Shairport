@@ -116,15 +116,15 @@ button:focus {
 }
 
 
-.navbar-toggle .icon-bar {
+/* .navbar-toggle .icon-bar {
     background-color: #8198ae;
   }
   .navbar-toggle {
     margin: 5px 0;
   }
+ */
 
-
-  /*menu header*/
+/*   menu header
 .header {
     padding: 30px 25px;
   }
@@ -176,10 +176,10 @@ button:focus {
   }
   .navbar-toggle {
     margin: 5px 0;
-  }
+  } */
   
 
-  @media screen and (max-width: 1024px) {
+/*   @media screen and (max-width: 1024px) {
     .collapse {
       display: none;
     }
@@ -217,4 +217,80 @@ button:focus {
     .header__el--blue {
       background-color: #3a9fff;
     }
-  }
+  } */
+  
+  
+  
+  
+  
+  
+  .navtopbar{
+	padding: 0px 10px;
+	
+}
+
+.topbar{
+ 	align-items: center; 
+  	display: flex; 
+/* 	justify-content: space-between;
+	position: sticky; */
+}
+
+
+.navbar_menu{
+	text-align: right;
+	align-items: right;
+	width: 100%; 
+ 	margin: 0 auto;
+	padding: 0 40px; 
+}
+
+.navbar_item{
+	display: inline-block;
+	padding-right: 40px;
+	padding-left: 35px;
+}
+
+
+
+
+img.shairport_logo{
+    max-width: 100%;
+    height: auto;
+    padding-left: 30px;
+    padding-top: 13px;
+}  
+
+img.shairport_logo:hover{
+	opacity: 0.65;
+} 
+
+.toplogo{
+	padding-left: 10px;
+} 
+
+.toplogo-container{
+	width: 23%;
+	height: auto;
+}
+
+
+.navbar_item{
+	list-style-type: none;
+	text-align: right;
+}
+
+.links{
+	text-decoration: none;
+	color: white;
+    font-size: 1.20vw;
+    font-family: 'Kollektif', sans-serif;
+    padding: 8px;
+
+}
+
+.links:hover{
+	color: #102f8e;
+	border-radius: 25px;
+  	background: white;
+	}
