@@ -1,0 +1,157 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i");
+
+
+
+body {
+  background-image: url("homebackground5.png");
+  color: linear-gradient(100deg, #7f53ac 26%, #647dee 74%);
+  background-size: cover;
+/*   background-position: center;  */
+  
+/*   background-repeat: no-repeat; */
+}
+
+.navtopbar{
+	padding: 0px 10px;
+	
+}
+
+.topbar{
+ 	align-items: center; 
+  	display: flex; 
+/* 	justify-content: space-between;
+	position: sticky; */
+}
+
+
+.navbar_menu{
+	text-align: right;
+	align-items: right;
+	width: 100%; 
+ 	margin: 0 auto;
+	padding: 0 40px; 
+}
+
+.navbar_item{
+	display: inline-block;
+	padding-right: 40px;
+	padding-left: 35px;
+}
+
+
+/* a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:active { text-decoration: none; } */
+
+
+img.shairport_logo{
+    max-width: 100%;
+    height: auto;
+    padding-left: 30px;
+    padding-top: 13px;
+}  
+
+img.shairport_logo:hover{
+	opacity: 0.65;
+} 
+
+.toplogo{
+	padding-left: 10px;
+} 
+
+.toplogo-container{
+	width: 23%;
+	height: auto;
+}
+
+
+.navbar_item{
+	list-style-type: none;
+	text-align: right;
+}
+
+.links{
+	color: white;
+    font-size: 1.20vw;
+    font-family: 'Kollektif', sans-serif;
+    padding: 8px;
+    text-decoration: none;
+}
+
+.links:hover{
+	color: #102f8e;
+	border-radius: 25px;
+  	background: white;
+	}
+
+.body{
+	display: flex;
+}
+
+.text{
+	flex:1;
+	padding-left: 40px;
+	padding-top: 80px;
+}
+
+.video{
+ 	padding-left: 55px;
+	padding-top: 125px;
+/* 	padding-left: 5vw;
+	padding-top: 10vw; */
+	flex: 1;
+}
+
+.header-text{
+	color: white;
+	font-family: "Ranga", sans-serif;
+	font-size: 5.1vw;
+	padding-bottom: 5px;
+	font-weight: 450;
+}
+
+.subheader-text{
+	color: white;
+	font-family: "Kollektif", sans-serif;
+	font-size: 2.3vw;
+	padding-bottom: 25px;
+	font-weight: 330;
+}
+
+.body-text{
+	color: white;
+	font-family: "Nunito", sans-serif;
+	font-size: 1.7vw;
+	padding-bottom: 60px;
+}
+
+.btn {
+	padding-top: 30px;
+  background-color: #EF29A4;
+  text-decoration: none;
+  border-radius: 10px;
+  font-family: 'Kollektif', sans-serif;
+  padding: 10px 25px;
+  color: #fff;
+  box-shadow: 0px 18px 13px -6px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+}
+
+
+.btn:hover {
+  box-shadow: 0px 25px 18px -6px rgba(201, 201, 201, 0.2);
+  background-color: #F858BC;
+  color: #fff;
+}
+
+
+
+
+  
+  
