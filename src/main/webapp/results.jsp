@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="rs.css">
+    <link class ="stylz" rel="stylesheet" href="rs.css">
 	<link rel="shortcut icon" type="image/png" href="https://image.ibb.co/fOur3b/favicon.png"/>
     <script src="r.js"></script>
     <title>Results</title>
 </head>
-<body>   
+<body class="peek">   
 	<link rel="shortcut icon" type="image/png" href="https://image.ibb.co/fOur3b/favicon.png"/>
 	<link rel="shortcut icon" type="image/x-icon" href="https://image.ibb.co/fOur3b/favicon.png"/>
 
@@ -44,7 +44,7 @@
 		box-shadow: 0px 18px 13px -6px rgb(0 0 0 / 20%);
 		text-decoration: none;
 
-	">My Account </a></li>
+	">My Account Â</a></li>
 		  </ul>
 
 		</nav>
@@ -52,7 +52,10 @@
 	 <br>
 	 <br>
 <div class="wow"></div>
+ 
 <container>
+   
+
     <h2>Ticket Results <span class="block"> ${startingdate}</span> </h2>
     <c:forEach var="tic" items="${results}">
     	    <form action="carpoolServlet" method="GET">
@@ -104,4 +107,18 @@
     </c:forEach>
   </container>
 </body>
+<script>
+window.onload =  async function afterWebPageLoad() { 
+	var docu =document.getElementsByTagName("html");
+	var savedContent = docu[0].innerHTML;
+	docu[0].innerHTML = '<head>\n    <meta charset="UTF-8">\n    <meta http-equiv="X-UA-Compatible" content="IE=edge">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>loading</title>\n    <link rel="stylesheet" href="loading.css">\n    <link rel="shortcut icon" type="image/x-icon" href="https://image.ibb.co/fOur3b/favicon.png">\n\n\n</head>\n<body>\n   \n<div class="scene" style="--hue: 260; --saturation: 87; --lightness: 67">\n    <div class="word">\n      <div class="letter__wrap" style="--index: 0">\n        <div class="letter" data-letter="L"><span class="letter__panel" aria-hidden="true">L</span><span class="letter__panel" aria-hidden="true">W</span><span class="letter__panel" aria-hidden="true">L</span><span class="letter__panel" aria-hidden="true">W</span><span class="letter__panel"></span></div>\n      </div>\n      <div class="letter__wrap" style="--index: 1">\n        <div class="letter" data-letter="o"><span class="letter__panel" aria-hidden="true">o</span><span class="letter__panel" aria-hidden="true">a</span><span class="letter__panel" aria-hidden="true">o</span><span class="letter__panel" aria-hidden="true">a</span><span class="letter__panel"></span></div>\n      </div>\n      <div class="letter__wrap" style="--index: 2">\n        <div class="letter" data-letter="a"><span class="letter__panel" aria-hidden="true">a</span><span class="letter__panel" aria-hidden="true">i</span><span class="letter__panel" aria-hidden="true">a</span><span class="letter__panel" aria-hidden="true">i</span><span class="letter__panel"></span></div>\n      </div>\n      <div class="letter__wrap" style="--index: 3">\n        <div class="letter" data-letter="d"><span class="letter__panel" aria-hidden="true">d</span><span class="letter__panel" aria-hidden="true">t</span><span class="letter__panel" aria-hidden="true">d</span><span class="letter__panel" aria-hidden="true">t</span><span class="letter__panel"></span></div>\n      </div>\n      <div class="letter__wrap" style="--index: 4">\n        <div class="letter" data-letter="i"><span class="letter__panel" aria-hidden="true">i</span><span class="letter__panel" aria-hidden="true">.</span><span class="letter__panel" aria-hidden="true">i</span><span class="letter__panel" aria-hidden="true">.</span><span class="letter__panel"></span></div>\n      </div>\n      <div class="letter__wrap" style="--index: 5">\n        <div class="letter" data-letter="n"><span class="letter__panel" aria-hidden="true">n</span><span class="letter__panel" aria-hidden="true">.</span><span class="letter__panel" aria-hidden="true">n</span><span class="letter__panel" aria-hidden="true">.</span><span class="letter__panel"></span></div>\n      </div>\n      <div class="letter__wrap" style="--index: 6">\n        <div class="letter" data-letter="g"><span class="letter__panel" aria-hidden="true">g</span><span class="letter__panel" aria-hidden="true">.</span><span class="letter__panel" aria-hidden="true">g</span><span class="letter__panel" aria-hidden="true">.</span><span class="letter__panel"></span></div>\n      </div>\n    </div>\n  </div>\n\n</body>'
+	
+	await new Promise(resolve => setTimeout(resolve, 3500)); // 3 sec
+	docu[0].innerHTML =savedContent;
+  
+
+    
+	
+	}
+</script>
 </html>
