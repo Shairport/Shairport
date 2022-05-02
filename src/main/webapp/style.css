@@ -224,8 +224,8 @@ button:focus {
   
   
   
-  .navtopbar{
-	padding: 0px 10px;
+ .navtopbar{
+	padding: 10px 15px;
 	
 }
 
@@ -242,13 +242,13 @@ button:focus {
 	align-items: right;
 	width: 100%; 
  	margin: 0 auto;
-	padding: 0 40px; 
+	padding: 0 42px; 
 }
 
 .navbar_item{
 	display: inline-block;
-	padding-right: 40px;
-	padding-left: 35px;
+	padding-right: 42px;
+	padding-left: 33px;
 }
 
 
@@ -257,7 +257,7 @@ button:focus {
 img.shairport_logo{
     max-width: 100%;
     height: auto;
-    padding-left: 30px;
+    padding-left: 28px;
     padding-top: 13px;
 }  
 
@@ -266,11 +266,11 @@ img.shairport_logo:hover{
 } 
 
 .toplogo{
-	padding-left: 10px;
+	padding-left: 15px;
 } 
 
 .toplogo-container{
-	width: 23%;
+	width: 27%;
 	height: auto;
 }
 
@@ -293,4 +293,7 @@ img.shairport_logo:hover{
 	color: #102f8e;
 	border-radius: 25px;
   	background: white;
+  	text-decoration: none;
 	}
+	
+	
