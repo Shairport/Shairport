@@ -47,6 +47,7 @@ public class loginServlet extends HttpServlet {
         // TODO Auto-generated method stub
 //        doGet(request, response);
     	String error = "";
+    	boolean alreadySent = false;
     	
 //    	Cookie[] cookies = request.getCookies();
 //	  	for(Cookie cookie: cookies){
@@ -80,22 +81,25 @@ public class loginServlet extends HttpServlet {
         
        
         if(email.equals("")) {
-        	error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\"> Please enter an email</div>";
+        	alreadySent = true;
+        	error += " <div style=\"color:white; font-size:15px; background-color: #984dfa; width:100%; height:30px; text-align: center;\"> Please enter an email</div>";
         	request.setAttribute("error", error);
-        	request.getRequestDispatcher("login.jsp").include(request, response);
+        	request.getRequestDispatcher("register2.0.jsp").include(request, response);
         }
         
-        else if(!m.matches()) {
-        	error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\"> Email is not formatted correctly</div>";
+        else if(!m.matches() && !alreadySent) {
+        	alreadySent = true;
+        	error += " <div style=\"color:white; font-size:15px; background-color: #984dfa; width:100%; height:30px; text-align: center;\"> Email is not formatted correctly</div>";
         	request.setAttribute("error", error);
-        	request.getRequestDispatcher("login.jsp").include(request, response);
+        	request.getRequestDispatcher("register2.0.jsp").include(request, response);
         } 
         else
         {
-        	 if(password.equals("")) {
-             	error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\"> Please enter a password</div>";
+        	 if(password.equals("") && !alreadySent) {
+             	alreadySent = true;
+        		 error += " <div style=\"color:white; font-size:15px; background-color: #984dfa; width:100%; height:30px; text-align: center;\"> Please enter a password</div>";
              	request.setAttribute("error", error);
-             	request.getRequestDispatcher("login.jsp").include(request, response);
+             	request.getRequestDispatcher("register2.0.jsp").include(request, response);
              }
     	
 	        RequestDispatcher dispatch = null;
@@ -122,20 +126,22 @@ public class loginServlet extends HttpServlet {
 						ps2.setString(1, email);
 						ResultSet rs2 = ps2.executeQuery();
 						if(rs2.next()) {
-							error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\">Incorrect Password</div>";
+							error += " <div style=\"color:white; font-size:15px; background-color: #984dfa; width:100%; height:30px; text-align: center;\">Incorrect Password</div>";
 						}
 						else {
-							error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\"> User does not exist</div>";
+							error += " <div style=\"color:white; font-size:15px; background-color: #984dfa; width:100%; height:30px; text-align: center;\"> User does not exist</div>";
 						}
 	        		}
 					
 	        		
 	        		if (!error.equals("")) {
-	            		request.setAttribute("error", error);
-	        			request.getRequestDispatcher("login.jsp").include(request, response);
+		            	if(!alreadySent) {	
+		            		request.setAttribute("error", error);
+		        			request.getRequestDispatcher("register2.0.jsp").include(request, response);
+		            	}
 	            	}
 	        		else {
-		        		response.sendRedirect("form.html");
+		        		response.sendRedirect("home.html");
 	        		}
 	        		
 	        }

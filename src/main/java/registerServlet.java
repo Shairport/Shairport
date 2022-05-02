@@ -62,45 +62,71 @@ public class registerServlet extends HttpServlet {
 //		  	}
 //	  	}
     	
+    	
     	boolean alreadySent = false;
     	String email = request.getParameter("newEmail");
     	String name = request.getParameter("newName");
     	String password = request.getParameter("newPassword");
     	String passwordConfirmed = request.getParameter("newPasswordConfirmed");
     	
+    	System.out.println(email);
+    	System.out.println(name);
+    	System.out.println(password);
+    	System.out.println(passwordConfirmed);
     	
-    	String regex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@" 
-                + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
-        Pattern p = Pattern.compile(regex);
-        Matcher m = p.matcher(email);
+    	
+    	if(email == null) { 
+    		email = "";
+    	}
+    	if(name == null) { 
+    		name = "";
+    	}
+    	if(password == null) { 
+    		password = "";
+    	}
+    	if(passwordConfirmed == null) { 
+    		passwordConfirmed = "";
+    	}
+    	
+    	
         
         if(email.equals("")) {
-        	error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\"> Please enter an email</div>";
+        	error += " <div style=\"color:white; font-size:15px; background-color: #984dfa; width:100%; height:30px; text-align: center;\"> Please enter an email</div>";
         }
-        else if(!m.matches()) {
-        	error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\"> Email is not formatted correctly</div>";
+        else {
+        	String regex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@" 
+                    + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
+            Pattern p = Pattern.compile(regex);
+            Matcher m = p.matcher(email);
+        	if(!m.matches()) {
+        		error += " <div style=\"color:white; font-size:15px; background-color: #984dfa; width:100%; height:30px; text-align: center;\"> Email is not formatted correctly</div>";
+        	}
+        	if(!email.contains("@usc.edu")) {
+        		error += " <div style=\"color:white; font-size:15px; background-color: #984dfa; width:100%; height:30px; text-align: center;\"> Please use your USC email address</div>";
+        	}
         } 
         
         if(name.equals("")) {
-        	error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\"> Please enter an name</div>";
+        	error += " <div style=\"color:white; font-size:15px; background-color: #984dfa; width:100%; height:30px; text-align: center;\"> Please enter an name</div>";
         }
         
         if(password.equals("")) {
-        	error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\"> Please enter a password</div>";
+        	error += " <div style=\"color:white; font-size:15px; background-color: #984dfa; width:100%; height:30px; text-align: center;\"> Please enter a password</div>";
         }
         
         if(passwordConfirmed.equals("")) {
-        	error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\"> Please confirm your password</div>";
+        	error += " <div style=\"color:white; font-size:15px; background-color: #984dfa; width:100%; height:30px; text-align: center;\"> Please confirm your password</div>";
         }
+        System.out.println(error);
         if(!error.equals("")) {
         	alreadySent=true;
         	request.setAttribute("error", error);
-        	request.getRequestDispatcher("register.jsp").include(request, response);
+        	request.getRequestDispatcher("register2.0.jsp").include(request, response);
         }
         
 
     	if(!password.equals(passwordConfirmed)) {
-    		error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\"> Passwords are not equal</div>";
+    		error += " <div style=\"color:white; font-size:15px; background-color: #984dfa; width:100%; height:30px; text-align: center;\"> Passwords are not equal</div>";
     	}
     	try {
 	    	//Check if email already in use
@@ -111,7 +137,7 @@ public class registerServlet extends HttpServlet {
 			ps2.setString(1, email);
 			ResultSet rs2 = ps2.executeQuery();
 			if(rs2.next()) {
-				error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\">Email already has an account</div>";
+				error += " <div style=\"color:white; font-size:15px; background-color: #984dfa; width:100%; height:30px; text-align: center;\">Email already has an account</div>";
 			}
 			
 			//Check if username already in use
@@ -119,7 +145,7 @@ public class registerServlet extends HttpServlet {
 			ps3.setString(1, name);
 			ResultSet rs3 = ps3.executeQuery();
 			if(rs3.next()) {
-				error += " <div style=\"color:white; font-size:15px; background-color: #ff6e6e; width:100%; height:30px; text-align: center;\">Username is already in use, please pick another one</div>";
+				error += " <div style=\"color:white; font-size:15px; background-color: #984dfa; width:100%; height:30px; text-align: center;\">Username is already in use, please pick another one</div>";
 			}
     	}
     	catch(Exception e){
@@ -130,8 +156,9 @@ public class registerServlet extends HttpServlet {
     	
     	if(!alreadySent) {
 	    	if (!error.equals("")) {
+	    		alreadySent=true;
 	    		request.setAttribute("error", error);
-				request.getRequestDispatcher("register.jsp").include(request, response);
+				request.getRequestDispatcher("register2.0.jsp").include(request, response);
 	    	}
 			else
 			{
@@ -150,8 +177,9 @@ public class registerServlet extends HttpServlet {
 		        		Cookie cookie = new Cookie("Email", cookieName);
 		        		cookie.setMaxAge(60*60*24);
 		        		response.addCookie(cookie);
-		        		
-		        		response.sendRedirect("home.html");
+		        		if(!alreadySent) {
+		        			response.sendRedirect("home.html");
+		        		}
 	//	        		response.sendRedirect("Shairport/form.html");
 	//	        		request.setAttribute("name", name);
 	//	        		request.getRequestDispatcher("loggedIn.jsp").forward(request, response);
@@ -170,3 +198,4 @@ public class registerServlet extends HttpServlet {
 //    	pw.println(passwordConfirmed);
         
     }
+}
