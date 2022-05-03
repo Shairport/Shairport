@@ -69,7 +69,9 @@
                         
                         </div>
                        <div class="col-sm-12">
-                          <a class="btn btn-info " target="__blank" href="profile.jsp">Edit</a>
+                       <form action="editServlet" method="GET">
+                          <a class="btn btn-info " target="__blank" ><button>Edit</button></a>
+                        </form>
                         </div>
                       </div>
                     </div>

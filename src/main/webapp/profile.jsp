@@ -64,7 +64,7 @@
                         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                         <form action="updateprofileServlet" method = "GET">
                         <div class="mt-3">
-                          <h4>Toan Huynh</h4>
+                          <h4>${name}</h4>
                           <p class="text-secondary mb-1"><input type="text" name=major placeholder="Major"></p>
                           <p class="text-muted font-size-sm"><input type="text" name="gradyear" placeholder="Year"></p>
                           <div class="col-sm-12">
@@ -93,7 +93,7 @@
                           <h6 class="mb-0">Full Name</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                          Name_example
+                          ${name}
                         </div>
                       </div>
                       <hr>
@@ -102,7 +102,7 @@
                           <h6 class="mb-0">Email</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            Email_example
+                            ${email}
                         </div>
                       </div>
                       <hr>
@@ -111,7 +111,7 @@
                           <h6 class="mb-0">Phone</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                           Phone_example
+                           ${phone}
                         </div>
                       </div>
             
