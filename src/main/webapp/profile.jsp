@@ -65,8 +65,8 @@
                         <form action="updateprofileServlet" method = "GET">
                         <div class="mt-3">
                           <h4>${name}</h4>
-                          <p class="text-secondary mb-1"><input type="text" name=major placeholder="Major"></p>
-                          <p class="text-muted font-size-sm"><input type="text" name="gradyear" placeholder="Year"></p>
+                          <p class="text-secondary mb-1"><input type="text" name=major placeholder="Graduation Year"></p>
+                          <p class="text-muted font-size-sm"><input type="text" name="gradyear" placeholder="Major"></p>
                           <div class="col-sm-12">
                           <a class="btn btn-info " target="__blank"><button type = "submit" style="  background: none!important;
                             border: none;
