@@ -70,6 +70,7 @@ img.shairport_logo:hover{
 .navbar_item{
 	list-style-type: none;
 	text-align: right;
+	display: inline-block;
 }
 
 .links{
@@ -149,6 +150,7 @@ img.shairport_logo:hover{
   background-color: #F858BC;
   color: #fff;
 }
+
 
 
 
