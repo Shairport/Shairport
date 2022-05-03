@@ -44,7 +44,7 @@
 		box-shadow: 0px 18px 13px -6px rgb(0 0 0 / 20%);
 		text-decoration: none;
 
-	">My Account Â</a></li>
+	">My Account ÃÂ</a></li>
 		  </ul>
 
 		</nav>
