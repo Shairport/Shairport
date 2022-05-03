@@ -93,7 +93,7 @@
                           <h6 class="mb-0">Full Name</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                          Toan Huynh
+                          Name_example
                         </div>
                       </div>
                       <hr>
@@ -102,7 +102,7 @@
                           <h6 class="mb-0">Email</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            <input type="text" placeholder="Change Email">
+                            Email_example
                         </div>
                       </div>
                       <hr>
@@ -111,7 +111,7 @@
                           <h6 class="mb-0">Phone</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            <input type="text" placeholder="Change phoneNumber">
+                           Phone_example
                         </div>
                       </div>
             
