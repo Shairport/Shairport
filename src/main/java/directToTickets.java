@@ -44,7 +44,6 @@ public class directToTickets extends HttpServlet {
 		request.setAttribute("major", updateprofileServlet.getMajor(email));
 		request.setAttribute("gradyear", updateprofileServlet.getGradyear(email));
 		request.setAttribute("email",email);
-		request.setAttribute("phone",TicketParser.getPhonefromemail(email));
 		request.getRequestDispatcher("myticket.jsp").forward(request, response);
 		
 	}

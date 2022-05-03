@@ -70,7 +70,12 @@
                         </div>
                        <div class="col-sm-12">
                        <form action="editServlet" method="GET">
-                          <a class="btn btn-info " target="__blank" ><button>Edit</button></a>
+                       <a class="btn btn-info " target="__blank"><button type = "submit" style="  background: none!important;
+                            border: none;
+                            padding: 0!important;
+                          
+                            color: rgb(255, 255, 255);
+                            cursor: pointer;">Edit</button></a>
                         </form>
                         </div>
                       </div>
@@ -100,18 +105,11 @@
                         </div>
                       </div>
                       <hr>
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <h6 class="mb-0">Phone</h6>
-                        </div>
-                        <div class="col-sm-9 text-secondary">
-                          ${phone}
-                        </div>
-                      </div>
+
             
                  
                         
-                      <hr>
+   
                       <div class="row">
                         <div class="col-sm-3">
                           <h6 class="mb-0">School</h6>

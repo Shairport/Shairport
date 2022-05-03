@@ -89,17 +89,29 @@ public class TicketParser {
 		} catch (ClassNotFoundException e) {
 			System.out.println(e);
 		}
+		
+		ArrayList<Ticket> ticketsToRemove = new ArrayList<Ticket>();
+		for (Ticket t : returnlist) {
+			if (t.getEmailonTicket().equals(tic.getEmailonTicket())) {
+				ticketsToRemove.add(t);
+			}
+		}
+		for (Ticket t : ticketsToRemove) {
+			returnlist.remove(t);
+		}
+		
 		return returnlist;
 	}
 	
 	
 	// removes from the database all tickets on this date with this email
-	public static void removeSameDayTickets(String email, String date) {
+	public static void removeSameDayTickets(String phone, String date) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con= JDBCUtil.getConnection();
-			PreparedStatement getticIDS = con.prepareStatement("SELECT * from Shairport.userticketbridge where email = ?");
-			getticIDS.setString(1, email);
+			PreparedStatement getticIDS = con.prepareStatement("SELECT * from Shairport.tickets where phonenumber = ? and pickupdate = ? ");
+			getticIDS.setString(1, phone);
+			getticIDS.setString(2, date);
 			ResultSet rs = getticIDS.executeQuery();
 			ArrayList<Integer> idstodelete = new ArrayList<Integer>();
 			while (rs.next()) {
@@ -107,28 +119,32 @@ public class TicketParser {
 			}
 
 			for (Integer id: idstodelete) {
-				PreparedStatement ds = con.prepareStatement("Delete from Shairport.tickets where ticketID = ? ");
+				System.out.println(id);
+				PreparedStatement ds = con.prepareStatement("SET SQL_SAFE_UPDATES = 0;");		
+				ds.executeUpdate();
+				
+				
+				 ds = con.prepareStatement("Delete from Shairport.tickets where ticketID = ?");
 				ds.setInt(1, id);	
 				ds.executeUpdate();
 				
-				ds = con.prepareStatement("SET SQL_SAFE_UPDATES = 0;");
-				ds.setInt(1, id);	
-				ds.executeUpdate();
+				
 				
 				ds = con.prepareStatement("Delete from Shairport.userticketbridge where ticketID = ?");
 				ds.setInt(1, id);	
 				ds.executeUpdate();
 				
-				ds = con.prepareStatement("SET SQL_SAFE_UPDATES = 1;");
-				ds.setInt(1, id);	
+				ds = con.prepareStatement("SET SQL_SAFE_UPDATES = 1;");	
 				ds.executeUpdate();
 				
 			}
 			
 
 		} catch (SQLException e) {
+			System.out.println("Problem Here!!!");
 			System.out.println(e);
 		} catch (ClassNotFoundException e) {
+			System.out.println("Problem Here!!!");
 			System.out.println(e);
 		}		
 		

@@ -62,14 +62,23 @@ public class updateprofileServlet extends HttpServlet {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
 			Connection con= JDBCUtil.getConnection();
-
+			
+			PreparedStatement ps = con.prepareStatement("SELECT COUNT(*) AS total FROM Shairport.additionalinfo where email = ?");
+			ps.setString(1, Email);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			int count = rs.getInt("total");
+			if (count > 0) {
+				PreparedStatement addinfo = con.prepareStatement("Delete from Shairport.additionalinfo where email = ?");
+				addinfo.setString(1, Email);
+				addinfo.executeUpdate();
+			}
 			PreparedStatement addinfo = con.prepareStatement("INSERT INTO SHAIRPORT.additionalinfo(email, gradyear, major) VALUES (?, ?, ?)");
 			addinfo.setString(1, Email);
 			addinfo.setString(2, gradyear);
 			addinfo.setString(3, major);
 			addinfo.executeUpdate();
 
-			
 			
 		} catch(SQLException e) {
 			System.out.println(e);
