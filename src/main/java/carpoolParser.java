@@ -26,7 +26,7 @@ public class carpoolParser {
 				Ticket t = new Ticket(rs.getInt("carpoolID"), rs.getString("pickupdate"), 
 						rs.getString("airport"), rs.getString("pickuptime"), 
 						rs.getString("location"), rs.getString("user2_phonenumber"));	
-				returnlist.add(new Carpool(t, email,
+				returnlist.add(new Carpool(t, rs.getString("user1_email"),
 						rs.getString("user1_name"),rs.getString("user1_phonenumber"),
 						rs.getString("user2_email"),rs.getString("user2_name")));
 			}

@@ -4,7 +4,7 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title>About Usx</title>
+		<title>About Us</title>
 		<link rel="stylesheet" href="aboutus.css">
 		<link rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -36,22 +36,12 @@
 						<% Cookie[] cookies=request.getCookies(); boolean loggedIn=false; if(cookies !=null){ for(Cookie
 							cookie: cookies){ if(cookie.getName().equals("Email") ||
 							cookie.getName().contentEquals("GEmail")){ loggedIn=true; } } } if(loggedIn){
-							out.println("<li class='navbar_item'>
-							<form action='directToTickets' method='GET'>"
-								+ "<a class='links'><button
-										style='background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;'>My
-										Profile</button> </a></form>
-							</li>"
-							+ "<li class='navbar_item'>
-								<form action='logoutServlet' method='GET'>"
-									+ "<a class='links'><button onclick='signOut();'
-											style='background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;'>Logout</button>
-									</a></form>
-							</li>");
+							out.println("<li class='navbar_item'><form action='directToTickets' method='GET'> <a class='links'><button style='background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;'>My Profile</button> </a></form> </li>");
+							out.println("<li class='navbar_item'><form action='logoutServlet' method='GET'><a class='links'><button onclick='signOut();' style='background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;'>Logout</button></a></form></li>");
 							}
+							
 							else{
-							out.println("<li class='navbar_item'> <a href='register2.0.jsp' onclick='signOut()'
-									class='links' class='btn btn--white'>Sign In / Register</a> </li>");
+							out.println("<li class='navbar_item'> <a href='register2.0.jsp' onclick='signOut()' class='links' class='btn btn--white'>Sign In / Register</a> </li>");
 							}%>
 							<%-- <%} else { %>
 								<a href="LogoutDispatcher" class="links">Sign Out</a>
@@ -72,13 +62,10 @@
 						</a>
 					</div>
 				</div>
-
-
 				<ul class="navbar_menu">
 					<li class="navbar_item"> <a href="mellhome.jsp" class="links">Home</a> </li>
 					<li class="navbar_item"> <a href="aboutus.jsp" class="links">About Us</a> </li>
 					<%if(!loggedin){ %>
-
 						<li class="navbar_item"> <a href="register.jsp" class="links" class="btn btn--white">Sign In
 								→</a> </li>
 						<%} else { %>

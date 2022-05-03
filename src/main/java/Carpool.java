@@ -43,6 +43,9 @@ public class Carpool {
 	public String getDisplayPickupTime() {
 		return originalTicket.getDisplayPickupTime();
 	}
+	public String getMilitaryPickuptime() {
+		return originalTicket.getMilitaryPickuptime();
+	}
 	public int getSortingtime() {
 		return originalTicket.getSortingtime();
 	}
