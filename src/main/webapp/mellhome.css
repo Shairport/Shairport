@@ -14,12 +14,12 @@ body {
 
 .navtopbar{
 	padding: 0px 10px;
-	
 }
 
 .topbar{
  	align-items: center; 
   	display: flex; 
+  	/* display: inline-block; */
 /* 	justify-content: space-between;
 	position: sticky; */
 }
@@ -31,12 +31,14 @@ body {
 	width: 100%; 
  	margin: 0 auto;
 	padding: 0 40px; 
+	display: inline-block;
 }
 
 .navbar_item{
 	display: inline-block;
 	padding-right: 40px;
 	padding-left: 35px;
+	display: inline-block;
 }
 
 
@@ -47,10 +49,10 @@ a:active { text-decoration: none; } */
 
 
 img.shairport_logo{
-    max-width: 100%;
-    height: auto;
+    max-width: 120px;
+    height: 80px;
     padding-left: 30px;
-    padding-top: 13px;
+    padding-top: 5px;
 }  
 
 img.shairport_logo:hover{
@@ -150,10 +152,3 @@ img.shairport_logo:hover{
   background-color: #F858BC;
   color: #fff;
 }
-
-
-
-
-
-  
-  

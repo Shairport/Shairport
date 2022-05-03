@@ -16,39 +16,49 @@
 
 	<body>
 
-
-		<nav class="navtopbar">
-			<div class="topbar">
-				<div class="toplogo">
-					<div class="toplogo-container">
-						<a href="mellhome.jsp">
-							<img src="Shairportlogo.png" class="shairport_logo">
-						</a>
+		<div>
+			<nav class="navtopbar">
+				<div class="topbar">
+					<div class="toplogo">
+						<div class="toplogo-container">
+							<a href="mellhome.jsp">
+								<img src="Shairportlogo.png" class="shairport_logo">
+							</a>
+						</div>
 					</div>
+
+
+					<ul class="navbar_menu">
+						<li class="navbar_item"> <a href="mellhome.jsp" class="links">Home</a> </li>
+						<li class="navbar_item"> <a href="aboutus.jsp" class="links">About Us</a> </li>
+						<%-- <%if(!loggedin){ %> --%>
+
+							<% Cookie[] cookies=request.getCookies(); boolean loggedIn=false; if(cookies !=null){
+								for(Cookie cookie: cookies){ if(cookie.getName().equals("Email") ||
+								cookie.getName().contentEquals("GEmail")){ loggedIn=true; } } } if(loggedIn){
+								out.println("<li class='navbar_item'>
+								<form action='directToTickets' method='GET'><a class='links'><button
+											style='background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;'>My
+											Profile</button> </a></form>
+								</li>");
+								out.println("<li class='navbar_item'>
+									<form action='logoutServlet' method='GET'><a class='links'><button
+												onclick='signOut();'
+												style='background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;'>Logout</button></a>
+									</form>
+								</li>");
+								}
+								else{
+								out.println("<li class='navbar_item'> <a href='register2.0.jsp' onclick='signOut()'
+										class='links' class='btn btn--white'>Sign In / Register</a> </li>");
+								}%>
+								<%-- <%} else { %>
+									<a href="LogoutDispatcher" class="links">Sign Out</a>
+									<%} %> --%>
+					</ul>
 				</div>
-
-
-				<ul class="navbar_menu">
-					<li class="navbar_item"> <a href="mellhome.jsp" class="links">Home</a> </li>
-					<li class="navbar_item"> <a href="aboutus.jsp" class="links">About Us</a> </li>
-					<%-- <%if(!loggedin){ %> --%>
-
-						<% Cookie[] cookies=request.getCookies(); boolean loggedIn=false; if(cookies !=null){ for(Cookie
-							cookie: cookies){ if(cookie.getName().equals("Email") ||
-							cookie.getName().contentEquals("GEmail")){ loggedIn=true; } } } if(loggedIn){
-							out.println("<li class='navbar_item'><form action='directToTickets' method='GET'> <a class='links'><button style='background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;'>My Profile</button> </a></form> </li>");
-							out.println("<li class='navbar_item'><form action='logoutServlet' method='GET'><a class='links'><button onclick='signOut();' style='background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;'>Logout</button></a></form></li>");
-							}
-							
-							else{
-							out.println("<li class='navbar_item'> <a href='register2.0.jsp' onclick='signOut()' class='links' class='btn btn--white'>Sign In / Register</a> </li>");
-							}%>
-							<%-- <%} else { %>
-								<a href="LogoutDispatcher" class="links">Sign Out</a>
-								<%} %> --%>
-				</ul>
-			</div>
-		</nav>
+			</nav>
+		</div>
 
 
 
