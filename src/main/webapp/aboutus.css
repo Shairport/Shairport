@@ -114,8 +114,40 @@ img.shairport_logo:hover{
 }
 
 
+.firstrow{
+	display: flex;
+	justify-content: space-around;
+	padding-top: 5vw;
+	padding-bottom: 5vw;
+}
 
 
+.secondrow{
+	display: flex;
+	justify-content: space-around;
+	padding-bottom: 5vw;
+}
+
+
+.personphoto{
+	width: 25vw;
+	height: auto;
+	border-radius: 20px;
+}
+
+
+.caption{
+	color: white;
+	font-family: "Nunito", sans-serif;
+	font-size: 1.2vw;
+}
+
+.name{
+	color: white;
+	font-family: "Ranga", sans-serif;
+	font-size: 1.8vw;
+	text-align: center;
+}
 
 
 

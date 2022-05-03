@@ -1,5 +1,3 @@
-package main.java;
-
 import java.util.ArrayList;
 
 /**
@@ -10,7 +8,7 @@ public class User {
     private String name;
     private String img_url;
     private String email;
-    private ArrayList<Trip> trips;
+//    private ArrayList<Trip> trips;
     private ArrayList<Ticket> tickets;
 
     User() {
@@ -66,13 +64,13 @@ public class User {
      * @{
      */
 
-    public ArrayList<Trip> getTrips() {
-        return trips;
-    }
-
-    public void addTrip(Trip trip) {
-        trips.add(trip);
-    }
+//    public ArrayList<Trip> getTrips() {
+//        return trips;
+//    }
+//
+//    public void addTrip(Trip trip) {
+//        trips.add(trip);
+//    }
 
     public void addTicket(Ticket ticket) {
         tickets.add(ticket);
