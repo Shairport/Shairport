@@ -73,6 +73,8 @@ public class carpoolServlet extends HttpServlet {
 			TicketParser.removeSameDayTickets(email1, pickupdate);
 			TicketParser.removeSameDayTickets(email2, pickupdate);
 			request.setAttribute("name",TicketParser.getNamefromemail(email1));
+			request.setAttribute("major", updateprofileServlet.getMajor(email1));
+			request.setAttribute("gradyear", updateprofileServlet.getGradyear(email1));
 			request.setAttribute("email",email1);
 			request.setAttribute("phone",phone1);
 			request.setAttribute("myCarpools", myCarpools);
