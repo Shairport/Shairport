@@ -43,7 +43,7 @@
                 border-radius: 4px;
                 box-sizing: border-box;
                 box-shadow: 0px 18px 13px -6px rgb(0 0 0 / 20%);
-            ">Sign InÂ</a></li>
+            ">Sign In</a></li>
                   </ul>
                 </nav>
               </div>
@@ -151,11 +151,11 @@
                           <hr>
                           <small>Rider 1 Phone Number: </small> <span class="text">${tic.getUser1_phonenumber()}</span>
                           <hr>
-                          <small>Rider 2 Name: </small> <span class="text"> ${tic.getUser1_name()}</span>
+                          <small>Rider 2 Name: </small> <span class="text"> ${tic.getUser2_name()}</span>
                           <hr>
-                          <small>Rider 2 Email: </small> <span class="text">${tic.getUser1_email()}</span>
+                          <small>Rider 2 Email: </small> <span class="text">${tic.getUser2_email()}</span>
                           <hr>
-                          <small>Rider 2 Phone Number: </small> <span class="text"> ${tic.getUser1_phonenumber()}</span>
+                          <small>Rider 2 Phone Number: </small> <span class="text"> ${tic.getUser2_phonenumber()}</span>
                           </div>
                         </div>
                       </div>
