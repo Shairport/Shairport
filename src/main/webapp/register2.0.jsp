@@ -22,6 +22,7 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="414693959520-vaogaupc5phofnvp712flmqqr96ue9ai.apps.googleusercontent.com">
     <link href="register.css" rel="stylesheet">
+    <link rel="stylesheet" href="mellhome.css">
 	<link rel="shortcut icon" type="image/png" href="https://image.ibb.co/fOur3b/favicon.png"/>
     <script src="reg2.css"></script>
 
@@ -36,20 +37,27 @@
 	
 		
 <!--     <header class="header"> -->
-        <div class="container header__container">
-          <div class="header__logo"><img class="header__img" src="https://image.ibb.co/kcVou6/path3000.png"> <h1 class="header__title">Shairport<span class="header__light"></span></h1></div> 
+        <nav class="navtopbar">
+      <div class="topbar">
+      	<div class="toplogo">
+      		<div class="toplogo-container">
+		        <a href="mellhome.jsp">
+		        <img src="Shairportlogo.png" class="shairport_logo">
+		        </a>
+		    </div>
+	    </div>
+        
 
+        <ul class="navbar_menu">
+             <li class="navbar_item"> <a href="mellhome.jsp" class="links">Home</a> </li>
+             <li class="navbar_item"> <a href="aboutus.jsp" class="links">About Us</a> </li>
+        
+        </ul>
+      </div>
+    </nav>
     
-        <div class="header__menu">
-          <nav id="navbar" >
-            <ul class="header__elenco">
-              <li class="header__el"><a href="#" class="header__link">Home</a></li>
-              <li class="header__el"><a href="#" class="header__link">About Us</a></li>
-
-            </ul>
-          </nav>
-        </div>
-          </div>
+    
+    
         <section>
 		<div class="block"></div>
             <div class="login-wrap">
