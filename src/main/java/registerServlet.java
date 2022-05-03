@@ -172,13 +172,16 @@ public class registerServlet extends HttpServlet {
 		        		ps.setString(3, passwordConfirmed);
 		        		int rowCount = ps.executeUpdate();
 	//	        		dispatch.forward(request, response);
-		        		String cookieName = name.replace(" ", "&");
+		        		String cookieName = email.replace(" ", "&");
 		        		
 		        		Cookie cookie = new Cookie("Email", cookieName);
 		        		cookie.setMaxAge(60*60*24);
 		        		response.addCookie(cookie);
+		        		
+	
+		        		
 		        		if(!alreadySent) {
-		        			response.sendRedirect("home.html");
+		        			response.sendRedirect("mellhome.jsp");
 		        		}
 	//	        		response.sendRedirect("Shairport/form.html");
 	//	        		request.setAttribute("name", name);

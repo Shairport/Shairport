@@ -119,7 +119,7 @@ public class loginServlet extends HttpServlet {
 		        		Cookie cookie = new Cookie("Email", cookieName);
 		        		cookie.setMaxAge(60*60*24);
 		        		response.addCookie(cookie);
-	
+		        		
 	        		}
 	        		else {
 	        			PreparedStatement ps2 = connect.prepareStatement("select * from users where email = ?");
@@ -141,7 +141,7 @@ public class loginServlet extends HttpServlet {
 		            	}
 	            	}
 	        		else {
-		        		response.sendRedirect("home.html");
+		        		response.sendRedirect("mellhome.jsp");
 	        		}
 	        		
 	        }

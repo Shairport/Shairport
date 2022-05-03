@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Serial;
+import java.util.concurrent.TimeUnit;
 
 
 @WebServlet("/logoutServlet")
@@ -34,7 +35,14 @@ public class logoutServlet extends HttpServlet {
     		}
     	} 
     	// go back to index page
-    	request.getRequestDispatcher("index.jsp").include(request, response);
+    	try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//    	request.getRequestDispatcher("mellhome.jsp").include(request, response);
+    	response.sendRedirect(request.getContextPath() + "/mellhome.jsp");
     	
     }
 

@@ -51,7 +51,7 @@
         </div>
           </div>
         <section>
-<div class="block"></div>
+		<div class="block"></div>
             <div class="login-wrap">
                 <div class="login-html">
                     <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
@@ -119,5 +119,81 @@
 
 
 </body>
+
+<script>
+		function onSignIn(googleUser) {
+	        // Useful data for your client-side scripts:
+	        var profile = googleUser.getBasicProfile();
+	        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+	        console.log('Full Name: ' + profile.getName());
+	        console.log('Given Name: ' + profile.getGivenName());
+	        console.log('Family Name: ' + profile.getFamilyName());
+	        console.log("Image URL: " + profile.getImageUrl());
+	        console.log("Email: " + profile.getEmail());
+	        var name = profile.getName();
+	        var email = profile.getEmail();
+	        // The ID token you need to pass to your backend:
+	        var id_token = googleUser.getAuthResponse().id_token;
+	        document.cookie ="Email=" + email;
+	        window.location.href = "http://localhost:8080/Shairport/mellhome.jsp";
+	      }
+		
+			function onSuccess(googleUser) {
+		      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+		      onSignIn(googleUser);
+		    }
+			
+		    function onFailure(error) {
+		      console.log(error);
+		    }
+		 
+		    
+		     
+		 
+	    	function signOut() {
+	    	    var auth2 = gapi.auth2.getAuthInstance();
+	    	    auth2.signOut().then(function () {
+	    	      console.log('User signed out.');
+	    	      
+	    	    });
+	    	  }
+		      
+		    
+		    
+		      var CLIENT_ID = '414693959520-a8em47p4o4h9cjk9ca4vl383immov8i8.apps.googleusercontent.com';
+		      var API_KEY = config.API_KEY;
+		      
+		   
+		      var authorizeButton = document.getElementById('g-signin2');
+		      
+		      function handleClientLoad() {
+		        gapi.load('client:auth2', initClient);
+		      }
+		      function initClient() {
+		          gapi.client.init({
+		          apiKey: API_KEY,
+		          clientId: CLIENT_ID,
+		          discoveryDocs: DISCOVERY_DOCS,
+		          scope: SCOPES
+		        }).then(function () {
+		          // Listen for sign-in state changes.
+		          gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+		         
+		          authorizeButton.onclick = handleAuthClick;
+		        }, function(error) {
+		          appendPre(JSON.stringify(error, null, 2));
+		        });
+		      }
+		      function handleAuthClick(event) {
+		        gapi.auth2.getAuthInstance().signIn();
+		      }
+		    
+	</script>
+	
+	<script src="https://apis.google.com/js/platform.js?onload=renderButton" 
+				onload="this.onload=function(){};handleClientLoad()"
+      			onreadystatechange="if (this.readyState === 'complete') this.onload()" async defer></script>
+
+
 
 </html>

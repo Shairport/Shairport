@@ -13,7 +13,7 @@
           href="https://fonts.googleapis.com/css?family=Nunito"> -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
 </head>
-<body>
+<body onLoad="test();">
 
     <nav class="navtopbar">
       <div class="topbar">
@@ -31,13 +31,34 @@
              <li class="navbar_item"> <a href="aboutus.jsp" class="links">About Us</a> </li>
 <%--           	<%if(!loggedin){ %> --%>
 
-             <li class="navbar_item"> <a href="register.jsp" class="links" class="btn btn--white">Sign In →</a> </li>
+             <%
+    		    Cookie[] cookies = request.getCookies();
+    			boolean loggedIn = false;
+		        if(cookies != null){
+			  		for(Cookie cookie: cookies){
+			  			if(cookie.getName().equals("Email") || cookie.getName().contentEquals("GEmail")){
+			  				loggedIn = true;
+			  			}
+			  		}
+			  	}
+		        if(loggedIn){
+		        	out.println("<li class='navbar_item'> <form action='logoutServlet' method='GET'>"
+		        			+ "<button class='btn btn--white' onclick='signOut();'>Logout</button> </form> </li>");
+		        }
+		        else{
+		        	out.println("<li class='navbar_item'> <a href='register2.0.jsp' onclick='signOut()' class='links' class='btn btn--white'>Sign In</a> </li>");
+		        }%>
 <%--             <%} else { %>
             <a href="LogoutDispatcher" class="links">Sign Out</a>
             <%} %> --%>
         </ul>
       </div>
     </nav>
+    
+    
+    
+    
+    
 
 	<div class="body">
 	
@@ -58,7 +79,25 @@
 			
 	        <div class="button">
 	          <div class="button-container">
-	            <a href="register.jsp" style = "  font-size: 20px;"class="btn"><span><i class="fa fa-plane"></i>   Click here to find a ride!</span></a>
+	          	<%
+	          	boolean loggedIn2 = false;
+		        if(cookies != null){
+			  		for(Cookie cookie: cookies){
+			  			if(cookie.getName().equals("Email") || cookie.getName().contentEquals("GEmail")){
+			  				loggedIn2 = true;
+			  			}
+			  		}
+			  	}
+	          	
+	          	if(loggedIn2){
+		        	out.println("<a href='form.html' style ='font-size: 20px;'class='btn'><span><i class='fa fa-plane'></i>   Click here to find a ride!</span></a>");
+		        }
+		        else{
+		        	out.println("<a href='register2.0.jsp' style ='font-size: 20px;'class='btn'><span><i class='fa fa-plane'></i>   Click here to find a ride!</span></a>");
+		        }%>
+	          
+	          
+	            <!-- <a href="register.jsp" style = "  font-size: 20px;"class="btn"><span><i class="fa fa-plane"></i>   Click here to find a ride!</span></a> -->
 	          </div>
 	        </div>
 	     </div>
@@ -71,4 +110,61 @@
 	</div>
 
 </body>
+
+
+		<script>
+			  var auth2;
+			  var googleUser; // The current user
+			 
+			  var auth2;
+			  var profile;
+			  function test(){
+			      gapi.load('auth2', function(){
+			  	    auth2 = gapi.auth2.init({
+			  	        client_id: '414693959520-a8em47p4o4h9cjk9ca4vl383immov8i8.apps.googleusercontent.com'
+			  	    });
+			  	    auth2.attachClickHandler('signin-button', {}, onSuccess, onFailure);
+			
+			  	    auth2.isSignedIn.listen(signinChanged);
+			  	    auth2.currentUser.listen(userChanged); // This is what you use to listen for user changes
+			  	}); 
+			  }
+			 
+			
+				var signinChanged = function (val) {
+				    console.log('Signin state changed to ', val);
+					var auth2 = gapi.auth2.getAuthInstance();
+					var profile = auth2.currentUser.get().getBasicProfile();
+					console.log(profile.getName());
+					console.log(profile.getEmail());
+					const test = document.getElementsByClassName("username");
+					/* test[0].innerText = "Hello "+ profile.getName() + "!";
+					document.cookie = "name= ;"; */
+				};
+			
+				var onSuccess = function(user) {
+				    console.log('Signed in as ' + user.getBasicProfile().getName());
+				    // Redirect somewhere
+				};
+			
+				var onFailure = function(error) {
+				    console.log(error);
+				};
+			
+				function signOut() {
+				    auth2.signOut().then(function () {
+				        console.log('User signed out.');
+				    });
+				    document.cookie = "name= ; max-age=0";
+				    
+				}        
+			</script>
+ 		
+ 			<script src="https://apis.google.com/js/platform.js?onload=renderButton" 
+				onload="this.onload=function(){};handleClientLoad()"
+      			onreadystatechange="if (this.readyState === 'complete') this.onload()" async defer>
+			</script>
+
+
+
 </html>
