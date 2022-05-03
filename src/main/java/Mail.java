@@ -23,7 +23,7 @@ public class Mail extends Thread
 	//SEND EMAIL
 
 	String sendEmail;
-	String sendName;
+	
 	String ourName;
 	String matchedName;
 	String matchedPhone;
@@ -34,11 +34,12 @@ public class Mail extends Thread
 	
 	
 	 public Mail(String email,String matchedName, String matchedEmail,String name,String matchedPhone,String date) {
-			this.matchedEmail=matchedEmail;
+		 this.sendEmail=email;
+		 this.matchedEmail=matchedEmail;
 			this.matchedName=matchedName;
 			this.ourName=name;
 			this.matchedPhone=matchedPhone;
-			this.sendEmail=email;
+			
 			this.date=date;
 		}
 
@@ -82,7 +83,7 @@ public class Mail extends Thread
 	private MimeMessage draftEmail() throws AddressException, MessagingException, IOException {
 		String[] emailReceipients = {sendEmail};  //Enter list of email recepients
 		String emailSubject = "Shairport- Your ride has been paired. Ticket Update";
-		String emailBody = "Hello " + sendName +",\n\n" + "Your Ticket has been paired for your flight on " + date +". You have been matched with "+ matchedName +"\n"+ 
+		String emailBody = "Hello " + ourName +",\n\n" + "Your Ticket has been paired for your flight on " + date +". You have been matched with "+ matchedName +"\n"+ 
     			"Phone Number: " + matchedPhone +"\n" +"Email: "+ matchedEmail +"\n"+ "Steady Travels! - Shairport";
 		mimeMessage = new MimeMessage(newSession);
 		
@@ -117,4 +118,3 @@ public class Mail extends Thread
 	}
 	
 }	
-

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.Serial;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -46,7 +48,17 @@ public class carpoolServlet extends HttpServlet {
     	String name2 = request.getParameter("name2");
     	String phone1 = request.getParameter("phone1");
     	
+    	System.out.println("HYOOErer");
+    	ExecutorService exe = Executors.newCachedThreadPool();
+    	Mail mailThread = new Mail(email2, name1, email1, name2, phone1, pickupdate);
+    	exe.execute(mailThread);
+    	exe.shutdown();
+    	while(!exe.isTerminated()) {
+    		Thread.yield();
+ 
+    	}
     	
+    	System.out.println("done w thread");
     	
 		try {
 
