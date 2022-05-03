@@ -15,21 +15,57 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 
-public class Mail
+public class Mail extends Thread
 {
 
 	//SETUP MAIL SERVER PROPERTIES
 	//DRAFT AN EMAIL
 	//SEND EMAIL
-		
+
+	String sendEmail;
+	String sendName;
+	String ourName;
+	String matchedName;
+	String matchedPhone;
+	String matchedEmail;
+	String date;
 	Session newSession = null;
 	MimeMessage mimeMessage = null;
-	public static void main(String args[]) throws AddressException, MessagingException, IOException
+	
+	
+	 public Mail(String email,String matchedName, String matchedEmail,String name,String matchedPhone,String date) {
+			this.matchedEmail=matchedEmail;
+			this.matchedName=matchedName;
+			this.ourName=name;
+			this.matchedPhone=matchedPhone;
+			this.sendEmail=email;
+			this.date=date;
+		}
+
+	
+	@Override
+	public void run()
 	{
-		Mail mail = new Mail();
-		mail.setupServerProperties();
-		mail.draftEmail();
-		mail.sendEmail();
+		setupServerProperties();
+		try {
+			draftEmail();
+		} catch (AddressException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			sendEmail();
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("heh");
 	}
 
 	private void sendEmail() throws MessagingException {
@@ -44,9 +80,10 @@ public class Mail
 	}
 
 	private MimeMessage draftEmail() throws AddressException, MessagingException, IOException {
-		String[] emailReceipients = {"toannhuynh206@gmail.com"};  //Enter list of email recepients
-		String emailSubject = "Test Mail";
-		String emailBody = "Test Body of my email";
+		String[] emailReceipients = {sendEmail};  //Enter list of email recepients
+		String emailSubject = "Shairport- Your ride has been paired. Ticket Update";
+		String emailBody = "Hello " + sendName +",\n\n" + "Your Ticket has been paired for your flight on " + date +". You have been matched with "+ matchedName +"\n"+ 
+    			"Phone Number: " + matchedPhone +"\n" +"Email: "+ matchedEmail +"\n"+ "Steady Travels! - Shairport";
 		mimeMessage = new MimeMessage(newSession);
 		
 		for (int i =0 ;i<emailReceipients.length;i++)
