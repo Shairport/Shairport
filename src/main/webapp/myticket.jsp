@@ -43,7 +43,7 @@
                 border-radius: 4px;
                 box-sizing: border-box;
                 box-shadow: 0px 18px 13px -6px rgb(0 0 0 / 20%);
-            ">Sign In</a></li>
+            ">Sign InÂ</a></li>
                   </ul>
                 </nav>
               </div>
@@ -86,8 +86,7 @@
                           <h6 class="mb-0">Full Name</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                          Toan Huynh
-                        </div>
+                          ${name}          </div>
                       </div>
                       <hr>
                       <div class="row">
@@ -95,7 +94,7 @@
                           <h6 class="mb-0">Email</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                          toanh@usc.edu
+                          ${email}
                         </div>
                       </div>
                       <hr>
@@ -104,7 +103,7 @@
                           <h6 class="mb-0">Phone</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                          (239) 816-9029
+                          ${phone}
                         </div>
                       </div>
             

@@ -83,6 +83,8 @@ public class updateprofileServlet extends HttpServlet {
 		request.setAttribute("name", TicketParser.getNamefromemail(Email));
 		request.setAttribute("major", getMajor(Email));
 		request.setAttribute("gradyear", getGradyear(Email));
+		request.setAttribute("email",Email);
+		request.setAttribute("phone",TicketParser.getPhonefromemail(Email));
 		request.getRequestDispatcher("myticket.jsp").forward(request, response);
     }
 	    	
