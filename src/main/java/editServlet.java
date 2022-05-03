@@ -52,7 +52,7 @@ public class editServlet extends HttpServlet {
 		request.setAttribute("major", updateprofileServlet.getMajor(Email));
 		request.setAttribute("gradyear", updateprofileServlet.getGradyear(Email));
 		request.setAttribute("email",Email);
-		request.setAttribute("phone",TicketParser.getPhonefromemail(Email));
+		
 		request.getRequestDispatcher("profile.jsp").forward(request, response);
     }
 	    	
