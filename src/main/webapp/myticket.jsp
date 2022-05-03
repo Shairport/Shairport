@@ -64,9 +64,9 @@
                         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                         <div class="mt-3">
                           <h4>${name}</h4>
-                          <p class="text-secondary mb-1">Year: ${gradyear}</p>
-                          <p class="text-muted font-size-sm">Major: ${major}</p>
-                        
+                          <p class="text-secondary mb-1">Major: ${gradyear}</p>
+                          <p class="text-muted font-size-sm">Graduation Year: ${major}</p>
+                  
                         </div>
                        <div class="col-sm-12">
                        <form action="editServlet" method="GET">
