@@ -140,13 +140,7 @@ public class registerServlet extends HttpServlet {
 				error += " <div style=\"color:white; font-size:15px; background-color: #984dfa; width:100%; height:30px; text-align: center;\">Email already has an account</div>";
 			}
 			
-			//Check if username already in use
-	    	PreparedStatement ps3 = connect.prepareStatement("select * from users where username = ?");
-			ps3.setString(1, name);
-			ResultSet rs3 = ps3.executeQuery();
-			if(rs3.next()) {
-				error += " <div style=\"color:white; font-size:15px; background-color: #984dfa; width:100%; height:30px; text-align: center;\">Username is already in use, please pick another one</div>";
-			}
+			
     	}
     	catch(Exception e){
         	e.printStackTrace();
