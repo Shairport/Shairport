@@ -1,6 +1,4 @@
-package main.java;
-
-import main.java.util.JDBCUtil;
+import util.JDBCUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
