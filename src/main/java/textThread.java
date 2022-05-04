@@ -23,7 +23,7 @@ public class textThread extends Thread {
         Message message = Message.creator(
                 new com.twilio.type.PhoneNumber(sendNumber),
                 new com.twilio.type.PhoneNumber("+13254139073"),
-                "Shairport- There has been an update with your ride ticket. Pairing details has been emailed to your inbox.")
+                "Shairport - There has been an update with your ride ticket. Pairing details have been emailed to your inbox.")
             .create();
 
         System.out.println(message.getSid());
