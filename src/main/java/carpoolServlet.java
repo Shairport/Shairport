@@ -48,10 +48,10 @@ public class carpoolServlet extends HttpServlet {
     	String name2 = request.getParameter("name2");
     	String phone1 = request.getParameter("phone1");
     	
-    	System.out.println("HYOOErer");
+    	
     	ExecutorService exe = Executors.newCachedThreadPool();
     	Mail mailThread = new Mail(email2, name1, email1, name2, phone1, pickupdate);
-    	System.out.println(util.textAPIHELP.getAPINumber(phone2));
+    	
     	textThread text = new textThread(util.textAPIHELP.getAPINumber(phone2));
     	exe.execute(text);
     	exe.execute(mailThread);
@@ -63,7 +63,7 @@ public class carpoolServlet extends HttpServlet {
     	
     	
     	
-    	System.out.println("done w thread");
+    	
     	
 		try {
 
