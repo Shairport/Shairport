@@ -51,12 +51,17 @@ public class carpoolServlet extends HttpServlet {
     	System.out.println("HYOOErer");
     	ExecutorService exe = Executors.newCachedThreadPool();
     	Mail mailThread = new Mail(email2, name1, email1, name2, phone1, pickupdate);
+    	System.out.println(util.textAPIHELP.getAPINumber(phone2));
+    	textThread text = new textThread(util.textAPIHELP.getAPINumber(phone2));
+    	exe.execute(text);
     	exe.execute(mailThread);
     	exe.shutdown();
     	while(!exe.isTerminated()) {
     		Thread.yield();
  
     	}
+    	
+    	
     	
     	System.out.println("done w thread");
     	
