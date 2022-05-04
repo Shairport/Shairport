@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="myticket.css">
     <link rel="shortcut icon" type="image/png" href="https://image.ibb.co/fOur3b/favicon.png" />
+    <link rel="stylesheet" href="mellhome.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
@@ -71,7 +72,7 @@
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle"
+                    <img src="${imageURL}" alt="Admin" class="rounded-circle"
                       width="100px"  style = "max-width:100%;
 max-height:100%">
                     <div class="mt-3">

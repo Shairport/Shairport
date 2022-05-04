@@ -35,8 +35,7 @@
             <li class="navbar_item"> <a href="aboutus.jsp" class="links">About Us</a> </li>
             <li class='navbar_item'>
               <form action='directToTickets' method='GET'><a class='links'><button
-                    style='background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;'>My
-                    Profile</button> </a></form>
+                    style='background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;'>My Profile</button> </a></form>
             </li>
             <li class='navbar_item'>
               <form action='logoutServlet' method='GET'><a class='links'><button onclick='signOut();'
@@ -98,10 +97,37 @@
           <div class="card">
             <div class="card-body">
               <div class="d-flex flex-column align-items-center text-center">
-                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle"
-                      width="100px"  style = "max-width:100%;
-max-height:100%">
-                <form action="updateprofileServlet" method="GET">
+              <form action="updateprofileServlet" method="POST" enctype="multipart/form-data">
+                <div style="  display: inline;
+                "class="profile-picture-upload">
+				  <img src="" style="vertical-align: middle;
+				  width: 64px;
+				  height: 64px;
+				  border-radius: 60%;
+				  margin-right: 8px;
+				  -webkit-box-shadow: 0px 3px 10px 2px rgba(0, 0, 0, 0.35);
+				  -moz-box-shadow: 0px 3px 10px 2px rgba(0, 0, 0, 0.35);
+				  box-shadow: 0px 3px 10px 2px rgba(0, 0, 0, 0.35);"alt="Profile picture preview" class="imagePreview">
+				  <a style="color: #004085;
+				  border-color: #b8daff;
+				  background-color: #cce5ff;
+				      font-family: 'Kollektif', sans-serif;
+				
+				  text-decoration: none;
+				  background-color: 	#484848;
+				  color: white;
+				  padding: 2px 6px 2px 6px;
+				  border-top: 1px solid #CCCCCC;
+				  border-right: 1px solid #333333;
+				  border-bottom: 1px solid #333333;
+				  border-left: 1px solid #CCCCCC;"class="action-button mode-upload">Upload Avatar</a>
+				  <input type="file" style="position: absolute;
+				  width: 0px;
+				  height: 0px;
+				  left: -999999px;" class="hidden" name="image" />
+				</div>
+
+                
                   <div class="mt-3">
                     <h4>${name}</h4>
                     
@@ -265,6 +291,7 @@ max-height:100%">
 		onload="this.onload=function(){};handleClientLoad()"
 		onreadystatechange="if (this.readyState === 'complete') this.onload()" async defer>
 		</script>
+	  <script src ="profile.js"></script>
   
 
   </html>
