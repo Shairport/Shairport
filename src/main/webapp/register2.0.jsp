@@ -22,7 +22,7 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="414693959520-vaogaupc5phofnvp712flmqqr96ue9ai.apps.googleusercontent.com">
     <link href="register.css" rel="stylesheet">
-    <link rel="stylesheet" href="mellhome.css">
+    <link rel="stylesheet" href="aboutus.css">
 	<link rel="shortcut icon" type="image/png" href="https://image.ibb.co/fOur3b/favicon.png"/>
     <script src="reg2.css"></script>
 

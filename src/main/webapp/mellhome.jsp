@@ -35,9 +35,7 @@
 					<li class="navbar_item"> <a href="aboutus.jsp" class="links">About Us</a> </li>
 					<%-- <%if(!loggedin){ %> --%>
 
-						<% Cookie[] cookies=request.getCookies(); boolean loggedIn=false; if(cookies !=null){ for(Cookie
-							cookie: cookies){ if(cookie.getName().equals("Email") ||
-							cookie.getName().contentEquals("GEmail")){ loggedIn=true; } } } if(loggedIn){
+						<% Cookie[] cookies=request.getCookies(); boolean loggedIn=false; if(cookies !=null){ for(Cookie cookie: cookies){ if(cookie.getName().equals("Email") || cookie.getName().contentEquals("GEmail")){ loggedIn=true; } } } if(loggedIn){
 							out.println("<li class='navbar_item'><form action='directToTickets' method='GET'><a class='links'><button style='background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;'>My Profile</button> </a></form> </li>");
 							out.println("<li class='navbar_item'><form action='logoutServlet' method='GET'><a class='links'><button onclick='signOut();' style='background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;'>Logout</button></a></form></li>");
 							}
@@ -90,9 +88,9 @@
 			</div>
 
 
-			<div class="video">
+<!-- 			<div class="video">
 				<iframe width="420" height="315" src="https://www.youtube.com/embed/iik25wqIuFo"> </iframe>
-			</div>
+			</div> -->
 
 		</div>
 

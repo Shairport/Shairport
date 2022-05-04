@@ -9,7 +9,7 @@
 		<link class="stylz" rel="stylesheet" href="rs.css">
 		<link rel="shortcut icon" type="image/png" href="https://image.ibb.co/fOur3b/favicon.png" />
 		<script src="r.js"></script>
-		<link rel="stylesheet" href="mellhome.css">
+		<link rel="stylesheet" href="aboutus.css">
 		<title>Results</title>
 	</head>
 
