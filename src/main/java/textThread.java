@@ -11,7 +11,7 @@ public class textThread extends Thread {
     // Find your Account SID and Auth Token at twilio.com/console
     // and set the environment variables. See http://twil.io/secure
     public static final String ACCOUNT_SID = "AC85da2f22827797eca277869271fc2a46";
-    public static final String AUTH_TOKEN = "123abed12a56116e40156b7904fb9002";
+    public static final String AUTH_TOKEN = "629f4430327a2573574af95e5200c3b2";
     public static String sendNumber;
     public textThread(String phone) {
 		this.sendNumber=phone;
