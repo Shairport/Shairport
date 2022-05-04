@@ -15,7 +15,8 @@
     <title>My Account</title>
   </head>
 
-  <body>
+  <body onLoad="test();">
+
 
     <div>
       <nav class="navtopbar">
@@ -73,7 +74,8 @@
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle"
-                      width="150">
+                      width="100px"  style = "max-width:100%;
+max-height:100%">
                     <div class="mt-3">
                       <h4>${name}</h4>
                       <p class="text-secondary mb-1">Major: ${gradyear}</p>
@@ -150,7 +152,8 @@
                             <i class="x"><button type="submit" style="background: none;
                             color: inherit;
                             border: none;
-                            padding: 0;
+                   
+                            padding-right:6%;
                             font: inherit;
                             cursor: pointer;
                             outline: inherit;">X &nbsp &nbsp &nbsp</button></i>
@@ -188,5 +191,55 @@
       </div>
 
   </body>
+  <script>
+		var auth2;
+		var googleUser; // The current user
+		var auth2;
+		var profile;
+		function test() {
+			gapi.load('auth2', function () {
+				auth2 = gapi.auth2.init({
+					client_id: '414693959520-a8em47p4o4h9cjk9ca4vl383immov8i8.apps.googleusercontent.com'
+				});
+				auth2.attachClickHandler('signin-button', {}, onSuccess, onFailure);
+				auth2.isSignedIn.listen(signinChanged);
+				auth2.currentUser.listen(userChanged); // This is what you use to listen for user changes
+			});
+		}
+		var signinChanged = function (val) {
+			console.log('Signin state changed to ', val);
+			var auth2 = gapi.auth2.getAuthInstance();
+			var profile = auth2.currentUser.get().getBasicProfile();
+			console.log(profile.getName());
+			console.log(profile.getEmail());
+			console.log(profile.getImageUrl());
+			var link =profile.getImageUrl();
+			var img = document.getElementsByTagName("img");
+			img[1].setAttribute("src",link);
+			const test = document.getElementsByClassName("username");
+			
+			/* test[0].innerText = "Hello "+ profile.getName() + "!";
+			document.cookie = "name= ;"; */
+		};
+		var onSuccess = function (user) {
+			console.log('Signed in as ' + user.getBasicProfile().getName());
+			// Redirect somewhere
+		};
+		var onFailure = function (error) {
+			console.log(error);
+		};
+		function signOut() {
+			auth2.signOut().then(function () {
+				console.log('User signed out.');
+			});
+			document.cookie = "name= ; max-age=0";
+		}
+	</script>
+
+	<script src="https://apis.google.com/js/platform.js?onload=renderButton"
+		onload="this.onload=function(){};handleClientLoad()"
+		onreadystatechange="if (this.readyState === 'complete') this.onload()" async defer>
+		</script>
+  
 
   </html>
