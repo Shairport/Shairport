@@ -6,12 +6,14 @@
 		<meta charset="UTF-8">
 		<title>Homepage</title>
 		<link rel="stylesheet" href="mellhome.css">
+		
 		<link rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ranga">
 		<!--     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Nunito"> -->
 		<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+		<link rel="shortcut icon" type="image/png" href="https://image.ibb.co/fOur3b/favicon.png" />
 	</head>
 
 	<body onLoad="test();">
