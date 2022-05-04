@@ -13,7 +13,8 @@
 		<!--     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Nunito"> -->
 		<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
-		<link rel="shortcut icon" type="image/png" href="https://image.ibb.co/fOur3b/favicon.png" />
+				<link rel="shortcut icon" type="image/png" href="https://image.ibb.co/fOur3b/favicon.png" />
+
 	</head>
 
 	<body onLoad="test();">

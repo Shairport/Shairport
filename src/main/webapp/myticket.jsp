@@ -153,7 +153,7 @@
                             padding: 0;
                             font: inherit;
                             cursor: pointer;
-                            outline: inherit;">X</button></i>
+                            outline: inherit;">X &nbsp &nbsp &nbsp</button></i>
                           </form>
                           <i class="material-icons text-info mr-2">Ticket#</i>${tic.getticketID()}
                         </h6>
