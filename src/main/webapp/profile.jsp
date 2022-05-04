@@ -104,8 +104,24 @@ max-height:100%">
                 <form action="updateprofileServlet" method="GET">
                   <div class="mt-3">
                     <h4>${name}</h4>
-                    <p class="text-secondary mb-1"><input type="text" name=major placeholder="Graduation Year"></p>
-                    <p class="text-muted font-size-sm"><input type="text" name="gradyear" placeholder="Major"></p>
+                    
+ 
+ 				  <label class="field field_v2">
+				    <input class="field__input" placeholder="e.g. Computer Science" name="major">
+				    <span class="field__label-wrap">
+				      <span class="field__label">Major</span>
+				    </span>
+				  </label>                   
+                    <label class="field field_v1">
+				    <input class="field__input" placeholder="e.g. 2024" name="gradyear">
+				    <span class="field__label-wrap">
+				      <span class="field__label">Graduation Year</span>
+				    </span>
+				  </label>
+    
+				  
+  
+ 
                     <div class="col-sm-12">
                       <a class="btn btn-info " target="__blank"><button type="submit" style="  background: none!important;
                             border: none;

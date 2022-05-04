@@ -78,8 +78,8 @@
 max-height:100%">
                     <div class="mt-3">
                       <h4>${name}</h4>
-                      <p class="text-secondary mb-1">Major: ${gradyear}</p>
-                      <p class="text-muted font-size-sm">Graduation Year: ${major}</p>
+                      <p class="text-secondary mb-1">Major: ${major}</p>
+                      <p class="text-muted font-size-sm">Graduation Year: ${gradyear}</p>
 
                     </div>
                     <div class="col-sm-12">
