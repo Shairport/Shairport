@@ -35,8 +35,7 @@
             <li class="navbar_item"> <a href="aboutus.jsp" class="links">About Us</a> </li>
             <li class='navbar_item'>
               <form action='directToTickets' method='GET'><a class='links'><button
-                    style='background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;'>My
-                    Profile</button> </a></form>
+                    style='background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;'>My Profile</button> </a></form>
             </li>
             <li class='navbar_item'>
               <form action='logoutServlet' method='GET'><a class='links'><button onclick='signOut();'
