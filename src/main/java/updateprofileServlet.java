@@ -147,7 +147,7 @@ public class updateprofileServlet extends HttpServlet {
 			info.setString(1, email);
 			ResultSet rs = info.executeQuery();
 			rs.next();
-			System.out.println("Majorrr " + rs.getString("major"));
+			
 			return rs.getString("major");
 			
 			
