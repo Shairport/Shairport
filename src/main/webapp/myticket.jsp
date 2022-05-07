@@ -73,7 +73,7 @@
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="${imageURL}" alt="Admin" class="rounded-circle"
+                    <img src="${imageURL}" alt="" class="rounded-circle"
                       width="150">
 
                     <div class="mt-3">
