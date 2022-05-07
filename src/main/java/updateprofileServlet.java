@@ -197,7 +197,7 @@ public class updateprofileServlet extends HttpServlet {
 		catch(ClassNotFoundException e) {
 			System.out.println(e);    			
 		}
-		return "";    	
+		return "https://www.drupal.org/files/profile_default.png";    	
     }
     public String getImagename(Part file) throws IOException {
     	String imageFileName=file.getSubmittedFileName();  // get selected image file name
