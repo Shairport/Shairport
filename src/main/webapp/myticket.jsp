@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="myticket.css">
     <link rel="shortcut icon" type="image/png" href="https://image.ibb.co/fOur3b/favicon.png" />
-    <link rel="stylesheet" href="aboutus.css">
+    <link rel="stylesheet" href="mellhome.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
@@ -35,7 +35,8 @@
             <li class="navbar_item"> <a href="aboutus.jsp" class="links">About Us</a> </li>
             <li class='navbar_item'>
               <form action='directToTickets' method='GET'><a class='links'><button
-                    style='background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;'>My Profile</button> </a></form>
+                    style='background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;'>My
+                    Profile</button> </a></form>
             </li>
             <li class='navbar_item'>
               <form action='logoutServlet' method='GET'><a class='links'><button onclick='signOut();'
@@ -74,10 +75,11 @@
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="${imageURL}" alt="Admin" class="rounded-circle"
                       width="150">
+
                     <div class="mt-3">
                       <h4>${name}</h4>
-                      <p class="text-secondary mb-1">Major: ${major}</p>
-                      <p class="text-muted font-size-sm">Graduation Year: ${gradyear}</p>
+                      <p class="text-secondary mb-1">Graduation Year: ${gradyear}</p>
+                      <p class="text-muted font-size-sm">Major: ${major}</p>
 
                     </div>
                     <div class="col-sm-12">
