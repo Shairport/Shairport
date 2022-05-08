@@ -22,7 +22,7 @@ import util.JDBCUtil;
  * Servlet implementation class RegisterDispatcher
  */
 
-@WebServlet("/google")
+@WebServlet("/googleServlet")
 public class googleServlet extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -71,13 +71,14 @@ public class googleServlet extends HttpServlet {
     	Cookie[] cookies = request.getCookies();
 	  	for(Cookie cookie: cookies){
 		  	if(cookie.getName().equals("Name")) {	
-	  			name = cookie.getValue();
+	  			name = cookie.getValue().replace("&", " ");
 		  	}
 		  	if(cookie.getName().equals("Email")) {	
 	  			email = cookie.getValue();
 		  	}
 	  	}
     	
+	  	
 	  	
 	    	//Check if email already in use
 	    	Class.forName("com.mysql.cj.jdbc.Driver");

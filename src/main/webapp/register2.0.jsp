@@ -142,8 +142,16 @@
 	        var email = profile.getEmail();
 	        // The ID token you need to pass to your backend:
 	        var id_token = googleUser.getAuthResponse().id_token;
-	        document.cookie ="Email=" + email;
-	        window.location.href = "http://localhost:8080/Shairport/mellhome.jsp";
+	       
+            if (email.includes("@usc.edu")) { 
+            	document.cookie ="Email=" + email;
+            	var cookieName = name.replace(" ","&");
+	       		document.cookie = "Name=" + cookieName;
+                window.location.href="http://localhost:8080/Shairport/googleServlet";
+            } else {
+                alert("Must sign in with a valid USC Email");
+            }
+
 	      }
 		
 			function onSuccess(googleUser) {
