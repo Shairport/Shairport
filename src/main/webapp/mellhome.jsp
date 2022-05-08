@@ -78,7 +78,7 @@
 							loggedIn2=true; } } } if(loggedIn2){ out.println("<a href='form.html' style='font-size: 20px;' class='btn'><span><i class='fa fa-plane'></i> Click here to find a ride!</span></a>");
 							}
 							else{
-							out.println("<a href='register2.0.jsp' style='font-size: 20px;' class='btn'><span><i class='fa fa-plane'></i> Click here to find a ride!</span></a>");
+							out.println("<a href='register2.0.jsp' onclick='signOut()' style='font-size: 20px;' class='btn'><span><i class='fa fa-plane'></i> Click here to find a ride!</span></a>");
 							}%>
 
 
