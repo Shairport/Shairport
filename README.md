@@ -6,12 +6,16 @@ Shairport is a web application that allows USC students to find fellow students 
 
 https://youtu.be/-ujN5-CNZjk
 
+<br>
+
+## Example Pages <br>
+
 ![shairport_homepage](https://user-images.githubusercontent.com/84340435/168512972-868bc0d3-9b97-49d7-ba6c-593601dfca18.jpg)
 ![shairport_form](https://user-images.githubusercontent.com/84340435/168512991-74926fb9-7594-4c2b-8134-ddf5472f5599.jpg)
 ![shairport_results](https://user-images.githubusercontent.com/84340435/168513004-b7317b1e-8576-4df9-8256-5d6291616179.jpg)
 
 
-### Tech Stack <br>
+## Tech Stack <br>
 
 Java 14 <br>
 HTML <br>
@@ -30,7 +34,7 @@ Google smtp server <br>
 Ajax query <br>
 
 
-### Deployment Instructions <br>
+## Deployment Instructions <br>
 
 [Deployment Document.pdf](https://github.com/Shairport/Shairport/files/8696899/Deployment.Document.pdf)
 
