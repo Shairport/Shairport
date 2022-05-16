@@ -11,26 +11,26 @@ https://youtu.be/-ujN5-CNZjk
 ![shairport_results](https://user-images.githubusercontent.com/84340435/168513004-b7317b1e-8576-4df9-8256-5d6291616179.jpg)
 
 
-### Tech Stack
+### Tech Stack <br>
 
-Java 14
-HTML
-CSS
-Javascript
-Apache Tomcat v9.0.8
-MySQL v8
-JDBC v8
-JSTL v2
-Gson v2.8.6
-Google font api
-Bootstrap
-Twilio: Phone number api
-Javax Mail api
-Google smtp server
-Ajax query
+Java 14 <br>
+HTML <br>
+CSS <br>
+Javascript <br>
+Apache Tomcat v9.0.8 <br>
+MySQL v8 <br>
+JDBC v8 <br>
+JSTL v2 <br>
+Gson v2.8.6 <br>
+Google font api <br>
+Bootstrap <br>
+Twilio: Phone number api <br>
+Javax Mail api <br>
+Google smtp server <br>
+Ajax query <br>
 
 
-### Deployment Instructions
+### Deployment Instructions <br>
 
 [Deployment Document.pdf](https://github.com/Shairport/Shairport/files/8696899/Deployment.Document.pdf)
 
