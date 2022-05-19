@@ -25,7 +25,6 @@ Apache Tomcat v9.0.8 <br>
 MySQL v8 <br>
 JDBC v8 <br>
 JSTL v2 <br>
-Gson v2.8.6 <br>
 Google font api <br>
 Bootstrap <br>
 Twilio: Phone number api <br>
