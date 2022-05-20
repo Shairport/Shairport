@@ -94,25 +94,23 @@
 				<div class="firstrow">
 					<div class="person1">
 						<div class="photo">
-							<img src="mellissa.jpg" class="personphoto">
+							<img src="max.png" class="personphoto">
 						</div>
 
 						<div class="name">
-							MELLISSA ZHANG
+							MAX ALBRIGHT
 						</div>
 
 						<div class="caption">
-							Mellissa Zhang is a current sophomore at USC. <br>
-							She is a computer science and business <br>
-							administration major with a dance minor. <br>
-							She is originally from Naperville, Illinois. In <br>
-							her free time, Mellissa enjoys dancing, working <br>
-							out, making YouTube videos, and hanging out <br>
-							with friends. In the future, Mellissa hopes to go <br>
-							into product management or entrepreneurship.
+							Max Albright is a current sophomore at USC. <br>
+							He is majoring in computer science and business <br>
+							administration. Max is from Wayzata, Minnesota. <br>
+							In his free time, Max enjoys running, <br>
+							skateboarding, coding, and playing basketball. <br>
+							Max wants to be a software engineering <br>
+							manager at a tech company in the future.
 						</div>
-					</div>
-
+					</div>	
 					<div class="person2">
 						<div class="photo">
 							<img src="toan.png" class="personphoto">
@@ -131,30 +129,17 @@
 							future, Toan wants to be a CTO at a company.
 						</div>
 					</div>
+				</div>								
 
-					<div class="person3">
-						<div class="photo">
-							<img src="max.png" class="personphoto">
-						</div>
 
-						<div class="name">
-							MAX ALBRIGHT
-						</div>
 
-						<div class="caption">
-							Max Albright is a current sophomore at USC. <br>
-							He is majoring in computer science and business <br>
-							administration. Max is from Wayzata, Minnesota. <br>
-							In his free time, Max enjoys running, <br>
-							skateboarding, coding, and playing basketball. <br>
-							Max wants to be a software engineering <br>
-							manager at a tech company in the future.
-						</div>
-					</div>
-				</div>
+
+
+				
 
 				<div class="secondrow">
-					<div class="person4">
+				
+					<div class="person3">
 						<div class="photo">
 							<img src="james.png" class="personphoto">
 						</div>
@@ -172,42 +157,24 @@
 							manager or start his own company.
 						</div>
 					</div>
-
-					<div class="person5">
+					<div class="person4">
 						<div class="photo">
-							<img src="tyler.jpg" class="personphoto">
+							<img src="mellissa.jpg" class="personphoto">
 						</div>
 
 						<div class="name">
-							TYLER SEHON
+							MELLISSA ZHANG
 						</div>
 
 						<div class="caption">
-							Tyler Sehon is a junior majoring in computer <br>
-							science at USC. He is from Ventura, California. <br>
-							In his free time, Tyler enjoys surfing, drinking <br>
-							coffee, and launching rockets. Tyler wants to <br>
-							work on both systems and application level <br>
-							software for brain-computer interfaces in the <br>
-							future.
-						</div>
-					</div>
-
-					<div class="person6">
-						<div class="photo">
-							<img src="daniel.png" class="personphoto">
-						</div>
-
-						<div class="name">
-							DANIEL LOVELOCK
-						</div>
-
-						<div class="caption">
-							Daniel Lovelock is a junior majoring in computer <br>
-							science at USC. He is from Pleasanton, California. <br>
-							Daniel enjoys working out, traveling, and playing <br>
-							poker. In the future, Daniel wants to go into <br>
-							software engineering or cyber security.
+							Mellissa Zhang is a current sophomore at USC. <br>
+							She is a computer science and business <br>
+							administration major with a dance minor. <br>
+							She is originally from Naperville, Illinois. In <br>
+							her free time, Mellissa enjoys dancing, working <br>
+							out, making YouTube videos, and hanging out <br>
+							with friends. In the future, Mellissa hopes to go <br>
+							into product management or entrepreneurship.
 						</div>
 					</div>
 				</div>

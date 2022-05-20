@@ -94,6 +94,22 @@ public class Ticket {
     	} else {tobereturned+=" AM";}
     	return tobereturned;
     }
+    public static String getDisplayPickupTime(String ptime) {
+    	String tobereturned = "";
+    	String hour = ptime.substring(0,2);
+    	int hr = Integer.parseInt(hour);
+    	boolean isPM = false;
+    	if (hr > 12) {
+    		hr -= 12;
+    		isPM = true;
+    	}
+    	tobereturned += String.valueOf(hr);
+    	tobereturned += ptime.substring(2);
+    	if (isPM) {
+    		tobereturned+=" PM";
+    	} else {tobereturned+=" AM";}
+    	return tobereturned;
+    }
     
     public String getAirport() {
         return airport;
