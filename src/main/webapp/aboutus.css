@@ -138,7 +138,7 @@ img.shairport_logo:hover{
 
 
 .personphoto{
-	width: 25vw;
+	width: 21vw;
 	height: auto;
 	border-radius: 20px;
 }
@@ -147,7 +147,7 @@ img.shairport_logo:hover{
 .caption{
 	color: white;
 	font-family: "Nunito", sans-serif;
-	font-size: 1.2vw;
+	font-size: 1vw;
 }
 
 .name{

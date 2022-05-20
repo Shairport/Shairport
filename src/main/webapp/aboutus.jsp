@@ -85,7 +85,7 @@
 				</div>
 
 				<div class="subheader">
-					Meet the team of six USC students who created Shairport.
+					Meet the team of four USC students who created Shairport.
 					What started as a simple idea for a final project <br> in one of their
 					computer science classes turned into this website that you are on right now!
 
@@ -129,6 +129,47 @@
 							future, Toan wants to be a CTO at a company.
 						</div>
 					</div>
+					
+					<div class="person3">
+						<div class="photo">
+							<img src="james.png" class="personphoto">
+						</div>
+
+						<div class="name">
+							JAMES MCCOLL
+						</div>
+
+						<div class="caption">
+							James McColl is a sophomore computer <br>
+							science major at USC. He is from Wilmette, <br>
+							Illinois. James enjoys hanging out with friends, <br>
+							playing die, and hiking during his free time. In <br>
+							the future, James hopes to be a product <br>
+							manager or start his own company.
+						</div>
+					</div>
+					
+					<div class="person4">
+						<div class="photo">
+							<img src="mellissa.jpg" class="personphoto">
+						</div>
+
+						<div class="name">
+							MELLISSA ZHANG
+						</div>
+
+						<div class="caption">
+							Mellissa Zhang is a current sophomore at USC. <br>
+							She is a computer science and business <br>
+							administration major with a dance minor. <br>
+							She is originally from Naperville, Illinois. In <br>
+							her free time, Mellissa enjoys dancing, working <br>
+							out, making YouTube videos, and hanging out <br>
+							with friends. In the future, Mellissa hopes to go <br>
+							into product management or entrepreneurship.
+						</div>
+					</div>
+					
 				</div>								
 
 
@@ -137,7 +178,7 @@
 
 				
 
-				<div class="secondrow">
+<!-- 				<div class="secondrow">
 				
 					<div class="person3">
 						<div class="photo">
@@ -177,7 +218,7 @@
 							into product management or entrepreneurship.
 						</div>
 					</div>
-				</div>
+				</div> -->
 
 			</div>
 
