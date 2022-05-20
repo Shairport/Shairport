@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.Serial;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
@@ -86,15 +87,21 @@ public class carpoolServlet extends HttpServlet {
 			addCarpool.setString(10, location);
 			addCarpool.executeUpdate();
 			
-			ArrayList<Carpool> myCarpools = carpoolParser.getMyTickets(email1);
+			
 			TicketParser.removeSameDayTickets(phone1, pickupdate);
 			TicketParser.removeSameDayTickets(phone2, pickupdate);
-			request.setAttribute("name",TicketParser.getNamefromemail(email1));
-			request.setAttribute("major", updateprofileServlet.getMajor(email1));
-			request.setAttribute("gradyear", updateprofileServlet.getGradyear(email1));
-			request.setAttribute("email",email1);
-			request.setAttribute("myCarpools", myCarpools);
-			request.getRequestDispatcher("myticket.jsp").forward(request, response);
+			request.setAttribute("location",location);
+			request.setAttribute("airport",airport);
+			request.setAttribute("name1",name1);
+			request.setAttribute("name2",name2);
+			Random rand = new Random();
+			request.setAttribute("ticnum",rand.nextInt(1000));
+			request.setAttribute("pickupdate",pickupdate);
+			request.setAttribute("pickuptime",Ticket.getDisplayPickupTime(pickuptime));
+			request.setAttribute("email2",email2);
+			request.setAttribute("phone2",phone2);
+			
+			request.getRequestDispatcher("pairedPage.jsp").forward(request, response);
 			
 		} catch(SQLException e) {
 			System.out.println("YOOOO");
