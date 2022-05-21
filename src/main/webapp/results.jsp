@@ -116,7 +116,7 @@
 			border-radius: 40px;
 			cursor: pointer;
 			overflow: hidden;
-			transition: all .35s;">Request</button></span></summary>
+			transition: all .35s;">Join Ticket</button></span></summary>
 						<ul>
 							<li>
 								<div class="success">Airport<span class="failure">${tic.getAirport()}</span></div>
