@@ -22,7 +22,7 @@ CREATE TABLE `userticketbridge` (
   `ticketID` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 CREATE TABLE `carpools` (
-  `carpoolID` int NOT NULL,
+  `carpoolID` int NOT NULL AUTO_INCREMENT,
   `user1_email` varchar(45) DEFAULT NULL,
   `user1_name` varchar(45) DEFAULT NULL,
   `user1_phonenumber` varchar(45) DEFAULT NULL,
@@ -37,7 +37,6 @@ CREATE TABLE `carpools` (
   `WhoCreated` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`carpoolID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 CREATE TABLE `additionalinfo` (
   `email` varchar(45) NOT NULL,
   `gradyear` varchar(45) DEFAULT NULL,
