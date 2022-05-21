@@ -52,9 +52,6 @@ public class carpoolServlet extends HttpServlet {
     	
     	ExecutorService exe = Executors.newCachedThreadPool();
     	Mail mailThread = new Mail(email2, name1, email1, name2, phone1, pickupdate);
-    	
-    	textThread text = new textThread(util.textAPIHELP.getAPINumber(phone2));
-    	exe.execute(text);
     	exe.execute(mailThread);
     	exe.shutdown();
     	while(!exe.isTerminated()) {
@@ -73,8 +70,8 @@ public class carpoolServlet extends HttpServlet {
 			Connection con= JDBCUtil.getConnection();
 
 			PreparedStatement addCarpool = con.prepareStatement("INSERT INTO SHAIRPORT.carpools(user1_email, user1_name,"
-					+ " user1_phonenumber, user2_email, user2_name, user2_phonenumber, pickupdate, airport, pickuptime, location)"
-					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+					+ " user1_phonenumber, user2_email, user2_name, user2_phonenumber, pickupdate, airport, pickuptime, location, Confirmed, WhoCreated)"
+					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			addCarpool.setString(1, email1);
 			addCarpool.setString(2, name1);
 			addCarpool.setString(3, phone1);
@@ -85,9 +82,12 @@ public class carpoolServlet extends HttpServlet {
 			addCarpool.setString(8, airport);
 			addCarpool.setString(9, pickuptime);
 			addCarpool.setString(10, location);
+			addCarpool.setString(11, "F");
+			addCarpool.setString(12, email2);
 			addCarpool.executeUpdate();
 			
-			
+			// to send to pairedPage
+			/*
 			TicketParser.removeSameDayTickets(phone1, pickupdate);
 			TicketParser.removeSameDayTickets(phone2, pickupdate);
 			request.setAttribute("location",location);
@@ -102,6 +102,19 @@ public class carpoolServlet extends HttpServlet {
 			request.setAttribute("phone2",phone2);
 			
 			request.getRequestDispatcher("pairedPage.jsp").forward(request, response);
+			*/
+			ArrayList<Carpool> myCarpools = carpoolParser.getMyTickets(email1);
+			ArrayList<Carpool> outgoing = carpoolParser.getOutgoingRequests(email1);
+			ArrayList<Carpool> incoming = carpoolParser.getIncomingRequests(email1);
+			request.setAttribute("name",TicketParser.getNamefromemail(email1));
+			request.setAttribute("major", updateprofileServlet.getMajor(email1));
+			request.setAttribute("gradyear", updateprofileServlet.getGradyear(email1));
+			request.setAttribute("email",email1);
+			request.setAttribute("myCarpools", myCarpools);
+			request.setAttribute("outgoing", outgoing);
+			request.setAttribute("incoming", incoming);
+			request.getRequestDispatcher("myticket.jsp").forward(request, response);			
+			
 			
 		} catch(SQLException e) {
 			System.out.println("YOOOO");
