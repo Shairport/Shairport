@@ -18,9 +18,10 @@ public class carpoolParser {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con= JDBCUtil.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * from SHAIRPORT.carpools where user1_email = ? OR user2_email=?");
+			PreparedStatement ps = con.prepareStatement("SELECT * from SHAIRPORT.carpools where (user1_email = ? OR user2_email=?) AND Confirmed = ?");
 			ps.setString(1, email);
 			ps.setString(2, email);
+			ps.setString(3, "T");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Ticket t = new Ticket(rs.getInt("carpoolID"), rs.getString("pickupdate"), 
@@ -37,6 +38,63 @@ public class carpoolParser {
 			System.out.println(e);
 		}
 		return returnlist;
+	}
+	
+	public static ArrayList<Carpool> getOutgoingRequests(String email) {
+		ArrayList<Carpool> returnlist = new ArrayList<Carpool>();
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con= JDBCUtil.getConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT * from SHAIRPORT.carpools where (user1_email = ? OR user2_email=?) AND Confirmed = ? AND WhoCreated = ?");
+			ps.setString(1, email);
+			ps.setString(2, email);
+			ps.setString(3, "F");
+			ps.setString(4, email);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Ticket t = new Ticket(rs.getInt("carpoolID"), rs.getString("pickupdate"), 
+						rs.getString("airport"), rs.getString("pickuptime"), 
+						rs.getString("location"), rs.getString("user2_phonenumber"));	
+				returnlist.add(new Carpool(t, rs.getString("user1_email"),
+						rs.getString("user1_name"),rs.getString("user1_phonenumber"),
+						rs.getString("user2_email"),rs.getString("user2_name")));
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e);
+		} catch (ClassNotFoundException e) {
+			System.out.println(e);
+		}
+		return returnlist;
+		
+	}
+	public static ArrayList<Carpool> getIncomingRequests(String email) {
+		ArrayList<Carpool> returnlist = new ArrayList<Carpool>();
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con= JDBCUtil.getConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT * from SHAIRPORT.carpools where (user1_email = ? OR user2_email=?) AND Confirmed = ? AND WhoCreated != ?");
+			ps.setString(1, email);
+			ps.setString(2, email);
+			ps.setString(3, "F");
+			ps.setString(4, email);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Ticket t = new Ticket(rs.getInt("carpoolID"), rs.getString("pickupdate"), 
+						rs.getString("airport"), rs.getString("pickuptime"), 
+						rs.getString("location"), rs.getString("user2_phonenumber"));	
+				returnlist.add(new Carpool(t, rs.getString("user1_email"),
+						rs.getString("user1_name"),rs.getString("user1_phonenumber"),
+						rs.getString("user2_email"),rs.getString("user2_name")));
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e);
+		} catch (ClassNotFoundException e) {
+			System.out.println(e);
+		}
+		return returnlist;
+		
 	}
 	
 	
