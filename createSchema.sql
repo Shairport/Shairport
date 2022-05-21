@@ -33,6 +33,8 @@ CREATE TABLE `carpools` (
   `airport` varchar(45) DEFAULT NULL,
   `pickuptime` varchar(45) DEFAULT NULL,
   `location` varchar(45) DEFAULT NULL,
+  `Confirmed` varchar(45) DEFAULT NULL,
+  `WhoCreated` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`carpoolID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 CREATE TABLE `additionalinfo` (
