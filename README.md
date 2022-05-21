@@ -35,5 +35,4 @@ Ajax query <br>
 
 ## Deployment Instructions <br>
 
-[Deployment Document.pdf](https://github.com/Shairport/Shairport/files/8696899/Deployment.Document.pdf)
-
+[Deployment Document.pdf](https://github.com/Shairport/Shairport/files/8748112/Deployment.Document.1.pdf)
