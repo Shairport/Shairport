@@ -15,6 +15,13 @@ body {
 
 }
 
+
+.switch{
+  height: 5vh;
+  background-image: linear-gradient(80deg, #9a43ba 26%, #102f8e 74%);
+  display: none;
+}
+
 body {
   background-image: linear-gradient(100deg, #9a43ba 26%, #102f8e 74%);
   background-size: cover;
