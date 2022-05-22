@@ -41,6 +41,15 @@ public class acceptServlet extends HttpServlet {
     	String pickupdate = request.getParameter("pickupdate");
     	String email1 = request.getParameter("email1");
     	String email2 = request.getParameter("email2");
+    	String location = request.getParameter("location");
+    	String airport = request.getParameter("airport");
+    	String name1 = request.getParameter("name1");
+    	String name2 = request.getParameter("name2");
+    	String pickuptime = request.getParameter("pickuptime");
+    	String phone2 = request.getParameter("phone2");
+    	
+    	
+    	
     	Integer ticketID = Integer.parseInt(tickettID);
     	Integer carpoolID = Integer.parseInt(carpoollID);
     	try {
@@ -87,6 +96,7 @@ public class acceptServlet extends HttpServlet {
     		TicketParser.removeSameDayTickets(phone, pickupdate);
     	}
 		
+    	/*
 
 		ArrayList<Carpool> myCarpools = carpoolParser.getMyTickets(email1);
 		ArrayList<Carpool> outgoing = carpoolParser.getOutgoingRequests(email1);
@@ -100,7 +110,18 @@ public class acceptServlet extends HttpServlet {
 		request.setAttribute("incoming", incoming);
 		request.getRequestDispatcher("myticket.jsp").forward(request, response);			
 		
-			
+		*/
+		request.setAttribute("location",location);
+		request.setAttribute("airport",airport);
+		request.setAttribute("name1",name1);
+		request.setAttribute("name2",name2);
+		request.setAttribute("ticnum",ticketID);
+		request.setAttribute("pickupdate",pickupdate);
+		request.setAttribute("pickuptime",pickuptime);
+		request.setAttribute("email2",email2);
+		request.setAttribute("phone2",phone2);
+		
+		request.getRequestDispatcher("pairedPage.jsp").forward(request, response);   	
 
 
 }
