@@ -60,15 +60,17 @@ public class TicketParser {
 			PreparedStatement ps = con.prepareStatement("SELECT * from SHAIRPORT.userticketbridge where email = ?");
 			ps.setString(1, email);
 			ResultSet rs = ps.executeQuery();
-			rs.next();
-			int tic = rs.getInt("ticketID");
-			ps = con.prepareStatement("SELECT * from SHAIRPORT.tickets where ticketID = ?");
-			ps.setInt(1, tic);
-			rs = ps.executeQuery();
+			ArrayList<Integer> ids = new ArrayList<Integer>();
 			while (rs.next()) {
-				phones.add(rs.getString("phonenumber"));
+				ids.add(rs.getInt("ticketID"));
 			}
-			
+			for (Integer i : ids) {
+				ps = con.prepareStatement("SELECT * from SHAIRPORT.tickets where ticketID = ?");
+				ps.setInt(1, i);
+				rs = ps.executeQuery();	
+				rs.next();
+				phones.add(rs.getString("phonenumber"));
+			}	
 
 		} catch (SQLException e) {
 			System.out.println(e);
@@ -77,6 +79,7 @@ public class TicketParser {
 		}
 		return phones;			
 	}
+
 	
 	
 	public static ArrayList<Ticket> getTicketstoDisplay(Ticket tic) {
@@ -130,26 +133,38 @@ public class TicketParser {
 	
 	
 	// removes from the database all tickets on this date with this email
-	public static void removeSameDayTickets(String phone, String date) {
+	public static void removeSameDayTickets(String email1, String email2, String date) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con= JDBCUtil.getConnection();
-			PreparedStatement getticIDS = con.prepareStatement("SELECT * from Shairport.tickets where phonenumber = ? and pickupdate = ? ");
-			getticIDS.setString(1, phone);
-			getticIDS.setString(2, date);
+			PreparedStatement getticIDS = con.prepareStatement("SELECT * from Shairport.userticketbridge where email = ?  OR email = ?");
+			getticIDS.setString(1, email1);
+			getticIDS.setString(2, email2);
 			ResultSet rs = getticIDS.executeQuery();
-			ArrayList<Integer> idstodelete = new ArrayList<Integer>();
+			ArrayList<Integer> ids_w_email = new ArrayList<Integer>();
 			while (rs.next()) {
-				idstodelete.add(rs.getInt("ticketID"));
+				ids_w_email.add(rs.getInt("ticketID"));
 			}
-
-			for (Integer id: idstodelete) {
-				System.out.println(id);
+			
+			ArrayList<Integer> toDelete = new ArrayList<Integer>();
+			for (Integer id : ids_w_email) {
+				
+				PreparedStatement ds = con.prepareStatement("Select * from Shairport.tickets where ticketID = ? AND pickupdate = ?");
+				ds.setInt(1, id);	
+				ds.setString(2, date);
+				rs = ds.executeQuery();
+				while (rs.next()) {
+					toDelete.add(rs.getInt("ticketID"));
+				}
+			}
+				
+			for (Integer id: toDelete) {
+				System.out.println("ID being Deleted: " + id);
 				PreparedStatement ds = con.prepareStatement("SET SQL_SAFE_UPDATES = 0;");		
 				ds.executeUpdate();
 				
 				
-				 ds = con.prepareStatement("Delete from Shairport.tickets where ticketID = ?");
+				ds = con.prepareStatement("Delete from Shairport.tickets where ticketID = ?");
 				ds.setInt(1, id);	
 				ds.executeUpdate();
 				

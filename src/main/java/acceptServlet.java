@@ -74,6 +74,10 @@ public class acceptServlet extends HttpServlet {
 			ds.setInt(1, ticketID);
 			ds.executeUpdate();
 			
+			ds = con.prepareStatement("Delete from Shairport.userticketbridge where ticketID = ?");
+			ds.setInt(1, ticketID);
+			ds.executeUpdate();
+			
 			ds = con.prepareStatement("SET SQL_SAFE_UPDATES = 1;");	
 			ds.executeUpdate();	
     		
@@ -87,14 +91,10 @@ public class acceptServlet extends HttpServlet {
 			System.out.println(e);    			
 		}
 
+		TicketParser.removeSameDayTickets(email1, email2, pickupdate);
 
     	
-    	for (String phone : TicketParser.getAllPhonesFromEmail(email1) ) {
-    		TicketParser.removeSameDayTickets(phone, pickupdate);
-    	}
-    	for (String phone : TicketParser.getAllPhonesFromEmail(email2) ) {
-    		TicketParser.removeSameDayTickets(phone, pickupdate);
-    	}
+
 		
     	/*
 
