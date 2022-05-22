@@ -133,6 +133,9 @@
                         <li>
                           <div >Arrival Time<span class="failure">${tic.getDisplayPickupTime()}</span></div>
                         </li>
+                        <li>
+                          <div >Pickup Location<span class="failure">${tic.getLocation()}</span></div>
+                        </li>                        
                       </ul>
                     </details>
                   
@@ -177,6 +180,9 @@
                             <li>
                               <div >Arrival Time<span class="failure">${tic.getDisplayPickupTime()}</span></div>
                             </li>
+	                        <li>
+	                          <div >Pickup Location<span class="failure">${tic.getLocation()}</span></div>
+	                        </li>                                 
                             <li>
 	                            <form action="acceptServlet" method="GET">
 				                    <input type="hidden" name="email1" value="${tic.getUser2_email()}" />
