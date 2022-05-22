@@ -6,7 +6,7 @@
 		<meta charset="UTF-8">
 		<title>Homepage</title>
 		<link rel="stylesheet" href="mellhome.css">
-		<meta name="google-signin-client_id" content="414693959520-a8em47p4o4h9cjk9ca4vl383immov8i8.apps.googleusercontent.com">
+		<meta name="google-signin-client_id" content="484620768676-9n9pph8aer4jv4il9fcp2bb8j1j508ob.apps.googleusercontent.com">
 		<link rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ranga">
@@ -105,7 +105,7 @@
 		function test() {
 			gapi.load('auth2', function () {
 				auth2 = gapi.auth2.init({
-					client_id: '414693959520-a8em47p4o4h9cjk9ca4vl383immov8i8.apps.googleusercontent.com'
+					client_id: '484620768676-9n9pph8aer4jv4il9fcp2bb8j1j508ob.apps.googleusercontent.com'
 				});
 				auth2.attachClickHandler('signin-button', {}, onSuccess, onFailure);
 				auth2.isSignedIn.listen(signinChanged);
