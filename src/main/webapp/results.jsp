@@ -98,10 +98,7 @@
 					<input type="hidden" name="pickuptime" value="${tic.getMilitaryPickuptime()}" />
 					<input type="hidden" name="location" value="${tic.getLocation()}" />
 					<details>
-						<summary class="success">${tic.getPickupdate()} ${tic.getDisplayPickupTime()} &nbsp; &nbsp;
-							&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-							&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-							&nbsp; &nbsp; &nbsp; &nbsp;<span> <button class="button" type="submit" style=" font-family: 'Ubuntu', sans-serif;
+						<summary class="success">${tic.getPickupdate()} ${tic.getDisplayPickupTime()} <span style="margin-left:68%;"> <button class="button" type="submit" style=" font-family: 'Ubuntu', sans-serif;
 			position: absolute;
 			transform: translate(-50%, -50%);
 			margin-top: 9px;
