@@ -47,11 +47,14 @@ public class acceptServlet extends HttpServlet {
     	String name2 = request.getParameter("name2");
     	String pickuptime = request.getParameter("pickuptime");
     	String phone2 = request.getParameter("phone2");
+    	String phone1 = request.getParameter("phone1");
     	
     	
     	
     	Integer ticketID = Integer.parseInt(tickettID);
     	Integer carpoolID = Integer.parseInt(carpoollID);
+    	Mail mail = new Mail(email2, name1, email1, name2, phone1, pickupdate);
+    	mail.someoneacceptedyourRequest();
     	try {
     		Class.forName("com.mysql.cj.jdbc.Driver");
     		

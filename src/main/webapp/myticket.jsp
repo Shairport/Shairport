@@ -194,7 +194,7 @@
 				                    <input type="hidden" name="pickuptime" value="${tic.getDisplayPickupTime()}" /> 
 				                    <input type="hidden" name="email2" value="${tic.getUser1_email()}" />
 				                    <input type="hidden" name="phone2" value="${tic.getUser1_phonenumber()}" />
-				                    
+				                    <input type="hidden" name="phone1" value="${tic.getUser2_phonenumber()}" />
 				                    <input type="hidden" name="carpoolID" value="${tic.getCarpoolID()}" />   
 				                    <input type="hidden" name="email1" value="${tic.getUser2_email()}" />
 				                    

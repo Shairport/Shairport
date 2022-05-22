@@ -52,13 +52,8 @@ public class carpoolServlet extends HttpServlet {
     	
     	
     	ExecutorService exe = Executors.newCachedThreadPool();
-    	Mail mailThread = new Mail(email2, name1, email1, name2, phone1, pickupdate);
-    	exe.execute(mailThread);
-    	exe.shutdown();
-    	while(!exe.isTerminated()) {
-    		Thread.yield();
- 
-    	}
+    	Mail mail = new Mail(email2, name1, email1, name2, phone1, pickupdate);
+    	mail.someonerequestedyourTicket();
     	
     	
     	
