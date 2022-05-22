@@ -91,7 +91,8 @@
 					<input type="hidden" name="email2" value="${tic.getEmailonTicket()}" />
 					<input type="hidden" name="name2" value="${tic.getNameonTicket()}" />
 					<input type="hidden" name="phone2" value="${tic.getPhonenumber()}" />
-
+					<input type="hidden" name="ticketID" value="${tic.getTicketID()}" />
+					
 					<input type="hidden" name="pickupdate" value="${tic.getPickupdate()}" />
 					<input type="hidden" name="airport" value="${tic.getAirport()}" />
 					<input type="hidden" name="pickuptime" value="${tic.getMilitaryPickuptime()}" />
@@ -116,7 +117,7 @@
 			border-radius: 40px;
 			cursor: pointer;
 			overflow: hidden;
-			transition: all .35s;">Join Ticket</button></span></summary>
+			transition: all .35s;">Request to Join Ticket</button></span></summary>
 						<ul>
 							<li>
 								<div class="success">Airport<span class="failure">${tic.getAirport()}</span></div>

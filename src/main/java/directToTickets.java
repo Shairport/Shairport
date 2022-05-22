@@ -39,12 +39,16 @@ public class directToTickets extends HttpServlet {
     		}
     	} 		
 		ArrayList<Carpool> myCarpools = carpoolParser.getMyTickets(email);
+		ArrayList<Carpool> outgoing = carpoolParser.getOutgoingRequests(email);
+		ArrayList<Carpool> incoming = carpoolParser.getIncomingRequests(email);
 		request.setAttribute("myCarpools", myCarpools);
 		request.setAttribute("name", TicketParser.getNamefromemail(email));
 		request.setAttribute("major", updateprofileServlet.getMajor(email));
 		request.setAttribute("imageURL",updateprofileServlet.getImage(email));
 		request.setAttribute("gradyear", updateprofileServlet.getGradyear(email));
 		request.setAttribute("email",email);
+		request.setAttribute("outgoing", outgoing);
+		request.setAttribute("incoming", incoming);
 		request.getRequestDispatcher("myticket.jsp").forward(request, response);
 		
 	}

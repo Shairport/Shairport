@@ -48,6 +48,7 @@ public class carpoolServlet extends HttpServlet {
     	String name1 = request.getParameter("name1");
     	String name2 = request.getParameter("name2");
     	String phone1 = request.getParameter("phone1");
+    	String ticketID = request.getParameter("ticketID");
     	
     	
     	ExecutorService exe = Executors.newCachedThreadPool();
@@ -70,8 +71,9 @@ public class carpoolServlet extends HttpServlet {
 			Connection con= JDBCUtil.getConnection();
 
 			PreparedStatement addCarpool = con.prepareStatement("INSERT INTO SHAIRPORT.carpools(user1_email, user1_name,"
-					+ " user1_phonenumber, user2_email, user2_name, user2_phonenumber, pickupdate, airport, pickuptime, location, Confirmed, WhoCreated)"
-					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+					+ " user1_phonenumber, user2_email, user2_name, user2_phonenumber, pickupdate, airport, pickuptime, location, "
+					+ "Confirmed, WhoCreated, ticketID)"
+					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			addCarpool.setString(1, email1);
 			addCarpool.setString(2, name1);
 			addCarpool.setString(3, phone1);
@@ -84,6 +86,7 @@ public class carpoolServlet extends HttpServlet {
 			addCarpool.setString(10, location);
 			addCarpool.setString(11, "F");
 			addCarpool.setString(12, email2);
+			addCarpool.setString(13, ticketID);
 			addCarpool.executeUpdate();
 			
 			// to send to pairedPage

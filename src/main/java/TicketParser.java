@@ -52,6 +52,31 @@ public class TicketParser {
 		}
 		return "";		
 	}
+	public static ArrayList<String> getAllPhonesFromEmail(String email) {
+		ArrayList<String> phones = new ArrayList<String>();
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con= JDBCUtil.getConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT * from SHAIRPORT.userticketbridge where email = ?");
+			ps.setString(1, email);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			int tic = rs.getInt("ticketID");
+			ps = con.prepareStatement("SELECT * from SHAIRPORT.tickets where ticketID = ?");
+			ps.setInt(1, tic);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				phones.add(rs.getString("phonenumber"));
+			}
+			
+
+		} catch (SQLException e) {
+			System.out.println(e);
+		} catch (ClassNotFoundException e) {
+			System.out.println(e);
+		}
+		return phones;			
+	}
 	
 	
 	public static ArrayList<Ticket> getTicketstoDisplay(Ticket tic) {

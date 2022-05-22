@@ -105,45 +105,40 @@
               font-weight: bold"
               
            class="card mt-6">
-                Pending Requests <br>
+                Pending Outgoing Requests <br>
                 </div>
 
                 <!-- FOR EACH SHOULD START HERE-->
+                <c:forEach var="tic" items="${outgoing}">
+               
                 <div style="text-align: center; padding: 3%;"class="requests">
                   <container>
-                    <form>
-                    <input type="hidden" name="email1" value="${user1email}" />
-                    <input type="hidden" name="name1" value="${user1name}" />
-                    <input type="hidden" name="phone1" value="${user1phone}" />
-                    <input type="hidden" name="email2" value="${tic.getEmailonTicket()}" />
-                    <input type="hidden" name="name2" value="${tic.getNameonTicket()}" />
-                    <input type="hidden" name="phone2" value="${tic.getPhonenumber()}" />
-          
-                    <input type="hidden" name="pickupdate" value="${tic.getPickupdate()}" />
-                    <input type="hidden" name="airport" value="${tic.getAirport()}" />
-                    <input type="hidden" name="pickuptime" value="${tic.getMilitaryPickuptime()}" />
-                    <input type="hidden" name="location" value="${tic.getLocation()}" />
+                    
+                    <input type="hidden" name="email1" value="${tic.getUser1_email()}" />
+                    <input type="hidden" name="ticketID" value="${tic.getTicketID()}" />
+                    <input type="hidden" name="carpoolID" value="${tic.getCarpoolID()}" />
                     <details>
                       <summary style="background-color: none";="success">
 
                         <i class="fa fa-hourglass" style="font-size:20px; margin-right: 2%;"></i>
-                        Request to Max</summary>
+                        Request to ${tic.getUser2_name()}</summary>
                       <ul>
                         <li>
                           <div >Airport<span class="failure">${tic.getAirport()}</span></div>
                         </li>
                         <li>
-                          <div >Flight Date<span class="failure">${tic.getAirport()}</span></div>
+                          <div >Flight Date<span class="failure">${tic.getPickupdate()}</span></div>
 
                         </li>
                         <li>
-                          <div >Arrival Time<span class="failure">${tic.getAirport()}</span></div>
+                          <div >Arrival Time<span class="failure">${tic.getDisplayPickupTime()}</span></div>
                         </li>
                       </ul>
                     </details>
-                  </form>
+                  
               </container>
                 </div>
+                </c:forEach>
                                   <!-- FOR EACH SHOULD END HERE-->
 
 
@@ -158,65 +153,69 @@
                 <div style="font-family: Lato, sans-serif;
               color: #9a43ba;
               text-align: center; display: flex; font-weight: bold;" class="card mt-6">
-                Incoming Request <br>
+                Incoming Requests <br>
                 </div>
 
              <!-- FOR EACH STARTS HERE-->
-
+				<c:forEach var="tic" items="${incoming}">
+				
                 <div style="text-align: center; padding: 3%;" class="card-b3ody">
                   <container>
-                        <input type="hidden" name="email1" value="${user1email}" />
-                        <input type="hidden" name="name1" value="${user1name}" />
-                        <input type="hidden" name="phone1" value="${user1phone}" />
-                        <input type="hidden" name="email2" value="${tic.getEmailonTicket()}" />
-                        <input type="hidden" name="name2" value="${tic.getNameonTicket()}" />
-                        <input type="hidden" name="phone2" value="${tic.getPhonenumber()}" />
-              
-                        <input type="hidden" name="pickupdate" value="${tic.getPickupdate()}" />
-                        <input type="hidden" name="airport" value="${tic.getAirport()}" />
-                        <input type="hidden" name="pickuptime" value="${tic.getMilitaryPickuptime()}" />
-                        <input type="hidden" name="location" value="${tic.getLocation()}" />
                         <details>
                           <summary style="background-color: none";="success">
-                      <form>
+                      
                             <i class="fa fa-arrow-circle-down" style="font-size:20px; margin-right: 2%;"></i>
-                            Requested By Toan</summary>
+                            Requested By ${tic.getUser1_name()} </summary>
                           <ul>
                             <li>
                               <div >Airport<span class="failure">${tic.getAirport()}</span></div>
                             </li>
                             <li>
-                              <div >Flight Date<span class="failure">${tic.getAirport()}</span></div>
+                              <div >Flight Date<span class="failure">${tic.getPickupdate()}</span></div>
 
                             </li>
                             <li>
-                              <div >Arrival Time<span class="failure">${tic.getAirport()}</span></div>
+                              <div >Arrival Time<span class="failure">${tic.getDisplayPickupTime()}</span></div>
                             </li>
                             <li>
-                              <div class="success"><button style="background: none;
-                                color: inherit;
+	                            <form action="acceptServlet" method="GET">
+				                    <input type="hidden" name="email1" value="${tic.getUser2_email()}" />
+				                    <input type="hidden" name="ticketID" value="${tic.getTicketID()}" />
+				                    <input type="hidden" name="carpoolID" value="${tic.getCarpoolID()}" />   
+				                    <input type="hidden" name="email2" value="${tic.getUser1_email()}" />
+				               
+				                    <input type="hidden" name="pickupdate" value="${tic.getPickupdate()}" />                       
+	                              <div class="success"><button type="submit" style="background: none;
+	                                color: rgb(0, 175, 73);
+	                                border: none;
+	                                padding: 0;
+	                                font: inherit;
+	                                cursor: pointer;
+	                                outline: inherit;">Accept </button>
+	                              </div>
+                            	</form>
+                            </li>
+                            <li>
+                             <form action="declineServlet" method="GET">
+				                    <input type="hidden" name="email1" value="${tic.getUser2_email()}" />
+				                    <input type="hidden" name="ticketID" value="${tic.getTicketID()}" />
+				                    <input type="hidden" name="carpoolID" value="${tic.getCarpoolID()}" />                             
+                              <div class="failure"><button type = "submit" style="background: none;
+                                color: red;
                                 border: none;
                                 padding: 0;
                                 font: inherit;
                                 cursor: pointer;
-                                outline: inherit;"><a href ="#" style="color: rgb(0, 175, 73)";>Accept</a> </button></form>
+                                outline: inherit;">Decline</button>
                               </div>
-                            </li>
-                            <li>
-                              <div class="failure"><button style="background: none;
-                                color: inherit;
-                                border: none;
-                                padding: 0;
-                                font: inherit;
-                                cursor: pointer;
-                                outline: inherit;"><a href ="#" style="color: red";>Decline</a> </button>
-                              </div>
+                              </form>
                             </li>
                           </ul>
                         </details>
                   </container>
               
                 </div>
+                </c:forEach>
              <!-- FOR EACH ENDS HERE-->
                 
                 
@@ -286,7 +285,7 @@
                           cursor: pointer;
                           outline: inherit;">X &nbsp &nbsp &nbsp</button></i>
                         </form>
-                        <i class="material-icons text-info mr-2">Ticket#</i>${tic.getticketID()}
+                        <i class="material-icons text-info mr-2">Carpool#</i>${tic.getCarpoolID()}
                       </h6>
                       <small>Airport Arrival Time: </small> <span class="text"> ${tic.getDisplayPickupTime() }</span>
                       <hr>

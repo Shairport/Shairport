@@ -6,8 +6,10 @@ public class Carpool {
 	private String user1_phonenumber;
 	private String user2_email;
 	private String user2_name;	
+	private int carpoolID;
 	
-	public Carpool(Ticket tic, String email1, String name1, String phone1, String email2, String name2) {
+	public Carpool(int carpoolID, Ticket tic, String email1, String name1, String phone1, String email2, String name2) {
+		this.carpoolID = carpoolID;
 		originalTicket = tic;
 		user1_email = email1;
 		user1_name = name1;
@@ -15,6 +17,9 @@ public class Carpool {
 		user2_email = email2;
 		user2_name = name2;
 		
+	}
+	public int getCarpoolID() {
+		return carpoolID;
 	}
 	public String getUser1_email() {
 		return user1_email;
@@ -55,7 +60,7 @@ public class Carpool {
 	public String getPickupdate() {
 		return originalTicket.getPickupdate();
 	}
-	public String getticketID(){
+	public String getTicketID(){
 		return Integer.toString(originalTicket.getTicketID());
 	}
 
