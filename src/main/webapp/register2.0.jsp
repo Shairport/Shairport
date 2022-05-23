@@ -99,7 +99,7 @@
 	        // The ID token you need to pass to your backend:
 	        var id_token = googleUser.getAuthResponse().id_token;
 	       
-            if (email.includes("@")) { 
+            if (email.includes("@usc.edu")) { 
             	document.cookie ="Email=" + email;
             	var cookieName = name.replace(" ","&");
 	       		document.cookie = "Name=" + cookieName;
