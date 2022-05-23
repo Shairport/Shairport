@@ -50,8 +50,6 @@ public class carpoolServlet extends HttpServlet {
     	String phone1 = request.getParameter("phone1");
     	String ticketID = request.getParameter("ticketID");
     	
-    	
-    	ExecutorService exe = Executors.newCachedThreadPool();
     	Mail mail = new Mail(email2, name1, email1, name2, phone1, pickupdate);
     	mail.someonerequestedyourTicket();
     	

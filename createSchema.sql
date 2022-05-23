@@ -41,6 +41,6 @@ CREATE TABLE `carpools` (
 CREATE TABLE `additionalinfo` (
   `email` varchar(45) NOT NULL,
   `gradyear` varchar(45) DEFAULT NULL,
-  `major` varchar(45) DEFAULT NULL,
-  `image` varchar(1000) DEFAULT NULL
+  `major` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
