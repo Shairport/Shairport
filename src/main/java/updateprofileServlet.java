@@ -46,10 +46,7 @@ public class updateprofileServlet extends HttpServlet {
     	response.setContentType("text/html");
     	
     	
-    	System.out.println("In do post method of Add Image servlet.");
-		Part file=request.getPart("image");
-		String image = getImagename(file);
-		System.out.println(image);
+
 		
 		
 	
@@ -99,11 +96,11 @@ public class updateprofileServlet extends HttpServlet {
 				addinfo.executeUpdate();
 			}
 			
-			PreparedStatement addinfo = con.prepareStatement("INSERT INTO SHAIRPORT.additionalinfo(email, gradyear, major, image) VALUES (?, ?, ?, ?)");
+			PreparedStatement addinfo = con.prepareStatement("INSERT INTO SHAIRPORT.additionalinfo(email, gradyear, major) VALUES (?, ?, ?)");
 			addinfo.setString(1, Email);
 			addinfo.setString(2, gradyear);
 			addinfo.setString(3, major);
-			addinfo.setString(4, image);
+			
 			addinfo.executeUpdate();
 
 			
@@ -120,7 +117,6 @@ public class updateprofileServlet extends HttpServlet {
 		request.setAttribute("major", getMajor(Email));
 		request.setAttribute("gradyear", getGradyear(Email));
 		request.setAttribute("email",Email);
-		request.setAttribute("imageURL",getImage(Email));
 		request.setAttribute("phone",TicketParser.getPhonefromemail(Email));
 		request.getRequestDispatcher("myticket.jsp").forward(request, response);
     }
@@ -179,78 +175,5 @@ public class updateprofileServlet extends HttpServlet {
 		}
 		return "";    	
     }
-    public static String getImage(String email) {
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			
-			Connection con= JDBCUtil.getConnection();
 
-			PreparedStatement info = con.prepareStatement("SELECT * from SHAIRPORT.additionalinfo where email =?");
-			info.setString(1, email);
-			ResultSet rs = info.executeQuery();
-			rs.next();
-			return rs.getString("image");
-			
-		} catch(SQLException e) {
-			System.out.println(e);
-		}
-		catch(ClassNotFoundException e) {
-			System.out.println(e);    			
-		}
-		return "https://www.drupal.org/files/profile_default.png";    	
-    }
-    public String getImagename(Part file) throws IOException {
-    	String imageFileName=file.getSubmittedFileName();  // get selected image file name
-		System.out.println("Selected Image File Name : "+imageFileName);
-		String imageInsert="";
-		if(!imageFileName.equals("")) {
-			imageInsert = "images/"+imageFileName;
-			File f = new File(getServletContext().getRealPath("/images"));
-			StringBuilder start = new StringBuilder(f.getAbsolutePath());
-			start=start.reverse();
-			int c =0;
-			while(true) {
-				String temp="";
-				String lastchar=String.valueOf(start.charAt(c));
-				String restart="x";
-				while(!restart.equals("/")) {
-					temp=temp+lastchar;
-					System.out.println(temp);
-					restart=String.valueOf(temp.charAt(temp.length()-1));
-					c++;
-					lastchar=String.valueOf(start.charAt(c));
-				}
-				if(temp.equals("atadatem./")) {
-					f=f.getParentFile();
-					break;
-				}
-				f=f.getParentFile();
-			}
-			
-			
-			String directory = f.getAbsolutePath() + "/Shairport/src/main/webapp/images/";
-	
-			
-			
-			System.out.println(f.getAbsolutePath());
-			
-			String uploadPath=directory +imageFileName;  // upload path where we have to upload our actual image
-			System.out.println("Upload Path : "+uploadPath);
-			
-			// Uploading our selected image into the images folder
-			
-			
-			FileOutputStream fos=new FileOutputStream(uploadPath);
-			InputStream is=file.getInputStream();
-			
-			byte[] data=new byte[is.available()];
-			is.read(data);
-			fos.write(data);
-			fos.close();
-			return imageInsert;
-		} else {
-			return "https://www.drupal.org/files/profile_default.png";
-		}
-    	
-    }
 }

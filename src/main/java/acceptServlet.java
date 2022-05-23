@@ -41,8 +41,20 @@ public class acceptServlet extends HttpServlet {
     	String pickupdate = request.getParameter("pickupdate");
     	String email1 = request.getParameter("email1");
     	String email2 = request.getParameter("email2");
+    	String location = request.getParameter("location");
+    	String airport = request.getParameter("airport");
+    	String name1 = request.getParameter("name1");
+    	String name2 = request.getParameter("name2");
+    	String pickuptime = request.getParameter("pickuptime");
+    	String phone2 = request.getParameter("phone2");
+    	String phone1 = request.getParameter("phone1");
+    	
+    	
+    	
     	Integer ticketID = Integer.parseInt(tickettID);
     	Integer carpoolID = Integer.parseInt(carpoollID);
+    	Mail mail = new Mail(email2, name1, email1, name2, phone1, pickupdate);
+    	mail.someoneacceptedyourRequest();
     	try {
     		Class.forName("com.mysql.cj.jdbc.Driver");
     		
@@ -65,6 +77,10 @@ public class acceptServlet extends HttpServlet {
 			ds.setInt(1, ticketID);
 			ds.executeUpdate();
 			
+			ds = con.prepareStatement("Delete from Shairport.userticketbridge where ticketID = ?");
+			ds.setInt(1, ticketID);
+			ds.executeUpdate();
+			
 			ds = con.prepareStatement("SET SQL_SAFE_UPDATES = 1;");	
 			ds.executeUpdate();	
     		
@@ -78,15 +94,12 @@ public class acceptServlet extends HttpServlet {
 			System.out.println(e);    			
 		}
 
+		TicketParser.removeSameDayTickets(email1, email2, pickupdate);
 
     	
-    	for (String phone : TicketParser.getAllPhonesFromEmail(email1) ) {
-    		TicketParser.removeSameDayTickets(phone, pickupdate);
-    	}
-    	for (String phone : TicketParser.getAllPhonesFromEmail(email2) ) {
-    		TicketParser.removeSameDayTickets(phone, pickupdate);
-    	}
+
 		
+    	/*
 
 		ArrayList<Carpool> myCarpools = carpoolParser.getMyTickets(email1);
 		ArrayList<Carpool> outgoing = carpoolParser.getOutgoingRequests(email1);
@@ -100,7 +113,18 @@ public class acceptServlet extends HttpServlet {
 		request.setAttribute("incoming", incoming);
 		request.getRequestDispatcher("myticket.jsp").forward(request, response);			
 		
-			
+		*/
+		request.setAttribute("location",location);
+		request.setAttribute("airport",airport);
+		request.setAttribute("name1",name1);
+		request.setAttribute("name2",name2);
+		request.setAttribute("ticnum",ticketID);
+		request.setAttribute("pickupdate",pickupdate);
+		request.setAttribute("pickuptime",pickuptime);
+		request.setAttribute("email2",email2);
+		request.setAttribute("phone2",phone2);
+		
+		request.getRequestDispatcher("pairedPage.jsp").forward(request, response);   	
 
 
 }

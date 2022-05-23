@@ -75,7 +75,7 @@
             <div class="card">
               <div class="card-body">
                 <div class="d-flex flex-column align-items-center text-center">
-                  <img src="${imageURL}" alt="Admin" class="rounded-circle"
+                  <img src="${imageURL}" alt="" class="rounded-circle"
                     width="150">
 
                   <div class="mt-3">
@@ -133,6 +133,9 @@
                         <li>
                           <div >Arrival Time<span class="failure">${tic.getDisplayPickupTime()}</span></div>
                         </li>
+                        <li>
+                          <div >Pickup Location<span class="failure">${tic.getLocation()}</span></div>
+                        </li>                        
                       </ul>
                     </details>
                   
@@ -177,14 +180,26 @@
                             <li>
                               <div >Arrival Time<span class="failure">${tic.getDisplayPickupTime()}</span></div>
                             </li>
+	                        <li>
+	                          <div >Pickup Location<span class="failure">${tic.getLocation()}</span></div>
+	                        </li>                                 
                             <li>
 	                            <form action="acceptServlet" method="GET">
-				                    <input type="hidden" name="email1" value="${tic.getUser2_email()}" />
-				                    <input type="hidden" name="ticketID" value="${tic.getTicketID()}" />
-				                    <input type="hidden" name="carpoolID" value="${tic.getCarpoolID()}" />   
+	                            	<input type="hidden" name="location" value="${tic.getLocation()}" />
+	                            	<input type="hidden" name="airport" value="${tic.getAirport()}" />
+	                            	<input type="hidden" name="name1" value="${tic.getUser2_name()}" />
+	                            	<input type="hidden" name="name2" value="${tic.getUser1_name()}" />	
+	                            	<input type="hidden" name="ticketID" value="${tic.getTicketID()}" /> 
+	                            	<input type="hidden" name="pickupdate" value="${tic.getPickupdate()}" />                           	
+				                    <input type="hidden" name="pickuptime" value="${tic.getDisplayPickupTime()}" /> 
 				                    <input type="hidden" name="email2" value="${tic.getUser1_email()}" />
-				               
-				                    <input type="hidden" name="pickupdate" value="${tic.getPickupdate()}" />                       
+				                    <input type="hidden" name="phone2" value="${tic.getUser1_phonenumber()}" />
+				                    <input type="hidden" name="phone1" value="${tic.getUser2_phonenumber()}" />
+				                    <input type="hidden" name="carpoolID" value="${tic.getCarpoolID()}" />   
+				                    <input type="hidden" name="email1" value="${tic.getUser2_email()}" />
+				                    
+				                                           
+	                            
 	                              <div class="success"><button type="submit" style="background: none;
 	                                color: rgb(0, 175, 73);
 	                                border: none;

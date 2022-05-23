@@ -60,10 +60,6 @@ public class googleServlet extends HttpServlet {
 //        doGet(request, response);
     	try {
     		
-    		
-    		System.out.print("WE MADE IT HERE");
-    		System.out.print("WE MADE IT HERE");
-    		System.out.print("WE MADE IT HERE");
     	
     	String name = "";
     	String email = "";

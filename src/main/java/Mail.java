@@ -15,7 +15,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 
-public class Mail extends Thread
+public class Mail
 {
 
 	//SETUP MAIL SERVER PROPERTIES
@@ -44,8 +44,8 @@ public class Mail extends Thread
 		}
 
 	
-	@Override
-	public void run()
+	
+	public void someonerequestedyourTicket()
 	{
 		setupServerProperties();
 		try {
@@ -66,7 +66,31 @@ public class Mail extends Thread
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("heh");
+		System.out.println("Request Email Sent.");
+	}
+	
+	public void someoneacceptedyourRequest() {
+		setupServerProperties();
+		try {
+			draftAcceptEmail();
+		} catch (AddressException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			sendEmail();
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Accept Email Sent.");
+			
 	}
 
 	private void sendEmail() throws MessagingException {
@@ -82,9 +106,38 @@ public class Mail extends Thread
 
 	private MimeMessage draftEmail() throws AddressException, MessagingException, IOException {
 		String[] emailReceipients = {sendEmail};  //Enter list of email recepients
-		String emailSubject = "Shairport- Your ride has been paired. Ticket Update";
-		String emailBody = "Hello " + ourName +",\n\n" + "Your Ticket has been paired for your flight on " + date +". You have been matched with "+ matchedName +"\n"+ 
-    			"Phone Number: " + matchedPhone +"\n" +"Email: "+ matchedEmail +"\n"+ "Steady Travels! - Shairport";
+		String emailSubject = "Shairport - Someone has Requested to Join your Ride to the Airport!";
+		String emailBody = "Hello " + ourName +",\n\n" + "Your Ticket has been requested for your flight on " + date +". Request Information: "+ matchedName +"\n"+ 
+    			"Phone Number: " + matchedPhone +"\n" +"Email: "+ matchedEmail +"\n"+ "Accept or decline this request on the 'My Profile' page of the Shairport Website. Steady Travels! - Shairport";
+		mimeMessage = new MimeMessage(newSession);
+		
+		for (int i =0 ;i<emailReceipients.length;i++)
+		{
+			mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(emailReceipients[i]));
+		}
+		mimeMessage.setSubject(emailSubject);
+	   
+      // CREATE MIMEMESSAGE 
+	    // CREATE MESSAGE BODY PARTS 
+	    // CREATE MESSAGE MULTIPART 
+	    // ADD MESSAGE BODY PARTS ----> MULTIPART 
+	    // FINALLY ADD MULTIPART TO MESSAGECONTENT i.e. mimeMessage object 
+	    
+	    
+		 MimeBodyPart bodyPart = new MimeBodyPart();
+		// bodyPart.setContent(emailBody,"text/html; charset=utf-8\"");
+		 	bodyPart.setText(emailBody);
+		 MimeMultipart multiPart = new MimeMultipart();
+		 multiPart.addBodyPart(bodyPart);
+		 mimeMessage.setContent(multiPart);
+		 return mimeMessage;
+	}
+	
+	private MimeMessage draftAcceptEmail() throws AddressException, MessagingException, IOException {
+		String[] emailReceipients = {sendEmail};  //Enter list of email recepients
+		String emailSubject = "Shairport - Someone has Accepted you Request to Join Their Ride to the Airport!";
+		String emailBody = "Hello " + ourName +",\n\n" + "Your request to join " + matchedName + " on their ride to the airport on " + date + " has been accepted.\n\nCarpool Information: \nName: "+ matchedName + "\n"
+				+ "Phone Number: " + matchedPhone + "\n" + "Email: "+ matchedEmail +"\n\n"+ "To see all of the carpool information, go to the 'My Profile' page on the Shairport website. Steady Travels! - Shairport";
 		mimeMessage = new MimeMessage(newSession);
 		
 		for (int i =0 ;i<emailReceipients.length;i++)
