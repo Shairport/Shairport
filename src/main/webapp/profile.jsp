@@ -131,6 +131,12 @@
                   <div class="mt-3">
                     <h4>${name}</h4>
                     
+                    <label class="field field_v1">
+				    <input class="field__input" placeholder="e.g. 2024" name="gradyear">
+				    <span class="field__label-wrap">
+				      <span class="field__label">Graduation Year</span>
+				    </span>
+				  </label>                    
  
  				  <label class="field field_v2">
 				    <input class="field__input" placeholder="e.g. Computer Science" name="major">
@@ -138,12 +144,7 @@
 				      <span class="field__label">Major</span>
 				    </span>
 				  </label>                   
-                    <label class="field field_v1">
-				    <input class="field__input" placeholder="e.g. 2024" name="gradyear">
-				    <span class="field__label-wrap">
-				      <span class="field__label">Graduation Year</span>
-				    </span>
-				  </label>
+
     
 				  
   
