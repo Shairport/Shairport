@@ -70,7 +70,7 @@
                     	<div class="hr"></div>
                     	<div class="subheader-text">
                     		Safety is our number one priority at Shairport. 
-                    		As a result, we ask all users to sign in with their USC email to unsure all riders are USC students.
+                    		As a result, we ask all users to sign in with their USC email to ensure all riders are USC students.
                     	</div>
                     	<!-- <div class="hr"></div> -->
                     	<div class="group">
