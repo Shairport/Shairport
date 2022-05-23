@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link class="stylz" rel="stylesheet" href="rs.css">
+  <link class="stylz" rel="stylesheet" href="ticker.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="myticket.css">
   <link rel="shortcut icon" type="image/png" href="https://image.ibb.co/fOur3b/favicon.png" />
