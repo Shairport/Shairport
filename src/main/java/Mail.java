@@ -135,7 +135,7 @@ public class Mail
 	
 	private MimeMessage draftAcceptEmail() throws AddressException, MessagingException, IOException {
 		String[] emailReceipients = {sendEmail};  //Enter list of email recepients
-		String emailSubject = "Shairport - Someone has Accepted you Request to Join Their Ride to the Airport!";
+		String emailSubject = "Shairport - Someone has Accepted Your Request to Join Their Ride to the Airport!";
 		String emailBody = "Hello " + ourName +",\n\n" + "Your request to join " + matchedName + " on their ride to the airport on " + date + " has been accepted.\n\nCarpool Information: \nName: "+ matchedName + "\n"
 				+ "Phone Number: " + matchedPhone + "\n" + "Email: "+ matchedEmail +"\n\n"+ "To see all of the carpool information, go to the 'My Profile' page on the Shairport website. Steady Travels! - Shairport";
 		mimeMessage = new MimeMessage(newSession);
