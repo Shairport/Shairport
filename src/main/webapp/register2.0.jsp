@@ -20,7 +20,7 @@
           rel="stylesheet" type="text/css"> 
     <script src="https://apis.google.com/js/api:client.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id" content="484620768676-9n9pph8aer4jv4il9fcp2bb8j1j508ob.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="414693959520-a8em47p4o4h9cjk9ca4vl383immov8i8.apps.googleusercontent.com">
     <link href="register.css" rel="stylesheet">
     <link rel="stylesheet" href="aboutus.css">
 	<link rel="shortcut icon" type="image/png" href="https://image.ibb.co/fOur3b/favicon.png"/>
@@ -133,7 +133,7 @@
 		      
 		    
 		    
-		      var CLIENT_ID = '484620768676-9n9pph8aer4jv4il9fcp2bb8j1j508ob.apps.googleusercontent.com';
+		      var CLIENT_ID = '414693959520-a8em47p4o4h9cjk9ca4vl383immov8i8.apps.googleusercontent.com';
 		      var API_KEY = config.API_KEY;
 		      
 		   
