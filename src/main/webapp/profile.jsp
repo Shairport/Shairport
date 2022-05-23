@@ -98,34 +98,8 @@
             <div class="card-body">
               <div class="d-flex flex-column align-items-center text-center">
               <form action="updateprofileServlet" method="POST" enctype="multipart/form-data">
-                <div style="  display: inline;
-                "class="profile-picture-upload">
-				  <img src="" style="vertical-align: middle;
-				  width: 64px;
-				  height: 64px;
-				  border-radius: 60%;
-				  margin-right: 8px;
-				  -webkit-box-shadow: 0px 3px 10px 2px rgba(0, 0, 0, 0.35);
-				  -moz-box-shadow: 0px 3px 10px 2px rgba(0, 0, 0, 0.35);
-				  box-shadow: 0px 3px 10px 2px rgba(0, 0, 0, 0.35);"alt="Profile picture preview" class="imagePreview">
-				  <a style="color: #004085;
-				  border-color: #b8daff;
-				  background-color: #cce5ff;
-				      font-family: 'Kollektif', sans-serif;
-				
-				  text-decoration: none;
-				  background-color: 	#484848;
-				  color: white;
-				  padding: 2px 6px 2px 6px;
-				  border-top: 1px solid #CCCCCC;
-				  border-right: 1px solid #333333;
-				  border-bottom: 1px solid #333333;
-				  border-left: 1px solid #CCCCCC;"class="action-button mode-upload">Upload Avatar</a>
-				  <input type="file" style="position: absolute;
-				  width: 0px;
-				  height: 0px;
-				  left: -999999px;" class="hidden" name="image" />
-				</div>
+				  <img src="${imageURL}" alt="Admin" class="rounded-circle"
+                    width="150">
 
                 
                   <div class="mt-3">
