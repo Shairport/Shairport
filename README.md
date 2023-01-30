@@ -1,5 +1,8 @@
 # Shairport <br>
 
+## Website Link <br>
+https://www.shairport.net/mellhome.jsp
+
 Shairport is a web application that allows USC students to find fellow students to share rides with to the airport. Once logged in, users are prompted to enter all the necessary information for their trip: the date they are leaving for the airport, which airport and terminal they are going to, and what time their flight is. Given this information, the application displays all other people leaving the same day, which allows the user to request a ride with one of these people. Once this request is made, the two people's tickets are paired and both recieve a text and email with each other's information.
 
 ## Slidedeck Presentation/Demostration Video <br>
